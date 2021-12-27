@@ -15,8 +15,8 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'palliative-stage', 
   projectName: 'palliative-stage.github.io', 
-  deploymentBranch: 'master', 
-  trailingSlash: true, 
+  deploymentBranch: 'gh-pages', 
+  trailingSlash: false, 
 
   presets: [
     [
