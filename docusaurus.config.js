@@ -17,7 +17,8 @@ const config = {
   projectName: 'palliative-stage.github.io', 
   deploymentBranch: 'gh-pages', 
   trailingSlash: false, 
-
+  direction: 'rtl',
+  
   presets: [
     [
       'classic',

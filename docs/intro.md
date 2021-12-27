@@ -2,34 +2,28 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# כאב
 
-Let's discover **Docusaurus in less than 5 minutes**.
+כמה מילים על כאב
 
-## Getting Started
+## הערכת כאב
 
-Get started by **creating a new site**.
+משפט 1 על הערכת כאב
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+משפט 2 על הערכת כאב
 
-## Generate a new site
+משפט 3 על הערכת כאב
 
-Generate a new Docusaurus site using the **classic template**:
+משפט 4 על הערכת כאב
 
-```shell
-npm init docusaurus@latest my-website classic
-```
 
-## Start your site
+## ניהול כאב
 
-Run the development server:
+משפט 1 על ניהול כאב
 
-```shell
-cd my-website
+משפט 2 על ניהול כאב
 
-npx docusaurus start
-```
+משפט 3 על ניהול כאב
 
-Your site starts at `http://localhost:3000`.
+משפט 4 על ניהול כאב
 
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and displays your changes.
