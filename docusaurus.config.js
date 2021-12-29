@@ -28,7 +28,7 @@ const config = {
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Please change this to your repo.
 					editUrl:
-						'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/', // TODO
+						'https://github.com/palliative-stage/palliative-stage.github.io/tree/master/', // TODO
 				},
 				blog: false,
 				theme: {
