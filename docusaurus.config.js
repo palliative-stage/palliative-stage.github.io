@@ -25,9 +25,8 @@ const config = {
 				docs: {
 					routeBasePath: '/',
 					sidebarPath: require.resolve('./sidebars.js'),
-					// Please change this to your repo.
 					editUrl:
-						'https://github.com/palliative-stage/palliative-stage.github.io/tree/master/', // TODO
+						'https://github.com/palliative-stage/palliative-stage.github.io/tree/master/',
 				},
 				blog: false,
 				theme: {
@@ -47,7 +46,7 @@ const config = {
 					src: 'img/logo.svg', // TODO
 				},
 			},
-			footer: {
+			footer: { // TODO - Customize footer
 				style: 'dark',
 				links: [
 					{
@@ -77,7 +76,7 @@ const config = {
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+				copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`, // TODO
 			},
 			prism: {
 				theme: lightCodeTheme,
