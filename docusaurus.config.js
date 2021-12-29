@@ -42,7 +42,7 @@ const config = {
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
 			navbar: {
-				title: 'My Site', // TODO
+				title: 'טיפול פליאטיבי', // TODO
 				logo: {
 					alt: 'My Site Logo', // TODO
 					src: 'img/logo.svg', // TODO
