@@ -46,7 +46,8 @@ const config = {
 					src: 'img/logo.svg', // TODO
 				},
 			},
-			footer: { // TODO - Customize footer
+			footer: {
+				// TODO - Customize footer
 				style: 'dark',
 				links: [
 					{
@@ -94,6 +95,63 @@ const config = {
 			},
 		},
 	},
+
+	plugins: [
+		[
+			'@docusaurus/plugin-pwa',
+			{
+				offlineModeActivationStrategies: ['appInstalled', 'standalone', 'mobile'],
+				pwaHead: [
+					{
+						tagName: 'link',
+						rel: 'icon',
+						href: '/img/pal-favicon.png',
+					},
+					{
+						tagName: 'link',
+						rel: 'manifest',
+						href: '/manifest.json',
+					},
+					{
+						tagName: 'meta',
+						name: 'theme-color',
+						content: 'rgb(37, 194, 160)',
+					},
+					{
+						tagName: 'meta',
+						name: 'apple-mobile-web-app-capable',
+						content: 'yes',
+					},
+					{
+						tagName: 'meta',
+						name: 'apple-mobile-web-app-status-bar-style',
+						content: '#000',
+					},
+					{
+						tagName: 'link',
+						rel: 'apple-touch-icon',
+						href: '/img/pal-favicon.png',
+					},
+					{
+						tagName: 'link',
+						rel: 'mask-icon',
+						href: '/img/log.svg',
+						color: 'rgb(37, 194, 160)',
+					},
+					{
+						tagName: 'meta',
+						name: 'msapplication-TileImage',
+						content: '/img/pal-favicon.png',
+					},
+					{
+						tagName: 'meta',
+						name: 'msapplication-TileColor',
+						content: '#000',
+					},
+				],
+			},
+		],
+	],
 };
 
 module.exports = config;
