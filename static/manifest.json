@@ -1,0 +1,17 @@
+{
+  "short_name": "Palliative Care",
+  "name": "Palliative Care",
+  "icons": [
+    {
+      "src": "/images/pal-favicon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "rgb(37, 194, 160)",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "rgb(37, 194, 160)",
+  "description": "Palliative Care"
+}

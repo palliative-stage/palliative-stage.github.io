@@ -7,7 +7,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'Palliative Care',
-	tagline: 'Dinosaurs are cool',
 	url: 'https://palliative-stage.github.io',
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
@@ -26,9 +25,8 @@ const config = {
 				docs: {
 					routeBasePath: '/',
 					sidebarPath: require.resolve('./sidebars.js'),
-					// Please change this to your repo.
 					editUrl:
-						'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/', // TODO
+						'https://github.com/palliative-stage/palliative-stage.github.io/tree/master/',
 				},
 				blog: false,
 				theme: {
@@ -49,6 +47,7 @@ const config = {
 				},
 			},
 			footer: {
+				// TODO - Customize footer
 				style: 'dark',
 				links: [
 					{
@@ -78,7 +77,7 @@ const config = {
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+				copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`, // TODO
 			},
 			prism: {
 				theme: lightCodeTheme,
@@ -96,6 +95,63 @@ const config = {
 			},
 		},
 	},
+
+	plugins: [
+		[
+			'@docusaurus/plugin-pwa',
+			{
+				offlineModeActivationStrategies: ['appInstalled', 'standalone', 'mobile'],
+				pwaHead: [
+					{
+						tagName: 'link',
+						rel: 'icon',
+						href: '/img/pal-favicon.png',
+					},
+					{
+						tagName: 'link',
+						rel: 'manifest',
+						href: '/manifest.json',
+					},
+					{
+						tagName: 'meta',
+						name: 'theme-color',
+						content: 'rgb(37, 194, 160)',
+					},
+					{
+						tagName: 'meta',
+						name: 'apple-mobile-web-app-capable',
+						content: 'yes',
+					},
+					{
+						tagName: 'meta',
+						name: 'apple-mobile-web-app-status-bar-style',
+						content: '#000',
+					},
+					{
+						tagName: 'link',
+						rel: 'apple-touch-icon',
+						href: '/img/pal-favicon.png',
+					},
+					{
+						tagName: 'link',
+						rel: 'mask-icon',
+						href: '/img/log.svg',
+						color: 'rgb(37, 194, 160)',
+					},
+					{
+						tagName: 'meta',
+						name: 'msapplication-TileImage',
+						content: '/img/pal-favicon.png',
+					},
+					{
+						tagName: 'meta',
+						name: 'msapplication-TileColor',
+						content: '#000',
+					},
+				],
+			},
+		],
+	],
 };
 
 module.exports = config;
