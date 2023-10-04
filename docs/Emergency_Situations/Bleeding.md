@@ -51,24 +51,26 @@ sidebar_position: 1
 
 יש להעריך צורך בעירוי דם או מוצריו.
 
+ TRANSEXAMIC<sup>OL</sup>
+
 
 ## תרופות
 ### דימום מהעור (כולל גידולים פורצים) ורקמות ריריות
-- הפעל לחץ ישיר במידת האפשר. ניתן להשתמש בגזה ספוגה ב- OLTRANSEXAMIC ACID (Hexakapron) במינון500 mg/ 5 ml  או OLADRENALIN (Epinephrine) במינון 1 mg / 1ml
-- ניתן להשאיר את הגזות הספוגות ב-OLHexakapron, במקום הדימום עם חבישה תומכת מעל. לחלופין, ניתן למרוח משחת OLHexakapron  (4 טבליות מרוסקות של 500 mg בתוך בסיס של 60 gr פרפין רך הידרופילי) פעמיים ביום מתחת לחבישה. במקרה של דימום מחלל הפה, ניתן לבצע שטיפות פה, ארבע פעמים ביום, ב 10 ml של תמיסת OLHexakapron בריכוז של 4% עד 5%.
+- הפעל לחץ ישיר במידת האפשר. ניתן להשתמש בגזה ספוגה ב- TRANSEXAMIC ACID (Hexakapron)<sup>OL</sup> במינון 500 mg/ 5 ml  או ADRENALIN (Epinephrine)<sup>OL</sup> במינון 1 mg / 1ml
+- ניתן להשאיר את הגזות הספוגות ב-Hexakapron<sup>OL</sup>, במקום הדימום עם חבישה תומכת מעל. לחלופין, ניתן למרוח משחת Hexakapron<sup>OL</sup>  (4 טבליות מרוסקות של 500 mg בתוך בסיס של 60 gr פרפין רך הידרופילי) פעמיים ביום מתחת לחבישה. במקרה של דימום מחלל הפה, ניתן לבצע שטיפות פה, ארבע פעמים ביום, ב 10 ml של תמיסת Hexakapron<sup>OL</sup> בריכוז של 4% עד 5%.
     - ניתן להכין תמיסה של 5% על ידי ריסוק ופיזור טבליה של 500 mg בתוך 10 ml מים, או דילול התוכן של אמפולה אחת של 500 mg / 5 ml לנפח סופי של 10 מ"ל. (אם משתמשים באמפולות, יש לסנן את תכולת האמפולה לפני השימוש כדי למזער את הסיכון לחלקיקי זכוכית).
 - ניתן להשתמש במקלות כסף חנקתי לצריבת דימום נקודתי.
 - ספוגים הימוסטטיים כירורגיים יכולים לשמש בבית על ידי חולים או משפחות כדי להשתלט על דימום נימי מהיר.
 - חבישות אלגינט המוסטטיות כגון KALTOSTAT יכולות להועיל.
 - ניתן להשתמש בטמפונים לאף או בתכשירים  ייעודיים הקיימים במוסד. מחלקת אף אוזן גרון עשויה לייעץ לגבי מה זמין במקום וכיצד להשיג.
-- אם ההערכה היא שהדימום לא נובע מ- DIC, יש לשקול תרופות נוגדות קרישה סיסטמיות כגון OLTRANEXEMIC ACID (Hexakapron):
+- אם ההערכה היא שהדימום לא נובע מ- DIC, יש לשקול תרופות נוגדות קרישה סיסטמיות כגון TRANEXEMIC ACID (Hexakapron)<sup>OL</sup>:
     - מינון ראשוני של 1.5 gr דרך הפה ולאחר מכן 1 gr שלוש פעמים ביום
     - אם אין שיפור לאחר 3 ימים, ניתן להעלות מינון ל- 1.5 gr שלוש פעמים ביום
     - יש להפחית מינון או להפסיק שבוע לאחר הפסקת דימום; אם הדימום חוזר ניתן להתחיל שוב טיפול.
 
 אמצעים נוספים שעשויים להיות מומלצים על ידי מומחים:
-- אם הדימום משטח נרחב ולא הושגה שליטה באמצעים הנ"ל, אפשר לשקול שימוש ב-  OLDESMOPRESSIN (Minirin)  תוך מעקב צמוד.
-- בפרוקטוקוליטיס ואסכמיה כרונית עקב קרינה, השתמש ב-OLHexakapron  דרך הפה או פי הטבעת.
+- אם הדימום משטח נרחב ולא הושגה שליטה באמצעים הנ"ל, אפשר לשקול שימוש ב-  DESMOPRESSIN (Minirin)<sup>OL</sup>  תוך מעקב צמוד.
+- בפרוקטוקוליטיס ואסכמיה כרונית עקב קרינה, השתמש ב-Hexakapron<sup>OL</sup>  דרך הפה או פי הטבעת.
 כאשר מתן דרך הפה אינו מתאים, ניתן  לעתים קרובות לתת תמיסה פומית דרך פי הטבעת.
 לצורך כך נא לפנות לצוות המומחה לטיפול פליאטיבי או לרוקח לייעוץ נוסף.
 
@@ -79,20 +81,20 @@ sidebar_position: 1
 - השתמש בחמצן ובשאיבה (סקשן) לפי הצורך.
 - יש לשלול או לטפל בזיהום או טרומבואמבוליזם ריאתי (PE), אם רלוונטי.
 - מדכא שיעול עשוי להועיל. ראה הנחיות לשיעול.
-- מתן OLHexakapron (כמו בסעיף 'דימום מהעור וממברנות ריריות').
+- מתן Hexakapron<sup>OL</sup> (כמו בסעיף 'דימום מהעור וממברנות ריריות').
 - ב-85% מהחולים עם דימום ריאתי, טיפול בקרינה יכול לסייע להשתלט על הדימום לחלוטין.
 
 ### דימום מדרכי השתן 
 - יש לשלול או לטפל בזיהום.
 - אמצעים נוספים שעשויים להיות מומלצים על ידי מומחים:
-- שקול טיפול ב- OLHexakapron (כמו בסעיף 'דימום מהעור והריריות') למרות הסיכון להצטברות קרישים, עד להפסקה מוחלטת של הדימום.
+- שקול טיפול ב- Hexakapron<sup>OL</sup> (כמו בסעיף 'דימום מהעור והריריות') למרות הסיכון להצטברות קרישים, עד להפסקה מוחלטת של הדימום.
 - שטיפת שלפוחית השתן עם 0.9% נתרן כלוריד או OLHexakapron  (5 gr / 50 ml water) פעם או פעמיים ביום אם הטיפול דרך הפה אינו מועיל.
 דימום ממערכת העיכול (לדימום מהפה או פי הטבעת ראה בסעיף דימום מריריות)
 - אנטגוניסט H2 או מעכב משאבת פרוטונים: 
 אנטגוניסט H2 *לדוגמא: RANITIDINE (Zantac, Zantab, Apozan, Zaridex, Ptinolin), FAMOTIDINE (Gastro, Famo) .
 מעכבי משאבת פרוטונים (PPI) *לדוגמא:
  OMEPRAZOLE (Losec, Omepradex), PANTOPRAZOLE (Contraloc, Pantoavenir), ESOMEPRAZOLE (Nexium, Esoprim).
--  OLHexakapron(כמו בסעיף ''דימום מעור ורקמות ריריות'').
+-  Hexakapron<sup>OL</sup>(כמו בסעיף ''דימום מעור ורקמות ריריות'').
 - שקול מתן ויטמין OLK (אם כי באופן פרדוקסלי, פגיעה בכבד עלולה להגביר את הסיכון לפקקת ורידים ולכן פנה לייעוץ).
 דימום כתוצאה מממאירות המטולוגית מתקדמת
 - עירוי טסיות עשוי להיות יעיל זמנית בתרומבוציטופניה.
@@ -110,15 +112,14 @@ sidebar_position: 1
 
 
 ### קישור לאתר המקורי
+[Scottish Palliative Care Guidelines - Bleeding](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/palliative-emergencies/bleeding)
 
-<!-- https://www.palliativecareguidelines.scot.nhs.uk/guidelines/palliative-emergencies/Bleeding.aspx -->
-https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/palliative-emergencies/bleeding
 ## סימוכין / מקורות
 
-- Anwar D, Schaad N, Mazzocato C. Treatment of haemoptysis in palliative care patients. Eur J Palliative Care. 2003;10(4):137-9.
+- Anwar D, Schaad N, Mazzocato C. Treatment of haemoptysis in palliative care patients. Eur J Palliative Care. 2003;10(4):137-9
 - Broadley KE, Kurowska A, Dick R, Platts A, Tookman A. The role of embolization in palliative care. Palliat Med. 1995;9(4):331-5.
-- Dean A, Tuffin P. Fibrinolytic inhibitors for cancer-associated bleeding problems. J Pain Symptom Manage. 1997;13(1):20-4.
-- Doyle D, Hanks G, Cherny N, Calman K, editors. Oxford Textbook of Palliative Medicine 3rd ed. Oxford: Oxford University Press; 2004.
-- Regnard C, Makin W. Management of bleeding in advanced cancer - a flow diagram. Palliat Med. 1992;6(1):74-8.
-- Tamagno G, Mioni R, De Carlo E, Maffei P, Rubello D, Sicolo N. Effects of a somatostatin analogue in occult gastrointestinal bleeding: a case report. Dig Liver Dis. 2004;36(12):843-6.
-- Twycross R, Wilcock A, Howard P. Palliative Care Formulary PCF4. 4th ed. England: Pharmaceutical Press; 2011.
+- Dean A, Tuffin P. Fibrinolytic inhibitors for cancer-associated bleeding problems. J Pain Symptom Manage. 1997;13(1):20-4
+- Doyle D, Hanks G, Cherny N, Calman K, editors. Oxford Textbook of Palliative Medicine 3rd ed. Oxford: Oxford University Press; 2004
+- Regnard C, Makin W. Management of bleeding in advanced cancer - a flow diagram. Palliat Med. 1992;6(1):74-8
+- Tamagno G, Mioni R, De Carlo E, Maffei P, Rubello D, Sicolo N. Effects of a somatostatin analogue in occult gastrointestinal bleeding: a case report. Dig Liver Dis. 2004;36(12):843-6
+- Twycross R, Wilcock A, Howard P. Palliative Care Formulary PCF4. 4th ed. England: Pharmaceutical Press; 2011
