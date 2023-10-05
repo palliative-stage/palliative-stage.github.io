@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# דימום (Bleeding) 
+# דימום
 
 <!-- <img src="/Icons.png" alt="Icon" width="250" height="100" align="left"/> -->
 

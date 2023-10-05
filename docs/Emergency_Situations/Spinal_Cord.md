@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# לחץ על חוט השדרה (Spinal cord compression)
+# לחץ על חוט השדרה 
 
 ## מבוא
 
