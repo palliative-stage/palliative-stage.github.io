@@ -1,11 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# דימום (Bleeding) 
-
-<!-- <img src="/Icons.png" alt="Icon" width="250" height="100" align="left"/> -->
-
+# לחץ על חוט השדרה (Spinal cord compression)
 
 ## מבוא
 

@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 ---
 
-# דימום (Bleeding) 
+# חסימת וריד נבוב עליון (Superior vena cava)
 
 <!-- <img src="/Icons.png" alt="Icon" width="250" height="100" align="left"/> -->
 
