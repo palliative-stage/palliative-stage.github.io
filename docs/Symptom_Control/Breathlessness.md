@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 9
 ---
 
-# קוצר נשימה (Dyspnea)
+# קוצר נשימה
 
 
 ## מבוא
