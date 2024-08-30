@@ -52,7 +52,7 @@ sidebar_position: 1
 
 **מעודדי תנועתיות מערכת העיכול   (Prokinetics)**
 -	משמשים לתחושת שובע מוקדמת, ריקון קיבה מאוחר, גסטרופרזיס או בחילות.
--	יש לתת כחצי שעה לפני ארוחה: <sup>QT OL</sup>METOCLOPRAMIDE (Pramin) 10 mg x 3/d                              או <sup>QT OL</sup>DOMPERIDONE (Motilium) 10 mg x 3/d 
+-	יש לתת כחצי שעה לפני ארוחה: <sup>OL,QT</sup>METOCLOPRAMIDE (Pramin) 10 mg x 3/d                              או <sup>OL,QT</sup>DOMPERIDONE (Motilium) 10 mg x 3/d 
 
 ### נקודות ליישום
 -	תוספים (כמו פחיות Ensure, Glucerna וכו') אומנם יחסית יקרים, אך יכולים לעזור לחלק מהמטופלים לאחר הערכה מדוקדקת של מצב תזונתי, פרוגנוזה ואפשרויות חלופיות.
