@@ -92,8 +92,7 @@ sidebar_position: 5
 
 
 ## קישור לאתר המקורי
-
-https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/delirium
+[Scottish Palliative Care Guidelines - Delirium](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/delirium)
 
 ## סימוכין / מקורות
 

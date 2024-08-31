@@ -102,8 +102,8 @@ sidebar_position: 9
 <sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>*</sup>הערות גרסה ישראלית 
 
 
-**קישור לאתר המקורי**
-https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/breathlessness/
+## קישור לאתר המקורי
+[Scottish Palliative Care Guidelines - Breathlessness](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/breathlessness)
 
 ## חומרי עזר 
 -	Enhanced Palliative Care online learning module: https://learn.nes.nhs.scot/64382/pharmacy/enhanced-palliative-care-module 

@@ -73,8 +73,13 @@ Laxido (במידה ויש סבילות לכמות נוזל גדולה) יכול 
 | -------- |  ------- | -------- | ------- |
 | כאב/כאב עוויתי ממקור גידולי    | MORPHINE DIAMORPHINE FENTANYL PATCH |     | טיטרציית מינון      |  
 | כאב עצבי |   Adjuvant משככי כאב אדג'ובנטים |   | נדרש ייעוץ מומחה |
-
-
+| כאב עוויתי (colic) |  HYOSCINE BUTYLBROMIDE (*לא קיים בישראל) | 40-120 mg | מפחית פריסטלטיקה |
+| בחילה  |  <ul><li>CYCLIZINE</li><li>HYOSCINE BUTYLBROMIDE (*לא קיים בישראל)</li></ul>  | <ul><li>50-150 mg</li><li>40-120 mg</li></ul> | אנטי כולינרגי, נוגד בחילות ומפחית פריסטלטיקה |
+|  |  הוסף <sup>QT,OL</sup>HALOPERIDOL | PO 0.5-1.5 mg בערב  או  0.5-1 mg x2/d   במתן תת עורי יומי במינון 1-5 mg למשך 24 שעות (בחולים עם כשל כלייתי, קשישים או ירודים, יש להפחית מינונים).  בטיטרציה עולה עד להשגת השפעה  | הוסף לעירוי תת עורי או מתן S.C. חד פעמי לבחילה קשה |
+|  |  החלף ל- <sup>QT</sup>LEVOMEPROMAZINE (IV/SC Nozinan,  PO Ronexin) | 5-15 mg | בתוך עירוי תת עורי או בשתי זריקות תת עוריות יומיות במינון 2.5-5 mg נדרש ניטור לחץ דם (צפויה ירידה) |
+| *חלופה מוכרת כאנטיאמטיקה רחבת-טווח בישראל |  <sup>OL</sup>OLANZAPINE (Zappa, Zyprexa ODT, Olanzapine velotab) | Po 2.5-10 mg התצורות- ZAPPA, Velotab ODT מיועדות למתן תת-לשוני  |  |
+| הקאה (אם כאב ובחילה בשליטה, החולה יכול לעיתים להתמודד עם הקאות בודדות) |  <sup>OL</sup>HYOSCINE BUTYLBROMIDE | 40-120 mg | פעילות נוגדת הפרשה |
+|  |  OCTREOTIDE (Sandostatin) | 0.25-0.5 mg | נוגד הפרשה קו שני. יותר אפקטיבי ויקר מ- Hyoscine  |
 
 ### נקודות ליישום
 -	בשימוש בתרופות משרות שינה (סדאטיביות), יש להתחיל במינונים נמוכים
@@ -86,17 +91,15 @@ Laxido (במידה ויש סבילות לכמות נוזל גדולה) יכול 
 <sup>OL</sup> Off Label , <sup>QT</sup> Prolongs QT, *הערות גרסה ישראלית
 
 
-**קישור לאתר המקורי**
-
-https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/bowel-obstruction/
+## קישור לאתר המקורי
+[Scottish Palliative Care Guidelines - Bowel obstruction](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/bowel-obstruction)
 
 ### חומרי עזר:
 
-Palliative Care Formulary (PCF): PCF on the Knowledge
- Network: http://www.knowledge.scot.nhs.uk/home/portals-and-topics/palliative-care.aspx
+Palliative Care Formulary (PCF): PCF on the Knowledge Network  
+ http://www.knowledge.scot.nhs.uk/home/portals-and-topics/palliative-care.aspx
 
 ### סימוכין / מקורות
-**Palliative Care Formulary (PCF): PCF on the Knowledge Network: http://www.knowledge.scot.nhs.uk/home/portals-and-topics/palliative-care.aspx**
 
 Dolan EA. Malignant bowel obstruction: a review of current treatment strategies. Am J Hosp Palliat Care. 2011;28(8):576-82.
 

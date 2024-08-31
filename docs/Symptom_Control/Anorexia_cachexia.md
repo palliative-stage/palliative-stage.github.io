@@ -67,9 +67,8 @@ sidebar_position: 1
 **מקרא**
 <sup>OL</sup> Off Label , <sup>QT</sup> Prolongs QT, *הערות גרסה ישראלית
 
-**קישור לאתר המקורי**
-
-https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/anorexiacachexia/
+## קישור לאתר המקורי
+[Scottish Palliative Care Guidelines - Anorexia/cachexia](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/anorexiacachexia)
 
 ### נספחים:
 לאנשי מקצוע ולאוכלוסייה הרחבה- Macmillan Cancer Support:

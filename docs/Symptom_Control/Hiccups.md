@@ -13,20 +13,13 @@ sidebar_position: 10
 -	הערכת הגורם
 -	הערכת חומרה ומשך השיהוקים והשפעתם על איכות חיי המטופל
 -	גורמים אפשריים:
-
-o	נפיחות או סטזיס גסטרי (הגורם הנפוץ ביותר)
-
-o	GERD (Gastro-Esophageal Reflux) (החזר קיבתי-ושטי)
-
-o	הפרעה מטבולית (לדגמה: אורמיה, היפרקלמיה, היפו או היפר מגנזמיה)
-
-o	זיהום
-
-o	גירוי סרעפתי/ עצב הסרעפת (Phrenic nerve)
-
-o	מחלה כבדית/ הפטומגליה
-
-o	מקור צרברלי (גרורה מוחית/ גידול ראשוני)
+    - נפיחות או סטזיס גסטרי (הגורם הנפוץ ביותר)
+    - GERD (Gastro-Esophageal Reflux) (החזר קיבתי-ושטי)
+    - הפרעה מטבולית (לדגמה: אורמיה, היפרקלמיה, היפו או היפר מגנזמיה)
+    - זיהום
+    - גירוי סרעפתי/ עצב הסרעפת (Phrenic nerve)
+    - מחלה כבדית/ הפטומגליה
+    - מקור צרברלי (גרורה מוחית/ גידול ראשוני)
 -	פגיעה בעצב הסרעפת (Phrenic nerve) לאורך מסלולו מהגולגולת לסרעפת (למשל בעקבות שלבקת חוגרת או גידול בבית חזה)
 
 ## טיפול
@@ -37,33 +30,44 @@ o	מקור צרברלי (גרורה מוחית/ גידול ראשוני)
 
 **התערבויות לא פרמקולוגיות**
 -	אמצעים פשוטים, "תרופות סבתא" הכוללות:
-o	לגימה של מים קרים או קרח מרוסק
-o	נשימה לתוך שקית נייר, במיוחד כשהמטופל בהיפרוונטילצייה
-o	שינוי דפוס נשימה רגיל – לדגמה החזקת האויר
-o	שתיה מהצד "הלא נכון" של הכוס
-o	חיכוך (עם  מטוש) של החיך הרך לצורך גירוי הנזופרניקס
+    - לגימה של מים קרים או קרח מרוסק
+    - נשימה לתוך שקית נייר, במיוחד כשהמטופל בהיפרוונטילצייה
+    - שינוי דפוס נשימה רגיל – לדגמה החזקת האויר
+    - שתיה מהצד "הלא נכון" של הכוס
+    - חיכוך (עם  מטוש) של החיך הרך לצורך גירוי הנזופרניקס
 -	דיקור סיני עשוי להועיל
 
 ### התערבות פרמקולוגית
  
--	סותרי חומצה המכילים  OLSIMETHICONE(סימיקול, טיפטיפות, וגזים X) בין ארוחות ולפני שינה.
--	 OLMAGNESIUM HYDROCHLORIDE + AlLUMINIUM HYDROXIDE ( - Maalox 10ml-20ml עד ארבע פעמים ביום, Maalox Plus 5ml – 10ml עד ארבע פעמים ביום).
+-	סותרי חומצה המכילים  <sup>OL</sup>SIMETHICONE(סימיקול, טיפטיפות, וגזים X) בין ארוחות ולפני שינה.
+-	 <sup>OL</sup>MAGNESIUM HYDROCHLORIDE + AlLUMINIUM HYDROXIDE ( Maalox 10ml-20ml עד ארבע פעמים ביום, Maalox Plus 5ml – 10ml עד ארבע פעמים ביום).
 -	תרופות פרוקינטיות:
- OLMETOCLOPRAMIDE (Pramin) 10 mg, DOMPERIDONE (Motilium) 10 mg לפי הצורך כל 8 שעות.
--	טיפול בהחזר ושט-קיבה  GERD ב-:PPI  OMEPRAZOLE (Losec, Omepradex), PANTOPRAZOLE (Contraloc), ESOMEPRAZOLE (Nexium)
--	OLDEXAMETHASONE (Dexacort) יכול להפחית לחץ וגירוי במידה והגורם הוא גידול כבדי/מדיאסטינלי/מוחי או 4mg – 8 mg בשעות הבוקר. להפסיק אם אין שיפור לאחר שבוע. (*יש לשים לב כי דקסמתזון עלול להיות גורם לשיהוקים)
+ <sup>OL</sup>METOCLOPRAMIDE (Pramin) 10 mg, DOMPERIDONE (Motilium) 10 mg לפי הצורך כל 8 שעות.
+-	טיפול בהחזר ושט-קיבה  GERD ב-PPI  
+  OMEPRAZOLE (Losec, Omepradex), PANTOPRAZOLE (Contraloc), ESOMEPRAZOLE (Nexium)
+-	<sup>OL</sup>DEXAMETHASONE (Dexacort) יכול להפחית לחץ וגירוי במידה והגורם הוא גידול כבדי/מדיאסטינלי/מוחי או 4mg – 8mg בשעות הבוקר. להפסיק אם אין שיפור לאחר שבוע. (*יש לשים לב כי דקסמתזון עלול להיות גורם לשיהוקים)
 -	ההמלצות הבאות יכולות להינתן על ידי מומחה:
-o	QTHALOPERIDOL (Halidol):  0.5 mg - 1 mg לפי הצורך כל 8 שעות. מינון אחזקה 1 mg - 3 mg לפני השינה 
-o	OLBACLOSAL (Baclofen): 5 mg - 20 mg לפי הצורך כל 8 שעות. יש להפסיק באופן הדרגתי.
-o	QTLEVOMEPROMAZINE (Nozinan): פומי 3mg - 6mg לפני השינה. משמש כתחליף ל Chlorpromazine (Largactyl, יש להימנע בל"ד נמוך.
-o	OLNIFEDIPINE (Pressolate): במתן פומי 5 mg - 10 mg לפי הצורך כל 8 שעות (המנע בלחץ דם נמוך)
+    - <sup>QT</sup>HALOPERIDOL (Halidol):  
+
+     0.5mg - 1mg לפי הצורך כל 8 שעות. מינון אחזקה 1mg - 3mg לפני השינה 
+      
+    - <sup>OL</sup>BACLOSAL (Baclofen):  
+
+     5mg - 20mg לפי הצורך כל 8 שעות. יש להפסיק באופן הדרגתי.
+    - <sup>QT</sup>LEVOMEPROMAZINE (Nozinan):  
+
+     פומי 3mg - 6mg לפני השינה. משמש כתחליף ל Chlorpromazine (Largactyl), יש להימנע בל"ד נמוך.
+    - <sup>OL</sup>NIFEDIPINE (Pressolate):  
+
+     במתן פומי 5mg - 10mg לפי הצורך כל 8 שעות (המנע בלחץ דם נמוך)
 
 ### נקודות ליישום
 -	יש לבצע הערכה של השיהוקים לאחר שלושה ימים, במידה ואין הטבה מספקת – כדאי לשקול העלאת מינון או החלפת תרופה. מומלץ להתייעץ עם מומחה פליאטיבי בשיהוקים עמידים לטיפול.
 -	מומלץ להדריך כי במידה והשיהוק פוגע באיכות השינה או מונע אותה יש לפנות צוות  המטפל
+  
 
-**מקרא**
-*OL Off Label , QT Prolongs QT, הערות גרסה ישראלית
+**מקרא**  
+<sup>OL</sup> Off Label , <sup>QT</sup> Prolongs QT, *הערות גרסה ישראלית  
 
-**קישור לאתר המקורי**
-https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/hiccups/
+## קישור לאתר המקורי
+[Scottish Palliative Care Guidelines - Hiccups](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/hiccups)
