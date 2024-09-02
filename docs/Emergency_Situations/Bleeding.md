@@ -4,7 +4,6 @@ sidebar_position: 1
 
 # דימום
 ## Bleeding
-<!--**Bleeding** -->
 <!-- <img src="/Icons.png" alt="Icon" width="250" height="100" align="left"/> -->
 
 
@@ -41,7 +40,8 @@ sidebar_position: 1
 - אם יש גישה ורידית IV MIDAZOLAM (Dormicum) 10mg  או IV DIAZEPAM (Assival) 10mg .
 - הזרקה תוך שרירית (IM) : MIDAZOLAM (Dormicum) 10mg יכול להינתן לשריר גדול כמו הדלתא בכתף או שריר הירך.
 - מתן רקטלי או דרך סטומה:  .DIAZEPAM Rectal solution 10mg 
-- מתן בפנים הלחי: MIDAZOLAM 10mg Buccolam Oromucosal solution *בישראל קיים במינונים של 10g/2ml, 2.5mg/0.5ml, 5mg/1ml, 7.5mg/1.5ml מאושר רק בילדים או במבוגרים עם התקפים אפילפטיים הנמשכים מעל 5 דקות. נדרש טופס 29ג. ניתן לרכישה במרשם פרטי. 
+- מתן בפנים הלחי: MIDAZOLAM 10mg Buccolam Oromucosal solution  
+🔯בישראל קיים במינונים של 10g/2ml, 2.5mg/0.5ml, 5mg/1ml, 7.5mg/1.5ml מאושר רק בילדים או במבוגרים עם התקפים אפילפטיים הנמשכים מעל 5 דקות. נדרש טופס 29ג. ניתן לרכישה במרשם פרטי. 
 
 - הערה: אם מדובר בחולה שכבר מקבל מינוני רקע גבוהים של בנזודיאזפינים, ייתכן שיהיה צורך במינון גבוה יותר. אם החולה שברירי יתכן שיידרש מינון נמוך יותר.
 
@@ -58,14 +58,14 @@ sidebar_position: 1
 
 ## תרופות
 ### דימום מהעור (כולל גידולים פורצים) ורקמות ריריות
-- הפעל לחץ ישיר במידת האפשר. ניתן להשתמש בגזה ספוגה ב- TRANSEXAMIC ACID (Hexakapron)<sup>OL</sup> במינון 500mg בתוך 5ml  או ADRENALIN (Epinephrine)<sup>OL</sup> במינון 1mg  בתוך 1ml.
+- הפעל לחץ ישיר במידת האפשר. ניתן להשתמש בגזה ספוגה ב- TRANEXAMIC ACID (Hexakapron)<sup>OL</sup> במינון 500mg בתוך 5ml  או ADRENALIN (Epinephrine)<sup>OL</sup> במינון 1mg  בתוך 1ml.
 - ניתן להשאיר את הגזות הספוגות ב-Hexakapron<sup>OL</sup>, במקום הדימום עם חבישה תומכת מעל. לחלופין, ניתן למרוח משחת Hexakapron<sup>OL</sup>  (4 טבליות מרוסקות של 500mg בתוך בסיס של 60gr פרפין רך הידרופילי) פעמיים ביום מתחת לחבישה. במקרה של דימום מחלל הפה, ניתן לבצע שטיפות פה, ארבע פעמים ביום, ב 10ml של תמיסת Hexakapron<sup>OL</sup> בריכוז של 4% עד 5%.
     - ניתן להכין תמיסה של 5% על ידי ריסוק ופיזור טבליה של 500mg בתוך 10ml מים, או דילול התוכן של אמפולה אחת של 500mg / 5ml לנפח סופי של 10ml. (אם משתמשים באמפולות, יש לסנן את תכולת האמפולה לפני השימוש כדי למזער את הסיכון לחלקיקי זכוכית).
 - ניתן להשתמש במקלות כסף חנקתי לצריבת דימום נקודתי.
 - ספוגים הימוסטטיים כירורגיים יכולים לשמש בבית על ידי חולים או משפחות כדי להשתלט על דימום נימי מהיר.
 - חבישות אלגינט המוסטטיות כגון KALTOSTAT יכולות להועיל.
 - ניתן להשתמש בטמפונים לאף או בתכשירים  ייעודיים הקיימים במוסד. מחלקת אף אוזן גרון עשויה לייעץ לגבי מה זמין במקום וכיצד להשיג.
-- אם ההערכה היא שהדימום לא נובע מ- DIC, יש לשקול תרופות נוגדות קרישה סיסטמיות כגון TRANEXEMIC ACID (Hexakapron)<sup>OL</sup>:
+- אם ההערכה היא שהדימום לא נובע מ- DIC, יש לשקול תרופות נוגדות קרישה סיסטמיות כגון TRANEXAMIC ACID (Hexakapron)<sup>OL</sup>:
     - מינון ראשוני של 1.5gr דרך הפה ולאחר מכן 1gr שלוש פעמים ביום
     - אם אין שיפור לאחר 3 ימים, ניתן להעלות מינון ל- 1.5gr שלוש פעמים ביום
     - יש להפחית מינון או להפסיק שבוע לאחר הפסקת דימום; אם הדימום חוזר ניתן להתחיל שוב טיפול.
@@ -120,7 +120,12 @@ sidebar_position: 1
 
 
 **מקרא**
-<sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>*</sup>הערות גרסה ישראלית 
+<sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>🔯</sup>הערות גרסה ישראלית 
+
+
+
+
+<!-- ![test](blue_asterisk.png) -->
 
 
 ## קישור לאתר המקורי
