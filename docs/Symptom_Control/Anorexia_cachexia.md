@@ -43,7 +43,7 @@ sidebar_position: 1
 -	יש להעריך השפעה ולעדכן מינון באופן שגרתי.
 -	תופעות לוואי: אגירת נוזלים , פטרת, חולשת שרירים (מיופתיה), נדודי שינה, דלקת רירית במערכת עיכול (גסטריטיס) וסוכרת הנגרמת על ידי סטרואידים.
 
-**פְּרוֹגֶסְטֵוֶגֶֶנים (Progestogens)**
+**פרוגסטוגנים (Progestogens)**
 -	עשויים לעורר תיאבון ועלייה במשקל בחולים עם סרטן.
 -	תחילת השפעה עשויה לארוך מספר שבועות, אך התועלת מהם ארוכה יותר מסטרואידים.
 -	מתאים יותר לחולים עם פרוגנוזה ארוכה יותר.
@@ -65,8 +65,9 @@ sidebar_position: 1
 -	הצעת מזון רך וקל לבליעה כמו מרק, פודינג ומשקאות מזינים. אם המטופל מסוגל, ניתן להגביר את הצריכה של מזונות בעלי ערך קלורי גבוה כגון חמאה, שמנת, גבינה.
 -	כדאי להפחית בשיח על אוכל ולשמר את שיתוף המטופל  בהיבט החברתי של הארוחות.
 
+
 **מקרא**
-<sup>OL</sup> Off Label , <sup>QT</sup> Prolongs QT, *הערות גרסה ישראלית
+<sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>🔯</sup>הערות גרסה ישראלית 
 
 ## קישור לאתר המקורי
 [Scottish Palliative Care Guidelines - Anorexia/cachexia](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/anorexiacachexia)

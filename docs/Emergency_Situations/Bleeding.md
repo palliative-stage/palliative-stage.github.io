@@ -41,7 +41,7 @@ sidebar_position: 1
 - הזרקה תוך שרירית (IM) : MIDAZOLAM (Dormicum) 10mg יכול להינתן לשריר גדול כמו הדלתא בכתף או שריר הירך.
 - מתן רקטלי או דרך סטומה:  .DIAZEPAM Rectal solution 10mg 
 - מתן בפנים הלחי: MIDAZOLAM 10mg Buccolam Oromucosal solution  
-🔯בישראל קיים במינונים של 10g/2ml, 2.5mg/0.5ml, 5mg/1ml, 7.5mg/1.5ml מאושר רק בילדים או במבוגרים עם התקפים אפילפטיים הנמשכים מעל 5 דקות. נדרש טופס 29ג. ניתן לרכישה במרשם פרטי. 
+<sup>🔯</sup>בישראל קיים במינונים של 10g/2ml, 2.5mg/0.5ml, 5mg/1ml, 7.5mg/1.5ml מאושר רק בילדים או במבוגרים עם התקפים אפילפטיים הנמשכים מעל 5 דקות. נדרש טופס 29ג. ניתן לרכישה במרשם פרטי. 
 
 - הערה: אם מדובר בחולה שכבר מקבל מינוני רקע גבוהים של בנזודיאזפינים, ייתכן שיהיה צורך במינון גבוה יותר. אם החולה שברירי יתכן שיידרש מינון נמוך יותר.
 
@@ -122,10 +122,6 @@ sidebar_position: 1
 **מקרא**
 <sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>🔯</sup>הערות גרסה ישראלית 
 
-
-
-
-<!-- ![test](blue_asterisk.png) -->
 
 
 ## קישור לאתר המקורי
