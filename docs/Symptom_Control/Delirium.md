@@ -3,7 +3,7 @@ sidebar_position: 5
 ---
 
 # דליריום
-
+## Delirium
 
 ## הקדמה
 
@@ -56,24 +56,24 @@ sidebar_position: 5
 ## טיפול תרופתי
 **טיפול תרופתי (במידה והכרחי לניהול התסמינים)**
 -	סקור בקביעות ולהפסיק טיפול תרופתי ברגע שהמטופל חוזר לעצמו.
--	**בחירה ראשונה: <sup>OL,QT</sup>HALOPERIDOL** 
-    - מינון: 0.5 mg - 3 mg
-    - mg 3 - 0.5
-    -	מינון: mg 3 - 0.5  פומי או תת עורי (SC) פעם ליום (עדיף להתחיל ממינון פומי נמוך). במידת הצורך, ניתן לחזור על מתן אחרי שעתיים.
-    -	מינון אחזקתי יכול להידרש במידה והגורם בלתי הפיך; להשתמש במינון האפקטיבי הנמוך ביותר: 0.5 - 3 mg פומי או 2 mg תת עורי (SC) פעם ליום (אין ראיות לשיפור גדול יותר עם תרופות אנטיפסיכוטיות חדשות).
+-	**בחירה ראשונה: HALOPERIDOL<sup>QT,OL</sup>** 
+    - מינון: 0.5mg - 3mg פומי או תת עורי (SC) פעם ליום (עדיף להתחיל ממינון פומי נמוך). במידת הצורך, ניתן לחזור על מתן אחרי שעתיים.
+    -	מינון אחזקתי יכול להידרש במידה והגורם בלתי הפיך; להשתמש במינון האפקטיבי הנמוך ביותר: 0.5mg - 3mg פומי או 2mg תת עורי (SC) פעם ליום (אין ראיות לשיפור גדול יותר עם תרופות אנטיפסיכוטיות חדשות).
 -	**בחירה שניה: Benzodiazepines**
     -	בנזודיאזפינים אינם משפרים קוגניציה; יכולים להקל על חרדה, יש להשתמש בזהירות.
     -	שימוש בגמילה מאלכוהול (לרוב במינונים גבוהים יותר), גמילה מתרופות סדאטיביות ונוגדות דיכאון; מועדף במחלת פרקינסון.
-    -	LORAZEPAM (Lorivan) 0.5 mg - 1 mg פומי, או תת-לשוני.
-    -	<sup>OL</sup>MIDAZOLAM (Dormicum) במתן תת עורי 2 mg - 5 mg, כל שעה-שעתיים לפי הצורך או  DIAZEPAM (Assival) פומי או רקטאלי 5 mg, כל 8 עד 12 שעות לפי צורך.
+    -	LORAZEPAM (Lorivan) 0.5mg - 1mg פומי, או תת-לשוני.
+    -	MIDAZOLAM (Dormicum)<sup>OL</sup> במתן תת עורי 2mg - 5mg, כל שעה-שעתיים לפי הצורך או  DIAZEPAM (Assival) פומי או רקטאלי 5mg, כל 8 עד 12 שעות לפי צורך.
 
-*לבנזודיאזיפינים תיתכן השפעה פרדוקסאלית והחמרת דליריום. מקובל לתת בנזודיאזפינים יחד עם תרופות אנטיפסיכוטיות במידת האפשר.
+<sup>🔯</sup>לבנזודיאזיפינים תיתכן השפעה פרדוקסאלית והחמרת דליריום. מקובל לתת בנזודיאזפינים יחד עם תרופות אנטיפסיכוטיות במידת האפשר.  
+
 
 - **אם יש צורך בהגברת סדאציה ובהתאם למצב, פנה לייעוץ מומחה**
-    - הוסף או העלה מינון של בנזודיאזיפינים Dormicum))<sup>OL</sup>MIDAZOLAM  בעירוי תת עורי 10 mg - 30 mg ל 24 שעות במשאבה, או DIAZEPAM (Assival) רקטלי 5 mg - 10 mg כל 6 עד 8 שעות לפי הצורך].
-    - החלף<sup>QT,OL</sup>HALOPERIDOL (Halidol)  ב- LEVOMEPROMAZINE (Nozinan). השתמש במינונים נמוכים אם לא נעשה בהם שימוש בעבר ובקשישים שבריריים. לדוגמא 2.5 mg - 5 mg תת-עורי כל שעתיים לפי הצורך. (*בישראל טבליות של 25 mg 100 mg, ובחלק מבתי החולים אמפולות של 25 mg)
-    - באי שקט או דליריום מתמשך יידרשו מינונים גבוהים יותר, למשל 10 mg - 25 mg תת עורי לפי הצורך כל שעתיים.
-    - למינון מעל 50 mg פנה לייעוץ מומחה.
+    - הוסף או העלה מינון של בנזודיאזיפינים  MIDAZOLAM (Dormicum)<sup>OL</sup> בעירוי תת עורי 10mg - 30mg ל 24 שעות במשאבה, או DIAZEPAM (Assival) רקטלי 5mg - 10mg כל 6 עד 8 שעות לפי הצורך].
+    - החלףHALOPERIDOL (Halidol)<sup>QT,OL</sup>  ב- LEVOMEPROMAZINE (Nozinan). השתמש במינונים נמוכים אם לא נעשה בהם שימוש בעבר ובקשישים שבריריים. לדוגמא 2.5mg - 5mg תת-עורי כל שעתיים לפי הצורך.  
+     (<sup>🔯</sup>בישראל טבליות של 25mg, 100mg, ובחלק מבתי החולים אמפולות של 25mg)
+    - באי שקט או דליריום מתמשך יידרשו מינונים גבוהים יותר, למשל 10mg - 25mg תת עורי לפי הצורך כל שעתיים.
+    - למינון מעל 50mg פנה לייעוץ מומחה.
 
 
 
@@ -87,8 +87,7 @@ sidebar_position: 5
 -	נוכחות של בן משפחה קרוב או חבר יכולה לסייע להרגיע את המטופל.
 
 **מקרא**
-<sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>*</sup>הערות גרסה ישראלית 
-
+<sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>🔯</sup>הערות גרסה ישראלית 
 
 
 ## קישור לאתר המקורי
