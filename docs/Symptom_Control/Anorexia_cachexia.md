@@ -72,22 +72,22 @@ sidebar_position: 1
 ## קישור לאתר המקורי
 [Scottish Palliative Care Guidelines - Anorexia/cachexia](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/anorexiacachexia)
 
-### נספחים:
-לאנשי מקצוע ולאוכלוסייה הרחבה- Macmillan Cancer Support:
-
- http://www.macmillan.org.uk https://www.nhsinform.scot/
+### נספחים
+לאנשי מקצוע ולאוכלוסייה הרחבה:  
+[Macmillan Cancer Support](http://www.macmillan.org.uk)  
+[NHS inform](https://www.nhsinform.scot)
 
 ובנוסף:
-*הטיפול התזונתי בילד חולה סרטן (2017)
+<sup>🔯</sup>הטיפול התזונתי בילד חולה סרטן (2017)
 
 https://www.cancer.org.il/template/default.aspx?PageId=6307
-
-*המלצות תזונתיות למתמודדים עם מחלת הסרטן, 2019,
+<sup>🔯</sup>המלצות תזונתיות למתמודדים עם מחלת הסרטן (2019)
 
 https://www.cancer.org.il/template/default.aspx?PageId=6071
 
-*פורום תזונה למתמודדים ולמחלימים מסרטן,
- https://www.cancer.org.il/forums/29.aspx.
+<sup>🔯</sup>פורום תזונה למתמודדים ולמחלימים מסרטן  
+
+https://www.cancer.org.il/forums/29.aspx
 
 ### סימוכין / מקורות
 Back I, Watson M, Armstrong P, Gannon C, Sykes N. Anorexia, Cachexia & Asthenia. 2018 [cited 2018 Oct 09]; Available 
