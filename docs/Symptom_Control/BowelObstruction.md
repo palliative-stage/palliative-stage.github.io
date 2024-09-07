@@ -3,7 +3,7 @@ sidebar_position: 6
 ---
 
 # חסימת מעיים 
-
+## Bowel Obstruction
 
 ## הקדמה
 
@@ -15,7 +15,7 @@ sidebar_position: 6
 -	בחילה גוברת ו\או הקאה צואתית (עם החמרת החסימה והתיישבות חיידקי מעי גס בתוכן המעי הדק)
 -	כאב בטן מתמשך, בשל גידול ו/או חדירה לעצב (לדוגמא בשל מעורבות coeliac plexus) 
 -	עווית (בחסימה מכאנית) וקולות מעי משתנים
--	תפיחות בטנית (יתכן ותיעדר בחסימה גסטרו-דואדנאלית *(במוצא הקיבה), או במטופלים עם ממאירות פריטוניאלית נרחבת)
+-	תפיחות בטנית (יתכן ותיעדר בחסימה גסטרו-דואדנאלית <sup>🔯</sup>(במוצא הקיבה), או במטופלים עם ממאירות פריטוניאלית נרחבת)
 -	אי נקיטת צואה
 ## אומדן
 -	מומלץ לשקול הערכה במסגרת עם השגחה רפואית 
@@ -56,7 +56,7 @@ sidebar_position: 6
 חסימה חלקית, הפחתה בקולות מעי, **ללא עווית**
 -	להפסיק תרופות מפחיתות פריסטלטיקה (Cyclizine, Hyoscine, 5HT3 antagonist, Amitriptyline) 
 -	להשתמש בנוגדי בחילה פרוקינטיים (מגבירי ניע) כגון:
-<sup>OL</sup>METOCLOPRAMIDE (Pramin) 30-120 mg ל-24 שעות. יש לעצור אם מתפתח כאב עוויתי. יש לנקוט זהירות בשימוש ממושך, ולנטר תופעות לוואי אקסטרא-פיראמידליות. 
+METOCLOPRAMIDE (Pramin)<sup>OL</sup> 30mg - 120mg ל-24 שעות. יש לעצור אם מתפתח כאב עוויתי. יש לנקוט זהירות בשימוש ממושך, ולנטר תופעות לוואי אקסטרא-פיראמידליות. 
 -	לעיתים נדרש שימוש במשלשלים. ראו פרק עצירות
 -	יש לקחת בחשבון ספיגה פומית מופחתת של משככים עקב תנועתיות ירודה של המעי. אם נעשה שימוש בעירוי ניתן לתת  MORPHINE.
 -	בטווח הארוך רצוי להיעזר במדבקת FENTANYL  כטיפול פחות פולשני
@@ -65,21 +65,21 @@ sidebar_position: 6
 **חסימה מכאנית**
 -	לכוון את הטיפול לפי התסמין העיקרי
 -	משלשלים (+/- טיפול רקטלי) לטיפול או מניעה של עצירות נלווית
-Laxido (במידה ויש סבילות לכמות נוזל גדולה) יכול להיות מועיל. (*חלופה ישראלית: Movieprep אבקה להמסה ב2 ליטר נוזל) <sup>OL</sup>Docusate sodium הוא חלופה טובה (*בישראל: שמן פרפין) במקרה של כאבי בטן עוויתי יש להימנע ממשלשלים סטימולנטים (Senna, Bisacodyl, Danthron) (*בישראל: תה סנה, שמן קיק, LAXADIN, CONTALAX). בחסימת מעיים מלאה יש לעצור כל שימוש במשלשלים פומיים.
--	DEXAMETHASONE (Dexacort) 6-16mg במתן IV/SC למשך 4-7 ימים יכול לשחרר חסימה חלקית. ראה הנחיות בנספח Dexamethasone. 
+Laxido (במידה ויש סבילות לכמות נוזל גדולה) יכול להיות מועיל. (*חלופה ישראלית: Movieprep אבקה להמסה ב2 ליטר נוזל) Docusate sodium<sup>OL</sup> הוא חלופה טובה (<sup>🔯</sup>בישראל: שמן פרפין) במקרה של כאבי בטן עוויתי יש להימנע ממשלשלים סטימולנטים (Senna, Bisacodyl, Danthron) (<sup>🔯</sup>בישראל: תה סנה, שמן קיק, LAXADIN, CONTALAX). בחסימת מעיים מלאה יש לעצור כל שימוש במשלשלים פומיים.
+-	DEXAMETHASONE (Dexacort) 6mg - 16mg במתן IV/SC למשך 4-7 ימים יכול לשחרר חסימה חלקית. ראה הנחיות בנספח Dexamethasone. 
 
 
 | תסמין    | תכשיר |  מינון SC (24 שעות)  | הערות (ראה נקודות ליישום)     |  
 | -------- |  ------- | -------- | ------- |
 | כאב/כאב עוויתי ממקור גידולי    | MORPHINE DIAMORPHINE FENTANYL PATCH |     | טיטרציית מינון      |  
 | כאב עצבי |   Adjuvant משככי כאב אדג'ובנטים |   | נדרש ייעוץ מומחה |
-| כאב עוויתי (colic) |  HYOSCINE BUTYLBROMIDE (*לא קיים בישראל) | 40-120 mg | מפחית פריסטלטיקה |
-| בחילה  |  <ul><li>CYCLIZINE</li><li>HYOSCINE BUTYLBROMIDE (*לא קיים בישראל)</li></ul>  | <ul><li>50-150 mg</li><li>40-120 mg</li></ul> | אנטי כולינרגי, נוגד בחילות ומפחית פריסטלטיקה |
-|  |  הוסף <sup>QT,OL</sup>HALOPERIDOL | PO 0.5-1.5 mg בערב  או  0.5-1 mg x2/d   במתן תת עורי יומי במינון 1-5 mg למשך 24 שעות (בחולים עם כשל כלייתי, קשישים או ירודים, יש להפחית מינונים).  בטיטרציה עולה עד להשגת השפעה  | הוסף לעירוי תת עורי או מתן S.C. חד פעמי לבחילה קשה |
-|  |  החלף ל- <sup>QT</sup>LEVOMEPROMAZINE (IV/SC Nozinan,  PO Ronexin) | 5-15 mg | בתוך עירוי תת עורי או בשתי זריקות תת עוריות יומיות במינון 2.5-5 mg נדרש ניטור לחץ דם (צפויה ירידה) |
-| *חלופה מוכרת כאנטיאמטיקה רחבת-טווח בישראל |  <sup>OL</sup>OLANZAPINE (Zappa, Zyprexa ODT, Olanzapine velotab) | Po 2.5-10 mg התצורות- ZAPPA, Velotab ODT מיועדות למתן תת-לשוני  |  |
-| הקאה (אם כאב ובחילה בשליטה, החולה יכול לעיתים להתמודד עם הקאות בודדות) |  <sup>OL</sup>HYOSCINE BUTYLBROMIDE | 40-120 mg | פעילות נוגדת הפרשה |
-|  |  OCTREOTIDE (Sandostatin) | 0.25-0.5 mg | נוגד הפרשה קו שני. יותר אפקטיבי ויקר מ- Hyoscine  |
+| כאב עוויתי (colic) |  HYOSCINE BUTYLBROMIDE (<sup>🔯</sup>לא קיים בישראל) | 40mg - 120mg | מפחית פריסטלטיקה |
+| בחילה  |  <ul><li>CYCLIZINE</li><li>HYOSCINE BUTYLBROMIDE (<sup>🔯</sup>לא קיים בישראל)</li></ul>  | <ul><li>50mg - 150mg</li><li>40mg - 120mg</li></ul> | אנטי כולינרגי, נוגד בחילות ומפחית פריסטלטיקה |
+|  |  הוסף HALOPERIDOL<sup>QT,OL</sup> | PO 0.5mg - 1.5mg בערב  או  0.5mg - 1mg x2/d   במתן תת עורי יומי במינון 1mg - 5mg למשך 24 שעות (בחולים עם כשל כלייתי, קשישים או ירודים, יש להפחית מינונים).  בטיטרציה עולה עד להשגת השפעה  | הוסף לעירוי תת עורי או מתן S.C. חד פעמי לבחילה קשה |
+|  |  החלף ל- LEVOMEPROMAZINE<sup>QT</sup> (IV/SC Nozinan,  PO Ronexin) | 5mg - 15mg | בתוך עירוי תת עורי או בשתי זריקות תת עוריות יומיות במינון 2.5mg - 5mg נדרש ניטור לחץ דם (צפויה ירידה) |
+| <sup>🔯</sup>חלופה מוכרת כאנטיאמטיקה רחבת-טווח בישראל |  OLANZAPINE<sup>OL</sup> (Zappa, Zyprexa ODT, Olanzapine velotab) | Po 2.5mg - 10mg התצורות- ZAPPA, Velotab ODT מיועדות למתן תת-לשוני  |  |
+| הקאה (אם כאב ובחילה בשליטה, החולה יכול לעיתים להתמודד עם הקאות בודדות) | HYOSCINE BUTYLBROMIDE<sup>OL</sup> | 40mg - 120mg | פעילות נוגדת הפרשה |
+|  |  OCTREOTIDE (Sandostatin) | 0.25mg - 0.5mg | נוגד הפרשה קו שני. יותר אפקטיבי ויקר מ- Hyoscine  |
 
 ### נקודות ליישום
 -	בשימוש בתרופות משרות שינה (סדאטיביות), יש להתחיל במינונים נמוכים
@@ -88,8 +88,7 @@ Laxido (במידה ויש סבילות לכמות נוזל גדולה) יכול 
 -	אין לשלב בו זמנית תכשירים נוגדי בחילה מסוג אנטי כולינרגים (Cyclizine, Hyoscine)    עם METOCLOPRAMIDE (Pramin). נדרשת זהירות בשימוש ממושך במינונים גבוהים תוך ניטור תופעות לוואי אקסטרה פירמידאליות. 
 
 **מקרא**
-<sup>OL</sup> Off Label , <sup>QT</sup> Prolongs QT, *הערות גרסה ישראלית
-
+<sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>🔯</sup>הערות גרסה ישראלית 
 
 ## קישור לאתר המקורי
 [Scottish Palliative Care Guidelines - Bowel obstruction](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/bowel-obstruction)
@@ -103,7 +102,7 @@ Palliative Care Formulary (PCF): PCF on the Knowledge Network
 
 Dolan EA. Malignant bowel obstruction: a review of current treatment strategies. Am J Hosp Palliat Care. 2011;28(8):576-82.
 
-Feuer DJ, Broadley KE. Corticosteroids for the resolution of malignant bowel obstruction in advanced gynaecological and gastrointestinal cancer. 2000 [cited 2018 Oct 08]; Available from:https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD001219/epdf/standard
+Feuer DJ, Broadley KE. Corticosteroids for the resolution of malignant bowel obstruction in advanced gynaecological and gastrointestinal cancer. 2000 [cited 2018 Oct 08]; Available from: https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD001219/epdf/standard
 
 Feuer DDJ, Broadley KE, Shepherd JH, barton DP. Surgery for the resolution of symptoms in malignant bowel obstruction in advanced gynaecological and gastrointestinal cancer. 2000 [cited 2018 Oct 08]; Available from: https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD002764/full
 
