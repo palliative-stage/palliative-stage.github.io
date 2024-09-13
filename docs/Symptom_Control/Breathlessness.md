@@ -3,11 +3,11 @@ sidebar_position: 9
 ---
 
 # קוצר נשימה
-
+## Breathlessness, Dyspnea
 
 ## מבוא
 
-קוצר נשימה הינו סימפטום נפוץ בקרב מטופלים הסובלים מסרטן מתקדם, מחלה חסימתית כרונית של הריאות (COPD: Chronic Obstructive Pulmonary Disease ),  פיברוזיס ריאתי ואי ספיקת לב. 
+קוצר נשימה הינו סימפטום נפוץ בקרב מטופלים הסובלים מסרטן מתקדם, מחלה חסימתית כרונית של הריאות (COPD: Chronic Obstructive Pulmonary Disease),  פיברוזיס ריאתי ואי ספיקת לב. 
 
 קוצר נשימה יכול להיות קשור בשילובים שונים של גורמים פיזיולוגיים, פסיכולוגיים, סוציאליים או רוחניים.  
 ההשפעה והמצוקה הנגרמות מקוצר נשימה לעיתים קרובות אינן מקבלות התייחסות מספקת.
@@ -30,8 +30,8 @@ sidebar_position: 9
 
 במקרה של סימני  סטרידור או חסימת וריד נבוב עליון (SVCO: Superior Vena Cava Obstruction) הפנה בדחיפות למומחה מתאים על מנת לשקול התערבות כגון הכנסת סטנט או רדיותרפיה.
 -	תן קורטיקוסטרואידים במינון גבוה:
-    - DEXAMETHASONE (Dexacort) 16 mg פומי או פראנטרלי
-    - PREDNISOLONE (Prednisone) 60 mg פומי
+    - DEXAMETHASONE (Dexacort) 16mg פומי או פראנטרלי
+    - PREDNISOLONE (Prednisone) 60mg פומי
     - יש לשקול מתן הגנה מתאימה לקיבה
 
 **התערבויות לא פרמקולוגיות:**
@@ -52,27 +52,27 @@ sidebar_position: 9
 
 | מטופל    | תכשיר |  דרך מתן    | מינון | תדירות    |  
 | -------- | ------- | ------- | -------- | ------- |
-| מעולם לא נטל אופיואידים, מסוגל ליטול טיפול פומי    | מורפין בשחרור מיידי <sup>OL</sup>Immediate release morphine (MIR, Oramorph)|  PO    | 2 mg טיטרציה ב- 30-50% לפי הצורך והסבילות| כל 4-6 שעות ו\או עד פעמיים לשעה במידת הצורך.    |  
-| מעולם לא נטל אופיואידים ואינו מסוגל ליטול טיפול פומי    | <sup>OL</sup>MORPHINE SULPHATE<br/> <sup>OL</sup>MORPHINE HYDROCHLORIDE|  SC,*Iv| 2 mg 1 - mg טיטרציה כמומלץ לעיל| מידי 4-6 שעות ו\או עד פעם בשעתיים לפי הצורך    |  
+| מעולם לא נטל אופיואידים, מסוגל ליטול טיפול פומי    | מורפין בשחרור מיידי Immediate release morphine<sup>OL</sup> (MIR, Oramorph)|  PO    | 2mg טיטרציה ב- 30-50% לפי הצורך והסבילות| כל 4-6 שעות ו\או עד פעמיים לשעה במידת הצורך.    |  
+| מעולם לא נטל אופיואידים ואינו מסוגל ליטול טיפול פומי    | MORPHINE SULPHATE<sup>OL</sup><br/> MORPHINE HYDROCHLORIDE<sup>OL</sup>|  SC,<sup>🔯</sup>Iv| 1mg - 2mg טיטרציה כמומלץ לעיל| מידי 4-6 שעות ו\או עד פעם בשעתיים לפי הצורך    |  
 | נוטל אופיואידים באופן קבוע לשיכוך כאב    | <ul><li>השתמש במנת ההצלה הקיימת (שחרור מיידי) לטיפול בכאב אצל המטופל (במידה ומסוגל- פומי, או מנה אקוויוולנטית SC) לטיפול בקוצר נשימה</li><li>מינון מקסימלי של 6 מנות הצלה יכול להינתן במצטבר עבור כל האינדיקציות (כאב, קוצר נשימה ושיעול)</li><li>בצע טטרציה (התאמת מינון) של מינון קבוע ומנות ההצלה בהתאם לתגובה</li></ul>    |      |      |  
-| שברירי או קשיש    | מורפין בשחרור מיידי <br/><sup>OL</sup>Immediate release morphine (MIR, Oramorph)  |  PO    | 1mg - 2 mg בטיטרציה זהירה | כל 6-8 שעות לפי הצורך, יש לעקוב באופן הדוק אחר תופעות לוואי    |  
+| שברירי או קשיש    | מורפין בשחרור מיידי <br/>Immediate release morphine<sup>OL</sup> (MIR, Oramorph)  |  PO    | 1mg - 2mg בטיטרציה זהירה | כל 6-8 שעות לפי הצורך, יש לעקוב באופן הדוק אחר תופעות לוואי    |  
 | בהפרעה בתפקודי כליה    | יש לעיין בהוראות לטיפול בסוף חיים במטופלים עם אי ספיקה כלייתית |     |  |     |  
-| באי סבילות למורפין (עקב תופעות לוואי)    | יתכן שאופיואידים מקו שני (*כגון אוקסיקוד או פנטניל ונגזרותיו) יתאימו יותר (יש לעיין בפרק בחירה והחלפה בין אופיואידים). |       |  |     |  
-| סובל מקוצר נשימה מתמשך    | מומלץ לנסות שימוש במתן מורפין פומי בשחרור איטי <sup>OL</sup>Modified Release (Long-Acting)  בתוספת מנה אקוויוולנטית של מורפין בשחרור מיידי<sup>OL</sup>Immediate Release  פומי מדי ארבע שעות לפי הצורך לאפיזודות נוספות של קוצר נשימה.
+| באי סבילות למורפין (עקב תופעות לוואי)    | יתכן שאופיואידים מקו שני (<sup>🔯</sup>כגון אוקסיקוד או פנטניל ונגזרותיו) יתאימו יותר (יש לעיין בפרק בחירה והחלפה בין אופיואידים). |       |  |     |  
+| סובל מקוצר נשימה מתמשך    | מומלץ לנסות שימוש במתן מורפין פומי בשחרור איטי Modified Release<sup>OL</sup> (Long-Acting)  בתוספת מנה אקוויוולנטית של מורפין בשחרור מיידי Immediate Release<sup>OL</sup>  פומי מדי ארבע שעות לפי הצורך לאפיזודות נוספות של קוצר נשימה.
  |       |  |     |  
 
 
 **קורטיקוסטרואידים:**
--	טיפול נסיוני <sup>OL</sup>DEXAMETHASONE במינון יומי של 8 mg - 16 mg (במתן פומי או פראנטרלי) בלימפנגיטיס או בחסימת דרכי אויר עקב גידול. יש לשקול מתן הגנה לקיבה.
+-	טיפול נסיוני DEXAMETHASONE<sup>OL</sup> במינון יומי של 8mg - 16mg (במתן פומי או פראנטרלי) בלימפנגיטיס או בחסימת דרכי אויר עקב גידול. יש לשקול מתן הגנה לקיבה.
 -	יש לתת את הטיפול בבוקר, אלא אם נדרש מתן חירום.
 -	לאחר שבוע מתחילת הטיפול, יש לבחון מחדש ולהפחית בהדרגה עד למנה היעילה הנמוכה ביותר.
 -	אם אין השפעה- יש להפסיק מתן.
 
 **בנזודיאזפינים:**
 -	עשויים להפחית חרדה הקשורה לקושי בנשימה, אך פחות יעילים מאשר אופיואידים בטיפול בקוצר נשימה, ועליהם לשמש כקו טיפול שלישי במטופלים שלא הגיבו להתערבויות לא-פרמקולוגיות ולאופיואידים. יש מקום לשקול את התרופות הבאות:
-      -	LORAZEPAM (Lorivan) במינון mg 0.5 תת לשוני כל 4-6 שעות, לפי הצורך.
-      -	DIAZEPAM (Assival) במתן פומי 2 mg - 5 mg בלילה במצב של חרדה מתמשכת הגורמת למצוקה.
-      - <sup>OL</sup>MIDAZOLAM (Dormicum) במינון 2 mg - 5 mg במתן תת עורי, כל 4-6 שעות לפי הצורך, כאשר טיפול פומי אינו מתאפשר.
+      -	LORAZEPAM (Lorivan) במינון 0.5mg תת לשוני כל 4-6 שעות, לפי הצורך.
+      -	DIAZEPAM (Assival) במתן פומי 2mg - 5mg בלילה במצב של חרדה מתמשכת הגורמת למצוקה.
+      - MIDAZOLAM<sup>OL</sup> (Dormicum) במינון 2mg - 5mg במתן תת עורי, כל 4-6 שעות לפי הצורך, כאשר טיפול פומי אינו מתאפשר.
 
 
 **חמצן:**
@@ -83,9 +83,9 @@ sidebar_position: 9
 
 **אינהלציות:**
 -	יש להעריך את טכניקת השימוש במשאף ולבדוק את התאמת הציוד. 
--	אינהלציה של OLNACL 0.9%  5 ml עשויה לסייע בכיוח.
--	במקרה של צפצופים או ,COPD ניתן לתת 2.5 mg - 5 mg SALBUTAMOL (Ventolin), עד 4 פעמים ביום.
--	אם עדיין מצפצף, ניתן להוסיףIPRATROPIUM BROMIDE (Aerovent)  במינון0.5-0.25 mg באינהלציה עד 4 פעמים ביום.
+-	אינהלציה של OLNACL 0.9%  5ml עשויה לסייע בכיוח.
+-	במקרה של צפצופים או ,COPD ניתן לתת 2.5mg - 5mg SALBUTAMOL (Ventolin), עד 4 פעמים ביום.
+-	אם עדיין מצפצף, ניתן להוסיףIPRATROPIUM BROMIDE (Aerovent)  במינון 0.25mg - 0.5mg באינהלציה עד 4 פעמים ביום.
 
 ## נקודות ליישום
 -	התערבויות לא פרמקולוגיות שמסייעות למטופל ומשפחתו בהתמודדות עם קושי בנשימה הן חיוניות. שימוש בתוכנית לניהול עצמי יכולה לסייע בהקלת סימפטומים.
@@ -99,41 +99,41 @@ sidebar_position: 9
 -	נוכחות קרובה של בן משפחה או איש מקצוע ליד המטופל, מגע יד קול ונשימה, לרוב יועילו.
 
 **מקרא**
-<sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>*</sup>הערות גרסה ישראלית 
+<sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>🔯</sup>הערות גרסה ישראלית 
 
 
 ## קישור לאתר המקורי
 [Scottish Palliative Care Guidelines - Breathlessness](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/breathlessness)
 
 ## חומרי עזר 
--	Enhanced Palliative Care online learning module: https://learn.nes.nhs.scot/64382/pharmacy/enhanced-palliative-care-module 
--	Macmillan Cancer Support, http://www.macmillan.org.uk 
--	Roy Castle Lung Foundation, http://www.roycastle.org 
--	Chest Heart and Stroke Scotland, http://chss.org.uk 
--	British Lung Foundation, https://www.blf.org.uk/
--	NHS Inform, https://nhsinform.scot/care-support-and-rights/palliative-care/symptom-control/breathlessness 
--	My condition, my terms, my life - Self-management http://myconditonmylife.org/
+-	[Enhanced Palliative Care online learning module](https://learn.nes.nhs.scot/64382/pharmacy/enhanced-palliative-care-module)
+-	[Macmillan Cancer Support](http://www.macmillan.org.uk)
+-	[Roy Castle Lung Foundation](http://www.roycastle.org)
+-	[Chest Heart and Stroke Scotland](http://chss.org.uk)
+-	[British Lung Foundation](https://www.blf.org.uk/)
+-	[NHS Inform](https://nhsinform.scot/care-support-and-rights/palliative-care/symptom-control/breathlessness)
+-	[My condition, my terms, my life - Self-management](http://myconditonmylife.org/)
 
 ## סימוכין / מקורות 
-Allard P, Lamontagne C, Bernard P, Tremblay C. How effective are supplementary doses of opioids for dyspnea in terminally ill cancer patients? A randomized continuous sequential clinical trial. J Pain Symptom Manage. 1999;17(4):256-65.
+Allard P, Lamontagne C, Bernard P, Tremblay C. How effective are supplementary doses of opioids for dyspnea in terminally ill cancer patients? A randomized continuous sequential clinical trial. J Pain Symptom Manage. 1999;17(4):256-65
 
-Booth S, Bausewein C, Higginson I, Moosavi SH. Pharmacological treatment of refractory breathlessness. Expert review of respiratory medicine. 2009;3(1):21-36.
+Booth S, Bausewein C, Higginson I, Moosavi SH. Pharmacological treatment of refractory breathlessness. Expert review of respiratory medicine. 2009;3(1):21-36
 
-Chan KS, Tse DMV, Sham MMK, Thorsen AB. Palliative medicine in malignant respiratory diseases. In: Hanks G, Cherny N, Christakis NA, Fallon M, Kaasa S, Portenoy RK, editors. Oxford Textbook of Palliative Medicine. 4th ed. Oxford: Oxford University Press; 2010.
+Chan KS, Tse DMV, Sham MMK, Thorsen AB. Palliative medicine in malignant respiratory diseases. In: Hanks G, Cherny N, Christakis NA, Fallon M, Kaasa S, Portenoy RK, editors. Oxford Textbook of Palliative Medicine. 4th ed. Oxford: Oxford University Press; 2010
 
-Dorman S, Jolley C, Abernethy A, Currow D, Johnson M, Farquhar M, et al. Researching breathlessness in palliative care: consensus statement of the National Cancer Research Institute Palliative Care Breathlessness Subgroup. Palliat Med. 2009;23(3):213-27.
+Dorman S, Jolley C, Abernethy A, Currow D, Johnson M, Farquhar M, et al. Researching breathlessness in palliative care: consensus statement of the National Cancer Research Institute Palliative Care Breathlessness Subgroup. Palliat Med. 2009;23(3):213-27
 
-Johnson MJ, Abernethy AP, Currow DC. Gaps in the evidence base of opioids for refractory breathlessness. A future work plan? J Pain Symptom Manage. 2012;43(3):614-24.
+Johnson MJ, Abernethy AP, Currow DC. Gaps in the evidence base of opioids for refractory breathlessness. A future work plan? J Pain Symptom Manage. 2012;43(3):614-24
 
-Mahler DA, Selecky PA, Harrod CG, Benditt JO, Carrieri-Kohlman V, Curtis JR, et al. American College of Chest Physicians consensus statement on the management of dyspnea in patients with advanced lung or heart disease. Chest. 2010;137(3):674-91.
+Mahler DA, Selecky PA, Harrod CG, Benditt JO, Carrieri-Kohlman V, Curtis JR, et al. American College of Chest Physicians consensus statement on the management of dyspnea in patients with advanced lung or heart disease. Chest. 2010;137(3):674-91
 
-Rocker G, Horton R, Currow D, Goodridge D, Young J, Booth S. Palliation of dyspnoea in advanced COPD: revisiting a role for opioids. Thorax. 2009;64(10):910-5.
+Rocker G, Horton R, Currow D, Goodridge D, Young J, Booth S. Palliation of dyspnoea in advanced COPD: revisiting a role for opioids. Thorax. 2009;64(10):910-5
 
-Simon ST, Bausewein C, Schildmann E, Higginson IJ, Magnussen H, Scheve C, et al. Episodic breathlessness in patients with advanced disease: a systematic review. J Pain Symptom Manage. 2013;45(3):561-78.
+Simon ST, Bausewein C, Schildmann E, Higginson IJ, Magnussen H, Scheve C, et al. Episodic breathlessness in patients with advanced disease: a systematic review. J Pain Symptom Manage. 2013;45(3):561-78
 
-Simon ST, Higginson I, Booth S, Harding R, Weingartner V, Bausewein C. Benzodiazepines for the relief of breathlessness in advanced malignant and non‐malignant diseases in adults. 2016 [Accessed 11 December 2018]; Available from: **https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD007354.pub3/epdf/standard.**
+Simon ST, Higginson I, Booth S, Harding R, Weingartner V, Bausewein C. Benzodiazepines for the relief of breathlessness in advanced malignant and non‐malignant diseases in adults. 2016 [Accessed 11 December 2018]; Available from: **https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD007354.pub3/epdf/standard**
 
-Spathis A, Davies HE, Booth S. Respiratory Disease: From advanced disease to bereavement. 5th ed. Oxford: Oxford University Press; 2011.
+Spathis A, Davies HE, Booth S. Respiratory Disease: From advanced disease to bereavement. 5th ed. Oxford: Oxford University Press; 2011
 
-Twycross R, Wilcock A, Howard P. Palliative Care Formulary PCF4. 4th ed. England: Pharmaceutical Press; 2011.
+Twycross R, Wilcock A, Howard P. Palliative Care Formulary PCF4. 4th ed. England: Pharmaceutical Press; 2011
 
