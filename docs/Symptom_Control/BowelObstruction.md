@@ -100,16 +100,16 @@ Palliative Care Formulary (PCF): PCF on the Knowledge Network
 
 ### סימוכין / מקורות
 
-Dolan EA. Malignant bowel obstruction: a review of current treatment strategies. Am J Hosp Palliat Care. 2011;28(8):576-82.
+Dolan EA. Malignant bowel obstruction: a review of current treatment strategies. Am J Hosp Palliat Care. 2011;28(8):576-82
 
 Feuer DJ, Broadley KE. Corticosteroids for the resolution of malignant bowel obstruction in advanced gynaecological and gastrointestinal cancer. 2000 [cited 2018 Oct 08]; Available from: https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD001219/epdf/standard
 
 Feuer DDJ, Broadley KE, Shepherd JH, barton DP. Surgery for the resolution of symptoms in malignant bowel obstruction in advanced gynaecological and gastrointestinal cancer. 2000 [cited 2018 Oct 08]; Available from: https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD002764/full
 
-Mercadante S, Casuccio A, Mangione S. Medical treatment for inoperable malignant bowel obstruction: a qualitative systematic review. J Pain Symptom Manage. 2007;33(2):217-23.
+Mercadante S, Casuccio A, Mangione S. Medical treatment for inoperable malignant bowel obstruction: a qualitative systematic review. J Pain Symptom Manage. 2007;33(2):217-23
 
-Ripamonti C, Mercadante S. Pathophysiology and management of malignant bowel obstruction. In: Hanks G, Cherny N, Kaasa S, Christakis NA, Portenoy RK, Fallon M, editors. Oxford Textbook of Palliative Medicine 4th ed. Oxford: Oxford University Press; 2010. p. 850-2.
+Ripamonti C, Mercadante S. Pathophysiology and management of malignant bowel obstruction. In: Hanks G, Cherny N, Kaasa S, Christakis NA, Portenoy RK, Fallon M, editors. Oxford Textbook of Palliative Medicine 4th ed. Oxford: Oxford University Press; 2010. p. 850-2
 
-Tradounsky G. Palliation of gastrointestinal obstruction. Can Fam Physician. 2012;58(6):648-52, e317-21.
+Tradounsky G. Palliation of gastrointestinal obstruction. Can Fam Physician. 2012;58(6):648-52, e317-21
 
 

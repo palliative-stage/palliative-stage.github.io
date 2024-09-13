@@ -90,22 +90,20 @@ https://www.cancer.org.il/template/default.aspx?PageId=6071
 https://www.cancer.org.il/forums/29.aspx
 
 ### סימוכין / מקורות
-Back I, Watson M, Armstrong P, Gannon C, Sykes N. Anorexia, Cachexia & Asthenia. 2018 [cited 2018 Oct 09]; Available 
+Back I, Watson M, Armstrong P, Gannon C, Sykes N. Anorexia, Cachexia & Asthenia. 2018 [cited 2018 Oct 09]; Available from: http://book.pallcare.info/index.php?p=pdf&op_target=print&id=339&media=pdf&pdffmt=1&dg=1
 
-from: http://book.pallcare.info/index.php?p=pdf&op_target=print&id=339&media=pdf&pdffmt=1&dg=1.
+Bruera E. Pharmacological interventions in cachexia and anorexia. In: Doyle D, Hanks G, Cherny N, Calman K, editors. Oxford Textbook of Palliative Medicine. 3rd ed. Oxford: Oxford University Press; 2004
 
-Bruera E. Pharmacological interventions in cachexia and anorexia. In: Doyle D, Hanks G, Cherny N, Calman K, editors. Oxford Textbook of Palliative Medicine. 3rd ed. Oxford: Oxford University Press; 2004.
+Fainsinger R. Clinical Assessment & decision making in cachexia and anorexia. In: Doyle D, Hanks G, Cherny N, Calman K, editors. Oxford Textbook of Palliative Medicine. 3rd ed. Oxford: Oxford University Press; 2004
 
-Fainsinger R. Clinical Assessment & decision making in cachexia and anorexia. In: Doyle D, Hanks G, Cherny N, Calman K, editors. Oxford Textbook of Palliative Medicine. 3rd ed. Oxford: Oxford University Press; 2004.
+Poole K, Froggatt K. Loss of weight and loss of appetite in advanced cancer: a problem for the patient, the carer, or the health professional? Palliat Med. 2002;16(6):499-506
 
-Poole K, Froggatt K. Loss of weight and loss of appetite in advanced cancer: a problem for the patient, the carer, or the health professional? Palliat Med. 2002;16(6):499-506.
+Radbruch L., Elsner F., Trottenberg P., Strasser F. and Fearon K. 2010. Clinical practice guidelines on cancer cachexia in advanced cancer patients. Department of Palliative Medicine/European Palliative Care Research Collaborative
 
-Radbruch L., Elsner F., Trottenberg P., Strasser F. and Fearon K. 2010. Clinical practice guidelines on cancer cachexia in advanced cancer patients. Department of Palliative Medicine/European Palliative Care Research Collaborative.
+Shragge JE, Wismer WV, Olson KL, Baracos VE. The management of anorexia by patients with advanced cancer: a critical review of the literature. Palliat Med. 2006;20(6):623-9
 
-Shragge JE, Wismer WV, Olson KL, Baracos VE. The management of anorexia by patients with advanced cancer: a critical review of the literature. Palliat Med. 2006;20(6):623-9.
-
-Strasser F. Pathophysiology of the anorexia/cachexia syndrome. In: Doyle D, Hanks G, Cherny N, Calman K, editors. Oxford Textbook of Palliative Medicine. 3rd ed. Oxford: Oxford University Press; 2004.
+Strasser F. Pathophysiology of the anorexia/cachexia syndrome. In: Doyle D, Hanks G, Cherny N, Calman K, editors. Oxford Textbook of Palliative Medicine. 3rd ed. Oxford: Oxford University Press; 2004
 
 Templeton A, Omlin A, Strasser F. Treating cancer patients with anorexia-cachexia syndrome. Eur J Palliative Care. 2007;14(5):186-90.
-Twycross R, Wilcock A, Howard P. Palliative Care Formulary PCF4. 4th ed. England: Pharmaceutical Press; 2011.
+Twycross R, Wilcock A, Howard P. Palliative Care Formulary PCF4. 4th ed. England: Pharmaceutical Press; 2011
 

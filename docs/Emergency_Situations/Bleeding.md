@@ -130,9 +130,15 @@ sidebar_position: 1
 ## סימוכין / מקורות
 
 Anwar D, Schaad N, Mazzocato C. Treatment of haemoptysis in palliative care patients. Eur J Palliative Care. 2003;10(4):137-9  
+
 Broadley KE, Kurowska A, Dick R, Platts A, Tookman A. The role of embolization in palliative care. Palliat Med. 1995;9(4):331-5  
+
 Dean A, Tuffin P. Fibrinolytic inhibitors for cancer-associated bleeding problems. J Pain Symptom Manage. 1997;13(1):20-4  
+
 Doyle D, Hanks G, Cherny N, Calman K, editors. Oxford Textbook of Palliative Medicine 3rd ed. Oxford: Oxford University Press; 2004  
+
 Regnard C, Makin W. Management of bleeding in advanced cancer - a flow diagram. Palliat Med. 1992;6(1):74-8  
+
 Tamagno G, Mioni R, De Carlo E, Maffei P, Rubello D, Sicolo N. Effects of a somatostatin analogue in occult gastrointestinal bleeding: a case report. Dig Liver Dis. 2004;36(12):843-6  
+
 Twycross R, Wilcock A, Howard P. Palliative Care Formulary PCF4. 4th ed. England: Pharmaceutical Press; 2011  
