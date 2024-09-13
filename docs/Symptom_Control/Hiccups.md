@@ -3,7 +3,7 @@ sidebar_position: 10
 ---
 
 # שיהוקים
-
+## Hiccups
 
 ## מבוא
 
@@ -39,25 +39,25 @@ sidebar_position: 10
 
 ### התערבות פרמקולוגית
  
--	סותרי חומצה המכילים  <sup>OL</sup>SIMETHICONE(סימיקול, טיפטיפות, וגזים X) בין ארוחות ולפני שינה.
--	 <sup>OL</sup>MAGNESIUM HYDROCHLORIDE + AlLUMINIUM HYDROXIDE ( Maalox 10ml-20ml עד ארבע פעמים ביום, Maalox Plus 5ml – 10ml עד ארבע פעמים ביום).
+-	סותרי חומצה המכילים  SIMETHICONE<sup>OL</sup> (סימיקול, טיפטיפות, וגזים X) בין ארוחות ולפני שינה.
+-	 MAGNESIUM HYDROCHLORIDE<sup>OL</sup> + AlLUMINIUM HYDROXIDE ( Maalox 10ml-20ml עד ארבע פעמים ביום, Maalox Plus 5ml – 10ml עד ארבע פעמים ביום).
 -	תרופות פרוקינטיות:
- <sup>OL</sup>METOCLOPRAMIDE (Pramin) 10 mg, DOMPERIDONE (Motilium) 10 mg לפי הצורך כל 8 שעות.
+ METOCLOPRAMIDE<sup>OL</sup> (Pramin) 10mg, DOMPERIDONE (Motilium) 10mg לפי הצורך כל 8 שעות.
 -	טיפול בהחזר ושט-קיבה  GERD ב-PPI  
   OMEPRAZOLE (Losec, Omepradex), PANTOPRAZOLE (Contraloc), ESOMEPRAZOLE (Nexium)
--	<sup>OL</sup>DEXAMETHASONE (Dexacort) יכול להפחית לחץ וגירוי במידה והגורם הוא גידול כבדי/מדיאסטינלי/מוחי או 4mg – 8mg בשעות הבוקר. להפסיק אם אין שיפור לאחר שבוע. (*יש לשים לב כי דקסמתזון עלול להיות גורם לשיהוקים)
+-	DEXAMETHASONE<sup>OL</sup> (Dexacort) יכול להפחית לחץ וגירוי במידה והגורם הוא גידול כבדי/מדיאסטינלי/מוחי או 4mg – 8mg בשעות הבוקר. להפסיק אם אין שיפור לאחר שבוע. (<sup>🔯</sup>יש לשים לב כי דקסמתזון עלול להיות גורם לשיהוקים)
 -	ההמלצות הבאות יכולות להינתן על ידי מומחה:
-    - <sup>QT</sup>HALOPERIDOL (Halidol):  
+    - HALOPERIDOL<sup>QT</sup> (Halidol):  
 
      0.5mg - 1mg לפי הצורך כל 8 שעות. מינון אחזקה 1mg - 3mg לפני השינה 
       
-    - <sup>OL</sup>BACLOSAL (Baclofen):  
+    - BACLOSAL<sup>OL</sup> (Baclofen):  
 
      5mg - 20mg לפי הצורך כל 8 שעות. יש להפסיק באופן הדרגתי.
-    - <sup>QT</sup>LEVOMEPROMAZINE (Nozinan):  
+    - LEVOMEPROMAZINE<sup>QT</sup> (Nozinan):  
 
      פומי 3mg - 6mg לפני השינה. משמש כתחליף ל Chlorpromazine (Largactyl), יש להימנע בל"ד נמוך.
-    - <sup>OL</sup>NIFEDIPINE (Pressolate):  
+    - NIFEDIPINE<sup>OL</sup> (Pressolate):  
 
      במתן פומי 5mg - 10mg לפי הצורך כל 8 שעות (המנע בלחץ דם נמוך)
 
@@ -66,8 +66,21 @@ sidebar_position: 10
 -	מומלץ להדריך כי במידה והשיהוק פוגע באיכות השינה או מונע אותה יש לפנות צוות  המטפל
   
 
-**מקרא**  
-<sup>OL</sup> Off Label , <sup>QT</sup> Prolongs QT, *הערות גרסה ישראלית  
+**מקרא**
+<sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>🔯</sup>הערות גרסה ישראלית 
 
 ## קישור לאתר המקורי
 [Scottish Palliative Care Guidelines - Hiccups](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/hiccups)
+
+
+### נספחים
+NHS Choices. 2018. Hiccups. Available at http://www.nhs.uk/conditions/Hiccup/Pages/Introduction.aspx  
+
+Macmillan Cancer Network. 2016. Managing the symptoms of cancer. Available at: http://be.macmillan.org.uk/Downloads/CancerInformation/LivingWithAndAfterCancer/MAC11671ManagingsymptomslowresPDF20161124ALM.pdf
+
+### סימוכין / מקורות
+Methal, N., Kelt, S. and Jordan, J. 2012. Interventions for the management of persistent and intractable hiccups in adults – a systematic review. BMJ Supportive & Palliative Care, 2(Suppl 1), pp. A49-A50  
+
+Twycross, R. and Wilcock, A. 2011. Palliative Care Formulary (PCF4). 4th ed. Nottingham; Palliativedrugs.com Ltd
+
+
