@@ -3,7 +3,7 @@ sidebar_position: 8
 ---
 
 # עצירות 
-
+## Constipation
 
 ## מבוא
 עצירות, הינה מעבר של גוש צואה קטן וקשה, בתדירות נמוכה או עם מאמץ, ובתדירות מופחתת מזו שרגיל אליה האדם. עצירות עלולה לגרום לתסמינים לא נעימים כגון: כאב בטן וכאב רקטלי, תחושת נפיחות, בחילה והקאה, וכן השפעות שליליות אחרות על רווחת המטופל. נוסף על הסבל הגופני, עצירות עלולה לגרום למצוקה נפשית ואי שקט בחולה הסופני.
@@ -37,46 +37,37 @@ sidebar_position: 8
 ## טיפול
 מטרת ניהול הטיפול היא להשיג צאייה (הפרשת צואה) נוחה, ולאו דווקא תדירות מסויימת של תנועת מעי.
 
-**אפשרות א (ממריצים ± מרכך)**
+### אפשרות א (ממריצים ± מרכך)
 
-*BISACODYL (Laxadin) טבליות 5-15  mg לפני השינה. לא עם חלב. להקפיד על הפרדה של שעתיים מרווח מנטילת תרופות אחרות . השפעה לאחר 6-12 שעות, אך לפעמים דורש עד 24 שעות לפי עלון התרופה.
+-	<sup>🔯</sup>BISACODYL (Laxadin) טבליות 5mg - 15mg לפני השינה. לא עם חלב. להקפיד על הפרדה של שעתיים מרווח מנטילת תרופות אחרות. השפעה לאחר 6-12 שעות, אך לפעמים דורש עד 24 שעות לפי עלון התרופה.  
+-	<sup>🔯</sup>SENNA+ISPAGHULA (Agiolax) אבקה 5gr - 10gr (1-2 כפיות). אין ללעוס. יש לשתות אחרי הבליעה לפחות 2 כוסות מים. תחילת השפעה 8-12 שעות.  
 
-*SENNA+ISPAGHULA (Agiolax) אבקה 5-10 gr (1-2 כפיות). אין ללעוס. יש לשתות אחרי הבליעה לפחות 2 כוסות מים. תחילת השפעה 8-12 שעות.
+    - אם היציאות הופכות קשות: הוסף תכשיר מרכך כגון שמן זית 15ml, או  LACTULOSE (Avilac, Levolac)  15ml - 30ml עד 3 פעמים ביום או כמו Parafin oil.
 
-**אם היציאות הופכות קשות**: הוסף תכשיר מרכך כגון שמן זית 15 ml,  
-LACTULOSE (Avilac, Levolac)  15-30 ml עד 3 פעמים ביום או כמוParafin oil .
+-	<sup>🔯</sup>PARAFFIN Liquid שמן פרפין 15ml - 45ml ליום. 1 כף עד 3 פעמים ביום. קיבה ריקה בישיבה זקופה משך שעה אחרי נטילת השמן. (זהירות במטופלים עם קשיי בליעה עקב סיכון מוגבר לאספירציה)
 
-*PARAFFIN Liquid שמן פרפין 15-45 ml ליום. 1 כף עד 3 פעמים ביום. קיבה ריקה בישיבה זקופה משך שעה אחרי נטילת השמן. (זהירות במטופלים עם קשיי בליעה עקב סיכון מוגבר לאספירציה)
-- אם מופיע כאב בטן עוויתי חזק, יש להפסיק את התכשיר המגרה (סטימולנט) ולהחליפו במרכך.
+    - אם מופיע כאב בטן עוויתי חזק, יש להפסיק את התכשיר המגרה (סטימולנט) ולהחליפו במרכך.
 
-**אפשרות ב (משלשל אוסמוטי)**
-
-POLYETHYLENE GLYCOL (Macrogol, Laxido)  
+### אפשרות ב (משלשל אוסמוטי)
+  - POLYETHYLENE GLYCOL (Macrogol, Laxido)  
 אם העצירות קשה, ניתן לשקול מינון מוגבר ל-3 ימים.  
-
-*Normalax, Peglax  17 gr אבקה מומסת בכוס מלאה של כל נוזל, 1-3 ליום (1-3 ימים עד להשגת השפעה)  
-
-*LACTULOSE (Avilac, Levolac) 15-30 ml ביום. מינון מירבי 60 ml ליום. (2-3 ימים עד להשפעה)  
-
-*PICO-SALAX (Picolax) מכיל פיקוסולפט ומגנזיום ציטרט. שקית אחת מומסת בכוס מים (זהירות בתפקוד כלייתי ירוד). דורש 29ג. השפעה מידית.
+  
+  - <sup>🔯</sup>Normalax, Peglax  17gr אבקה מומסת בכוס מלאה של כל נוזל, 1-3 ליום (1-3 ימים עד להשגת השפעה)  
+  - <sup>🔯</sup>LACTULOSE (Avilac, Levolac) 15ml - 30ml ביום. מינון מירבי 60ml ליום. (2-3 ימים עד להשפעה)  
+  - <sup>🔯</sup>PICO-SALAX (Picolax) מכיל פיקוסולפט ומגנזיום ציטרט. שקית אחת מומסת בכוס מים (זהירות בתפקוד כלייתי ירוד). דורש 29ג. השפעה מידית.  
+ 
 
 **אם אפשרויות א' וב' לא צלחו, עבור לאפשרות ג'**
 
-**אפשרות ג' (טיפול רקטלי)**  
+### אפשרות ג' (טיפול רקטלי)
+  - תוכן רך: נר BISACODYL או חוקן PHOSPHATE  
+  - תוכן מעט קשה: נר גליצרול כמרכך או מגרה (סטימולנט); ואחר כך לפעול כנ"ל באופציות א' וב'.  
+  - תוכן מאוד קשה: חוקן שמן בוטנים- Arachis (לא לאלרגים לאגוזים) במהלך הלילה, ולאחריו חוקן פוספאט.  
 
-תוכן רך: נר BISACODYL או חוקן PHOSPHATE  
-
-תוכן מעט קשה: נר גליצרול כמרכך או מגרה (סטימולנט); ואחר כך לפעול כנ"ל באופציות א' וב' .  
-
-תוכן מאוד קשה: חוקן שמן בוטנים- Arachis (לא לאלרגים לאגוזים) במהלך הלילה, ולאחריו חוקן פוספאט.  
-
-*PHOSPHATES COMP (Fleet Enema) זהירות באי ספיקת כליות, לב ובחולים שבריריים.  
-
-*EASY GO- חוקן חד פעמי מוכן לשימוש, מכיל גליצרול וסורביטול, חלופה בטוחה יותר לשימוש בחולי אי ספיקת כליות, לב ובחולים שבריריים.  
-
-*BISACODYL (Contalax) פתילה אחת ליום.  
-
-*GLYCERIN נר 1 פעם ביום
+  - <sup>🔯</sup>PHOSPHATES COMP (Fleet Enema) זהירות באי ספיקת כליות, לב ובחולים שבריריים.  
+  - <sup>🔯</sup>EASY GO- חוקן חד פעמי מוכן לשימוש, מכיל גליצרול וסורביטול, חלופה בטוחה יותר לשימוש בחולי אי ספיקת כליות, לב ובחולים שבריריים.  
+  - <sup>🔯</sup>BISACODYL (Contalax) פתילה אחת ליום.  
+  - <sup>🔯</sup>GLYCERIN נר 1 פעם ביום
 
 
 **אין עדיפות מבין הנ"ל. כולן עשויות להיות יעילות באותה המידה.**
@@ -125,52 +116,80 @@ POLYETHYLENE GLYCOL (Macrogol, Laxido)
 
 
 **מקרא**
-<sup>OL</sup> Off Label , <sup>QT</sup> Prolongs QT, *הערות גרסה ישראלית
+<sup>OL</sup> Off Label, <sup>QT</sup> Prolongs QT, <sup>🔯</sup>הערות גרסה ישראלית 
 
 
 ## קישור לאתר המקורי
 [Scottish Palliative Care Guidelines - Constipation](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/constipation)
 
-### נספחים:
- 
+### נספחים
+טבלת מידע רפואי אודות משלשלים:
+
+| משלשל פומי    | מינון התחלתי |  זמן עד השפעה    | הערות |   
+| -------- | ------- | ------- | -------- |
+| <ul><li>Tab. BISACODYL 5mg</li><li><sup>🔯</sup>עצירות X</li><li><sup>🔯</sup>Laxadin 5mg</li></ul>    | <ul><li>1-2 בלילה</li><li></li><li><sup>🔯</sup>מינון מרבי 3 ביום</li></ul> |  6-12 שעות    | Bisacodyl ו- Senna פועלים במעי הגס ובעלי השפעה מועטה על המעי הדק. עלולים לגרום עוויתות בטניות. <sup>🔯</sup>חלב עלול לגרום להתמוססות מהירה ולגירוי הקיבה. יש לתת במרווח של שעה מצריכת חלב. |   
+| Tab. SENNA 7.5mg    | 2-4 בלילה |  8-12 שעות    | יתכן קושי בבליעת טבליות. עלולים לגרום עוויתות בטניות. |   
+| SENNA LIQUID 7.5mg/5ml    | 10ml-20ml בלילה |      |  |   
+| <sup>🔯</sup>PARAFFIN LIQUID 15ml    | <sup>🔯</sup>עד 3 פעמים ביום |      | <sup>🔯</sup>ליטול בישיבה או בעמידה זקופה, מחשש לשאיפה לריאות. יש להישאר בזקיפות שעה מסיום הנטילה. עלול לגרום לעקצוץ בפי הטבעת. |   
+| <ul><li>POLYETHYLENE GLYCOL (Normalax, Macrogol, Meroken)</li><li>MOVIPREP</li></ul>    |  |  1-3 ימים    | כל תכשיר יש לבדוק לגופו ביחס למינון ומיהול מומלץ. יתכן קושי לעמוד בדרישות צריכת הנוזלים. |   
+
+| משלשל רקטלי    | מינון התחלתי |  זמן עד השפעה    | הערות |   
+| -------- | ------- | ------- | -------- |
+| <ul><li>פתילה Bisacodyl suppository</li><li><sup>🔯</sup> BYSACODYL (Contalax)  </li></ul>    | <ul><li>10mg</li><li>10mg</li></ul> |  <ul><li>15-60 דקות</li><li>תחילת השפעה:  15-60 דקות עד ימים אחדים</li></ul>    | היעילות תלויה במגע בדופן המעי |   
+| <ul><li>Sodium citrate microenema</li><li><sup>🔯</sup>Microlet</li></ul>    | <ul><li>1-2</li><li>1</li></ul> |  <ul><li>30-60 דקות</li><li>15-60 דקות</li></ul>    |  |   
+| <ul><li>Phosphate enema</li><li>Fleet Enema 133ml, 250ml</li></ul>    | <ul><li>1</li><li>1</li></ul> |  15-30 דקות    | עלול לגרום רגישות מקומית במעי. לפני המתן, יש לחמם התכשיר  לחום גוף עלול לגרום להפרת איזון במלחים. לשים לב במיוחד בחולי כליות. |   
+| <ul><li>פתילת GLYCEROL Suppository</li><li>Glycerine 2.35g, Glycerine Forte 3.2gr</li></ul>    | <ul><li>4gr</li><li>1</li></ul> |  <ul><li>15-30 דקות</li><li>15-60 דקות</li></ul>    | <ul><li>שילוב של מרכך ומגרה (סטימולנט). היעלות תלויה בסמיכות לדופן המעי</li><li>רצוי שפתילה תישאר בחלחולת לפחות 15 דקות</li></ul> |   
+| חוקן ARACHIS oil enema    | 1 |  15-60 דקות    | מכיל שמן בוטנים. יש לשלול רגישות לאגוזים. לפני המתן, יש לחמם התכשיר  לחום גוף. |   
+
+
+נספח תרופות מקבוצת אנטגוניסטים אופיואידים פריפריים - PAMORAs:
+
+| תרופה    | מינון התחלתי |  זמן עד השפעה    | הערות |   
+| -------- | ------- | ------- | -------- |
+| טבליות NALDEMEDINE | 0.2mg | 5-18 שעות | <ul><li>בפיקוח מומחה פליאציה בלבד.</li><li>עשוי לגרום לכאב בטן, בחילה, הקאה, שלשול וכן התנקבות מעי.</li><li>אין לתת במקביל למעכבי CYP, קונטרה אינדיקציה בחשד או סיכון להתנקבות מעי.</li><li>אין צורך בהתאמת מינון מתחת לגיל 75.</li><li>אין צורך בהתאמת מינון באי ספיקת כליות או אי ספיקת כבד קלה-בינונית.</li></ul> |
+| METHYLNALTREXONE injection 4/6/12mg/0.6ml | תלוי משקל (0.075mg/kg) | 30-60 דקות | <ul><li>מתן בפיקוח מומחה פליאציה בלבד.</li><li><sup>🔯</sup>מוגבל לשימוש בעצירות תוצאת שימוש באופיואידים, עם מחלה מתקדמת, שאינה מגיבה מספיק למשלשלים חליפיים</li></ul> |
+| NALOXEGOL tablets 12.5mg, 25mg | 25mg | 6 שעות בממוצע אך יכול להיות מהיר יותר | <ul><li>בפיקוח מומחה פליאציה בלבד.</li><li>הפחתת מינון ל 12.5mg באי ספיקת כליות בינונית-חמורה.</li><li>יכול לגרום לעוויתות בבטן.</li><li>אין לקחת בזמן שלא נח להתפנות.</li><li>קונטרהאינדיקציה בחשד או סיכון להתנקבות מעי.</li></ul> |
+
+<sup>🔯</sup>זמין בארץ ביבוא אישי בלבד
+
 
 ### סימוכין / מקורות
 Candy B, Jones L, Larkin PJ, Vickerstaff V, Tookman A, Stone P. Laxatives for the management of constipation in people receiving palliative care. 2015 [cited 2018 Oct 03]; Available from:
- https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003448.pub4/full#0.
+ https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003448.pub4/full#0
 
 Clark K, Byfieldt N, Dawe M, Currow DC. Treating constipation in palliative care: the impact of
- other factors aside from opioids. Am J Hosp Palliat Care. 2012;29(2):122-5.
+ other factors aside from opioids. Am J Hosp Palliat Care. 2012;29(2):122-5
 
 Clemens KE, Faust M, Jaspers B, Mikus G. Pharmacological treatment of constipation in
- palliative care. Curr Opin Support Palliat Care. 2013;7(2):183-91.
+ palliative care. Curr Opin Support Palliat Care. 2013;7(2):183-91
 
 Connolly M, Larkin P. Managing constipation: a focus on care and treatment in the palliative
- setting. Br J Community Nurs. 2012;17(2):60, 2-4, 6-7. Epub 2012/02/07.
+ setting. Br J Community Nurs. 2012;17(2):60, 2-4, 6-7. Epub 2012/02/07
 
 Jones R, Prommer E, Backstedt D. Naloxegol: A Novel Therapy in the Management of Opioid-Induced
- Constipation. Am J Hosp Palliat Care. 2016;33(9):875-80.
+ Constipation. Am J Hosp Palliat Care. 2016;33(9):875-80
 
 Mori M, Ji Y, Kumar S, Ashikaga T, Ades S. Phase II trial of subcutaneous methylnaltrexone in
  the treatment of severe opioid-induced constipation (OIC) in cancer patients: an exploratory
-  study. Int J Clin Oncol. 2017;22(2):397-404.
+  study. Int J Clin Oncol. 2017;22(2):397-404
 
 NICE. Naloxegol for treating opioidinduced constipation TA345. 2015 [cited 2018 Oct 03];
- Available from: https://www.nice.org.uk/guidance/ta345.
+ Available from: https://www.nice.org.uk/guidance/ta345
 
 Pitlick M, Fritz D. Evidence about the pharmacological management of constipation, part 2:
- implications for palliative care. Home Healthc Nurse. 2013;31(4):207-18.
+ implications for palliative care. Home Healthc Nurse. 2013;31(4):207-18
 
 Sykes N. Constipation, diarrhoea, and intestinal obstruction. In: Fallon M, Doyle D, editors.
  ABC of Palliative Care. 2nd ed. Oxford: BMJ; 2006. p. 25-9.
 
 Sykes N. Constipation and diarrhoea. In: Hanks G, Cherny NI, Christakis NA, Fallon M, Kaasa
  S, Portenoy RK, editors. Oxford Textbook of Palliative 4th ed. Oxford: Oxford University Press;
-  2010. p. 833-49.
+  2010. p. 833-49
 
 Sykes N. Emerging evidence on docusate: commentary on Tarumi et al. J Pain Symptom
- Manage. 2013;45(1):1.
+ Manage. 2013;45(1):1
 
 Twycross R, Wilcock A, Howard P. Palliative Care Formulary PCF6. 6th ed. England:
- Pharmaceutical Press; 2017.
+ Pharmaceutical Press; 2017
 
 
