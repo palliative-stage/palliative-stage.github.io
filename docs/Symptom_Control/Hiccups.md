@@ -40,7 +40,7 @@ sidebar_position: 10
 ### התערבות פרמקולוגית
  
 -	סותרי חומצה המכילים  SIMETHICONE<sup>OL</sup> (סימיקול, טיפטיפות, וגזים X) בין ארוחות ולפני שינה.
--	 MAGNESIUM HYDROCHLORIDE<sup>OL</sup> + AlLUMINIUM HYDROXIDE ( Maalox 10ml-20ml עד ארבע פעמים ביום, Maalox Plus 5ml – 10ml עד ארבע פעמים ביום).
+-	 MAGNESIUM HYDROCHLORIDE<sup>OL</sup> + ALUMINIUM HYDROXIDE ( Maalox 10ml-20ml עד ארבע פעמים ביום, Maalox Plus 5ml – 10ml עד ארבע פעמים ביום).
 -	תרופות פרוקינטיות:
  METOCLOPRAMIDE<sup>OL</sup> (Pramin) 10mg, DOMPERIDONE (Motilium) 10mg לפי הצורך כל 8 שעות.
 -	טיפול בהחזר ושט-קיבה  GERD ב-PPI  
