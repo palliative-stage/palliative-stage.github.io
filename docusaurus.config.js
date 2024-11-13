@@ -7,7 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'Palliative Care',
-	url: 'https://palliative-stage.github.io',
+//	url: 'https://palliative-stage.github.io',
+	url: 'https://cdel-palliative.org.il/',
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
