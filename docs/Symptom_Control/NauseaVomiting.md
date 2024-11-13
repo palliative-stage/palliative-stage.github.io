@@ -237,9 +237,9 @@ sidebar_position: 2
 [Scottish Palliative Care Guidelines - Nausea and vomiting](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/nausea-and-vomiting)
 
 ## נספחים 
-[נספח A –  תרופות בזיקה לאתרי רצפטורים](https://www.palliativecareguidelines.scot.nhs.uk/guidelines/symptom-control/nausea-and-vomiting/receptor-site-affinities.aspx)  
+[נספח A –  תרופות בזיקה לאתרי רצפטורים](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/nausea-and-vomiting/further-information/)  
   
-[נספח  B – לוח אתרי רצפטורים](https://www.palliativecareguidelines.scot.nhs.uk/guidelines/symptom-control/nausea-and-vomiting/receptor-site-chart.aspx)
+[נספח  B – לוח אתרי רצפטורים](https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/nausea-and-vomiting/further-information/)
   
 
 
