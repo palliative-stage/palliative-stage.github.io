@@ -33,8 +33,8 @@ const config = {
 				docs: {
 					routeBasePath: '/',
 					sidebarPath: require.resolve('./sidebars.js'),
-					editUrl:
-						'https://github.com/palliative-stage/palliative-stage.github.io/tree/master/',
+					editUrl: null,
+/**						'https://github.com/palliative-stage/palliative-stage.github.io/tree/master/',  */
 				},
 				blog: false,
 				theme: {
@@ -105,16 +105,6 @@ const config = {
 	},
 
 	plugins: [
-		[
-			'@docusaurus/preset-classic',
-			{
-			  docs: {
-				editUrl: null,  // Add this line
-			  },
-			},
-		  ],
-				
-		
 		[
 			'@docusaurus/plugin-pwa',
 			{
