@@ -18,6 +18,13 @@ const config = {
 	deploymentBranch: 'gh-pages',
 	trailingSlash: false,
 
+	scripts: [
+		{
+		  src: '/analytics.js',
+		  async: true,
+		},
+	  ],
+	  
 	presets: [
 		[
 			'classic',
@@ -84,7 +91,6 @@ const config = {
 				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,
 			},
-			editUrl: null,
 		}),
 
 	i18n: {
