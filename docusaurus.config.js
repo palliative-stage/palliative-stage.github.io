@@ -19,14 +19,6 @@ const config = {
 	deploymentBranch: 'gh-pages',
 	trailingSlash: false,
 
-	scripts: [
-		{
-		  src: 'https://vercel.com/analytics',
-		  async: true,
-		  defer: true,
-		}
-	  ],
-
 	presets: [
 		[
 			'classic',
