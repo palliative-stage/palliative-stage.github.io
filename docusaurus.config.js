@@ -102,11 +102,6 @@ const config = {
 		[
 			'@docusaurus/plugin-pwa',
 			{
-				docs: {
-				  editUrl: null,  // Add this line
-				},
-			  },
-			{
 				offlineModeActivationStrategies: ['appInstalled', 'standalone', 'mobile'],
 				pwaHead: [
 					{
