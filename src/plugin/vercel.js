@@ -1,6 +1,6 @@
-import { inject } from '@vercel/analytics';
+const { inject } = require('@vercel/analytics');
 
-export default function vercelAnalytics() {
+module.exports = function vercelAnalytics() {
   return {
     name: 'vercel-analytics',
     injectHtmlTags() {
@@ -12,4 +12,4 @@ export default function vercelAnalytics() {
       };
     },
   };
-}
+};
