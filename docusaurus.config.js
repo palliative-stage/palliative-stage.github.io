@@ -18,13 +18,22 @@ const config = {
 	deploymentBranch: 'gh-pages',
 	trailingSlash: false,
 
+	plugins: [
+		'@docusaurus/preset-classic',
+		{
+		  docs: {
+			editUrl: null,  // Add this line
+		  },
+		},
+	  ],
+	
 	scripts: [
 		{
 		  src: '/analytics.js',
 		  async: true,
 		},
 	  ],
-	  
+
 	presets: [
 		[
 			'classic',
