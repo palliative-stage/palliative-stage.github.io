@@ -33,8 +33,8 @@ const config = {
 				docs: {
 					routeBasePath: '/',
 					sidebarPath: require.resolve('./sidebars.js'),
-					editUrl: null
-/**						'https://github.com/palliative-stage/palliative-stage.github.io/tree/master/',  */
+					editUrl:
+						'https://github.com/palliative-stage/palliative-stage.github.io/tree/master/',
 				},
 				blog: false,
 				theme: {
