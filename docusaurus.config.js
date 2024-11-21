@@ -84,6 +84,7 @@ const config = {
 				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,
 			},
+			editUrl: null,
 		}),
 
 	i18n: {
@@ -100,6 +101,11 @@ const config = {
 	plugins: [
 		[
 			'@docusaurus/plugin-pwa',
+			{
+				docs: {
+				  editUrl: null,  // Add this line
+				},
+			  },
 			{
 				offlineModeActivationStrategies: ['appInstalled', 'standalone', 'mobile'],
 				pwaHead: [
