@@ -4,6 +4,9 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const vercelAnalytics = require('./src/plugin/vercel');
+
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'Palliative Care',
@@ -105,6 +108,7 @@ const config = {
 	},
 
 	plugins: [
+		[vercelAnalytics],
 		[
 			'@docusaurus/plugin-pwa',
 			{
