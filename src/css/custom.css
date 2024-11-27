@@ -27,10 +27,21 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+header {
+  background-image: url('/Icons.png');
+  background-size: contain; /* This will ensure the image scales properly */
+  background-repeat: no-repeat; /* Changed from repeat-y to prevent duplicates */
+}
+
+/* Specific adjustments for different screen sizes */
+@media only screen and (max-width: 599px) {
+  header {
+    background-size: 150px; /* Smaller size for mobile */
+  }
+}
+
 @media only screen and (min-width: 600px) {
   header {
-    background-image: url('/Icons.png');
-    background-size: 205px;
-    background-repeat: repeat-y;
-  } 
+    background-size: 300px; /* Your original desktop size */
+  }
 }
