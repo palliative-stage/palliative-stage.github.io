@@ -192,4 +192,6 @@ Sykes N. Emerging evidence on docusate: commentary on Tarumi et al. J Pain Sympt
 Twycross R, Wilcock A, Howard P. Palliative Care Formulary PCF6. 6th ed. England:
  Pharmaceutical Press; 2017
 
+import PDFDownloadButton from '@site/src/components/PDFDownloadButton';
+<PDFDownloadButton pdfUrl="/pdf/Constipation.pdf" fileName="Constipation.pdf" />
 

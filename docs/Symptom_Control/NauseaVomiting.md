@@ -272,3 +272,6 @@ Stephenson J, Davies A. An assessment of aetiology-based guidelines for the mana
 Storrar J, Hitchens M, Platt T, Dorman S. Droperidol for treatment of nausea and vomiting in palliative care patients. Cochrane Database of Systematic Reviews. 2014;11:CD006938  
 
 Wood GJ, Shega JW, Lynch B, Von Roenn JH. Management of intractable nausea and vomiting in patients at the end of life: "I was feeling nauseous all of the time . . . nothing was working". JAMA. 2007;298(10):1196-207
+
+import PDFDownloadButton from '@site/src/components/PDFDownloadButton';
+<PDFDownloadButton pdfUrl="/pdf/NauseaVomiting.pdf" fileName="NauseaVomiting.pdf" />

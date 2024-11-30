@@ -102,3 +102,6 @@ Her Majesty’s Stationery Office (Hmso). 2013. Adults with Incapacity (Scotland
 NICE.2010.  Delirium: prevention, diagnosis and management.  Clinical guideline [Online].  Available: https://www.nice.org.uk/guidance/cg103/resources/delirium-prevention-diagnosis-and-management-pdf-35109327290821 [Accessed 11 December 2018]
 
 Scottish Delirium Association.  2016.  Delirium Management Comprehensive Pathway.  Available: http://www.scottishdeliriumassociation.com/sda-delirium-management-pathways.html [Accessed 11 December 2018]
+
+import PDFDownloadButton from '@site/src/components/PDFDownloadButton';
+<PDFDownloadButton pdfUrl="/pdf/Delirium.pdf" fileName="Delirium.pdf" />

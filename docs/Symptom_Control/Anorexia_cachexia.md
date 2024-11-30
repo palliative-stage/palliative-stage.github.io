@@ -107,3 +107,5 @@ Strasser F. Pathophysiology of the anorexia/cachexia syndrome. In: Doyle D, Hank
 Templeton A, Omlin A, Strasser F. Treating cancer patients with anorexia-cachexia syndrome. Eur J Palliative Care. 2007;14(5):186-90.
 Twycross R, Wilcock A, Howard P. Palliative Care Formulary PCF4. 4th ed. England: Pharmaceutical Press; 2011
 
+import PDFDownloadButton from '@site/src/components/PDFDownloadButton';
+<PDFDownloadButton pdfUrl="/pdf/Anorexia_cachexia.pdf" fileName="Anorexia_cachexia.pdf" />

@@ -112,4 +112,5 @@ Ripamonti C, Mercadante S. Pathophysiology and management of malignant bowel obs
 
 Tradounsky G. Palliation of gastrointestinal obstruction. Can Fam Physician. 2012;58(6):648-52, e317-21
 
-
+import PDFDownloadButton from '@site/src/components/PDFDownloadButton';
+<PDFDownloadButton pdfUrl="/pdf/BowelObstruction.pdf" fileName="BowelObstruction.pdf" />

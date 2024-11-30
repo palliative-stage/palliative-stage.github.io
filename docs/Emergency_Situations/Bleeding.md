@@ -142,3 +142,6 @@ Regnard C, Makin W. Management of bleeding in advanced cancer - a flow diagram. 
 Tamagno G, Mioni R, De Carlo E, Maffei P, Rubello D, Sicolo N. Effects of a somatostatin analogue in occult gastrointestinal bleeding: a case report. Dig Liver Dis. 2004;36(12):843-6  
 
 Twycross R, Wilcock A, Howard P. Palliative Care Formulary PCF4. 4th ed. England: Pharmaceutical Press; 2011  
+
+import PDFDownloadButton from '@site/src/components/PDFDownloadButton';
+<PDFDownloadButton pdfUrl="/pdf/Bleeding.pdf" fileName="Bleeding.pdf" />
