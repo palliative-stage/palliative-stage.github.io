@@ -1,12 +1,20 @@
 import React from 'react';
 
 const PDFDownloadButton = ({ pdfUrl, fileName }) => {
+  const buttonStyle = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    padding: '8px 16px',
+    backgroundColor: '#2563eb',
+    color: 'white',
+    borderRadius: '4px',
+    textDecoration: 'none',
+    margin: '16px 0',
+    cursor: 'pointer'
+  };
+
   return (
-    <a
-      href={pdfUrl}
-      download={fileName}
-      className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200 my-4"
-    >
+    <a href={pdfUrl} download={fileName} style={buttonStyle}>
       📥 הורד כ-PDF
     </a>
   );
