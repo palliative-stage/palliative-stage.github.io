@@ -196,6 +196,15 @@ module.exports = async function handler(req, res) {
     return;
   }
 
+  if (typeof body === 'string') {
+    try {
+      body = JSON.parse(body);
+    } catch {
+      res.status(400).json({ error: 'Invalid JSON' });
+      return;
+    }
+  }
+
   const events = Array.isArray(body) ? body : body ? [body] : [];
   if (events.length === 0) {
     res.status(204).end();

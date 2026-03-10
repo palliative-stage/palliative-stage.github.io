@@ -110,8 +110,11 @@ function sendEvent(payload) {
 
   const body = JSON.stringify(payload);
 
-  if (navigator.sendBeacon && navigator.sendBeacon(url, body)) {
-    return;
+  if (navigator.sendBeacon) {
+    const blob = new Blob([body], { type: 'application/json' });
+    if (navigator.sendBeacon(url, blob)) {
+      return;
+    }
   }
 
   fetch(url, {
