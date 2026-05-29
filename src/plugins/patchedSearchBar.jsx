@@ -298,19 +298,44 @@ export default function SearchBar({ handleSearchBarToggle, }) {
             }
         }
     }, [location.pathname, location.search, location.hash, history]);
-    return (<div className={clsx("navbar__search", isHebrew && "navbar__search--he", styles.searchBarContainer, {
-            [styles.searchIndexLoading]: loading && inputChanged,
-            [styles.focused]: focused,
-        })} hidden={hidden}>
-      <input placeholder={translate({
+    const searchInput = (<input placeholder={translate({
             id: "theme.SearchBar.label",
             message: "Search",
             description: "The ARIA label and placeholder for search button",
-        })} aria-label={isHebrew ? "חיפוש" : "Search"} dir={isHebrew ? "rtl" : undefined} className={clsx("navbar__search-input", inputValue && "navbar__search-input--has-query")} onMouseEnter={onInputMouseEnter} onFocus={onInputFocus} onBlur={onInputBlur} onChange={onInputChange} ref={searchBarRef} value={inputValue}/>
+        })} aria-label={isHebrew ? "חיפוש" : "Search"} dir={isHebrew ? "rtl" : undefined} className={clsx("navbar__search-input", isHebrew && "hebrew-search-bar__input", inputValue && "navbar__search-input--has-query")} onMouseEnter={onInputMouseEnter} onFocus={onInputFocus} onBlur={onInputBlur} onChange={onInputChange} ref={searchBarRef} value={inputValue}/>);
+
+    if (isHebrew) {
+        const showLoading = loading && inputChanged;
+        const showIcon = !inputValue && !showLoading;
+        const showKeys = !inputValue && !showLoading;
+        return (<div className={clsx("navbar__search", "hebrew-search-bar", styles.searchBarContainer, {
+                [styles.searchIndexLoading]: showLoading,
+                [styles.focused]: focused,
+                "hebrew-search-bar--focused": focused,
+            })} hidden={hidden}>
+        <div className="hebrew-search-bar__leading">
+          {showLoading && <LoadingRing className={clsx(styles.searchBarLoadingRing, "hebrew-search-bar__loading")}/>}
+          {showIcon && <span className="hebrew-search-bar__icon" aria-hidden="true"/>}
+          {inputValue !== "" ? (<button type="button" className="hebrew-search-bar__clear" onClick={onClearSearch} aria-label="נקה חיפוש">
+              ✕
+            </button>) : showKeys && searchBarShortcut && searchBarShortcutHint ? (<div className="hebrew-search-bar__keys">
+              <kbd>{isMac ? "⌘" : "ctrl"}</kbd>
+              <kbd>K</kbd>
+            </div>) : null}
+        </div>
+        {searchInput}
+      </div>);
+    }
+
+    return (<div className={clsx("navbar__search", styles.searchBarContainer, {
+            [styles.searchIndexLoading]: loading && inputChanged,
+            [styles.focused]: focused,
+        })} hidden={hidden}>
+      {searchInput}
       <LoadingRing className={styles.searchBarLoadingRing}/>
       {searchBarShortcut &&
             searchBarShortcutHint &&
-            (inputValue !== "" ? (<button className={styles.searchClearButton} onClick={onClearSearch}>
+            (inputValue !== "" ? (<button type="button" className={styles.searchClearButton} onClick={onClearSearch}>
             ✕
           </button>) : (<div className={styles.searchHintContainer}>
             <kbd className={styles.searchHint}>{isMac ? "⌘" : "ctrl"}</kbd>

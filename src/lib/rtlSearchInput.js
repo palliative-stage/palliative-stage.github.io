@@ -7,8 +7,9 @@ export function placeRtlSearchCaret(input) {
 	}
 	requestAnimationFrame(() => {
 		try {
-			const len = input.value.length;
-			input.setSelectionRange(len, len);
+			// In RTL, index 0 is the logical start (visual right for Hebrew typing).
+			const pos = input.value.length === 0 ? 0 : input.value.length;
+			input.setSelectionRange(pos, pos);
 		} catch {
 			// ignore
 		}

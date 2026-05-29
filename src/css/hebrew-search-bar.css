@@ -1,0 +1,124 @@
+/**
+ * Hebrew navbar search — explicit LTR chrome on the left, RTL text in the input.
+ * Does not rely on background icons or RTL-inherited flex (which reversed ctrl/K).
+ */
+
+.hebrew-search-bar.navbar__search {
+  display: flex !important;
+  flex-direction: row !important;
+  direction: ltr !important;
+  align-items: center;
+  position: relative;
+  margin-left: 0;
+  margin-right: 16px;
+  padding: 0;
+}
+
+.hebrew-search-bar__leading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.35rem;
+  padding-left: 0.65rem;
+  padding-right: 0.2rem;
+  direction: ltr;
+  z-index: 1;
+}
+
+.hebrew-search-bar__icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  background: var(--ifm-navbar-search-input-icon) center / contain no-repeat;
+}
+
+.hebrew-search-bar__keys {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+  direction: ltr;
+  pointer-events: none;
+}
+
+.hebrew-search-bar__keys kbd {
+  color: var(--ifm-navbar-search-input-placeholder-color);
+  background-color: var(--ifm-navbar-search-input-background-color);
+  border: 1px solid var(--ifm-color-emphasis-500);
+  box-shadow: inset 0 -1px 0 var(--ifm-color-emphasis-500);
+  border-radius: 3px;
+  font-size: 0.7rem;
+  line-height: 1;
+  padding: 0.15rem 0.35rem;
+  font-family: inherit;
+}
+
+.hebrew-search-bar__clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ifm-navbar-search-input-color);
+  font-size: 0.85rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.hebrew-search-bar__input.navbar__search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto !important;
+  max-width: 12.5rem;
+  direction: rtl !important;
+  text-align: right !important;
+  unicode-bidi: plaintext;
+  background-image: none !important;
+  background-color: var(--ifm-navbar-search-input-background-color) !important;
+  padding: 0 0.75rem 0 0 !important;
+  margin: 0;
+}
+
+.hebrew-search-bar__input.navbar__search-input::placeholder {
+  color: transparent;
+}
+
+.hebrew-search-bar .hebrew-search-bar__loading {
+  position: static;
+  left: auto;
+  top: auto;
+}
+
+/* Plugin hint/clear are not used for Hebrew — hide if present */
+.hebrew-search-bar [class*='searchHintContainer'],
+.hebrew-search-bar [class*='searchClearButton']:not(.hebrew-search-bar__clear) {
+  display: none !important;
+}
+
+@media (max-width: 996px) {
+  .hebrew-search-bar__input.navbar__search-input {
+    max-width: 9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hebrew-search-bar:not(.hebrew-search-bar--focused) .hebrew-search-bar__keys {
+    display: none;
+  }
+
+  .hebrew-search-bar:not(.hebrew-search-bar--focused) .hebrew-search-bar__input.navbar__search-input {
+    max-width: 2rem;
+    padding-right: 0.25rem !important;
+  }
+
+  .hebrew-search-bar.hebrew-search-bar--focused .hebrew-search-bar__input.navbar__search-input,
+  .hebrew-search-bar .hebrew-search-bar__input.navbar__search-input--has-query {
+    max-width: 9rem;
+  }
+}
