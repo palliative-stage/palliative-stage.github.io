@@ -19,16 +19,8 @@ export default function RtlSearchBar(props) {
 		}
 
 		const sync = () => applyRtlNavbarSearch(root);
-
 		sync();
-
-		const observer = new MutationObserver(sync);
-		observer.observe(root, {
-			childList: true,
-			subtree: true,
-			attributes: true,
-			attributeFilter: ['placeholder', 'dir', 'aria-label', 'class', 'style'],
-		});
+		const timer = window.setTimeout(sync, 0);
 
 		const onFocusIn = (event) => {
 			const input = event.target.closest?.('.navbar__search-input');
@@ -41,7 +33,7 @@ export default function RtlSearchBar(props) {
 		root.addEventListener('focusin', onFocusIn);
 
 		return () => {
-			observer.disconnect();
+			window.clearTimeout(timer);
 			root.removeEventListener('focusin', onFocusIn);
 		};
 	}, [isRtl]);

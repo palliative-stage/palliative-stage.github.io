@@ -21,11 +21,8 @@ export default function Root({ children }) {
       return undefined;
     }
 
-    const sync = () => applyRtlNavbarSearch(document);
-    sync();
-
-    const observer = new MutationObserver(sync);
-    observer.observe(document.body, { childList: true, subtree: true });
+    // Run once after mount (do not observe document.body — that freezes the page).
+    const timer = window.setTimeout(() => applyRtlNavbarSearch(document), 0);
 
     const onFocusIn = (event) => {
       const input = event.target.closest?.('.navbar__search-input');
@@ -38,7 +35,7 @@ export default function Root({ children }) {
     document.addEventListener('focusin', onFocusIn);
 
     return () => {
-      observer.disconnect();
+      window.clearTimeout(timer);
       document.removeEventListener('focusin', onFocusIn);
     };
   }, [i18n.currentLocale]);

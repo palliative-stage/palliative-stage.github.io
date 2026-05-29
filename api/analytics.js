@@ -6,11 +6,34 @@
 const { Pool } = require('pg');
 const UAParser = require('ua-parser-js');
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  max: 2,
-  idleTimeoutMillis: 5000,
-});
+function buildConnectionString() {
+  const url = process.env.DATABASE_URL;
+  if (!url) {
+    return null;
+  }
+  if (/sslmode=/i.test(url)) {
+    return url;
+  }
+  const separator = url.includes('?') ? '&' : '?';
+  return `${url}${separator}sslmode=verify-full`;
+}
+
+let pool;
+function getPool() {
+  if (!pool) {
+    const connectionString = buildConnectionString();
+    if (!connectionString) {
+      return null;
+    }
+    pool = new Pool({
+      connectionString,
+      max: 2,
+      idleTimeoutMillis: 5000,
+      connectionTimeoutMillis: 5000,
+    });
+  }
+  return pool;
+}
 
 function getDeviceType(userAgent) {
   if (!userAgent) return 'desktop';
@@ -211,13 +234,19 @@ module.exports = async function handler(req, res) {
     return;
   }
 
+  const dbPool = getPool();
+  if (!dbPool) {
+    res.status(204).end();
+    return;
+  }
+
   const meta = {
     country: req.headers['x-vercel-ip-country'] || null,
     language: (req.headers['accept-language'] || '').split(',')[0]?.trim() || null,
     device_type: getDeviceType(req.headers['user-agent']),
   };
 
-  const client = await pool.connect();
+  const client = await dbPool.connect();
   try {
     for (const ev of events) {
       if (ev && ev.event_id && ev.session_id && ev.event_type) {
