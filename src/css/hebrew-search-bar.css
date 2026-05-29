@@ -1,6 +1,5 @@
 /**
- * Hebrew navbar search — explicit LTR chrome on the left, RTL text in the input.
- * Does not rely on background icons or RTL-inherited flex (which reversed ctrl/K).
+ * Hebrew navbar search — LTR chrome (icon + ctrl K) on the left, RTL text on the right.
  */
 
 .hebrew-search-bar.navbar__search {
@@ -12,6 +11,7 @@
   margin-left: 0;
   margin-right: 16px;
   padding: 0;
+  min-width: 10rem;
 }
 
 .hebrew-search-bar__leading {
@@ -27,11 +27,11 @@
 }
 
 .hebrew-search-bar__icon {
-  display: inline-block;
+  display: block;
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
-  background: var(--ifm-navbar-search-input-icon) center / contain no-repeat;
+  color: var(--ifm-navbar-search-input-color, currentColor);
 }
 
 .hebrew-search-bar__keys {
@@ -41,6 +41,7 @@
   gap: 0.25rem;
   direction: ltr;
   pointer-events: none;
+  white-space: nowrap;
 }
 
 .hebrew-search-bar__keys kbd {
@@ -73,7 +74,7 @@
 
 .hebrew-search-bar__input.navbar__search-input {
   flex: 1 1 auto;
-  min-width: 0;
+  min-width: 3rem;
   width: auto !important;
   max-width: 12.5rem;
   direction: rtl !important;
@@ -86,7 +87,8 @@
 }
 
 .hebrew-search-bar__input.navbar__search-input::placeholder {
-  color: transparent;
+  color: var(--ifm-navbar-search-input-placeholder-color);
+  opacity: 0.85;
 }
 
 .hebrew-search-bar .hebrew-search-bar__loading {
@@ -95,7 +97,6 @@
   top: auto;
 }
 
-/* Plugin hint/clear are not used for Hebrew — hide if present */
 .hebrew-search-bar [class*='searchHintContainer'],
 .hebrew-search-bar [class*='searchClearButton']:not(.hebrew-search-bar__clear) {
   display: none !important;
@@ -107,18 +108,45 @@
   }
 }
 
+/* Collapsed mobile: icon only; expand on focus or when typing */
 @media (max-width: 576px) {
-  .hebrew-search-bar:not(.hebrew-search-bar--focused) .hebrew-search-bar__keys {
+  .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) {
+    min-width: 2.5rem;
+    max-width: 2.75rem;
+    overflow: hidden;
+  }
+
+  .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__keys {
     display: none;
   }
 
-  .hebrew-search-bar:not(.hebrew-search-bar--focused) .hebrew-search-bar__input.navbar__search-input {
-    max-width: 2rem;
-    padding-right: 0.25rem !important;
+  .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__input {
+    flex: 0 0 0;
+    min-width: 0;
+    max-width: 0;
+    width: 0 !important;
+    padding: 0 !important;
+    border: none;
+    opacity: 0;
   }
 
-  .hebrew-search-bar.hebrew-search-bar--focused .hebrew-search-bar__input.navbar__search-input,
-  .hebrew-search-bar .hebrew-search-bar__input.navbar__search-input--has-query {
+  .hebrew-search-bar.hebrew-search-bar--focused,
+  .hebrew-search-bar.hebrew-search-bar--has-query {
+    min-width: 10rem;
+    max-width: none;
+  }
+
+  .hebrew-search-bar.hebrew-search-bar--focused .hebrew-search-bar__input,
+  .hebrew-search-bar.hebrew-search-bar--has-query .hebrew-search-bar__input {
+    flex: 1 1 auto;
+    min-width: 3rem;
     max-width: 9rem;
+    width: auto !important;
+    opacity: 1;
+    padding: 0 0.75rem 0 0 !important;
+  }
+
+  .hebrew-search-bar.hebrew-search-bar--focused .hebrew-search-bar__keys {
+    display: flex;
   }
 }

@@ -29,6 +29,13 @@ async function fetchAutoCompleteJS() {
     return autoComplete;
 }
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
+
+function SearchMagnifierIcon() {
+    return (<svg className="hebrew-search-bar__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+      <path fill="currentColor" d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z"/>
+    </svg>);
+}
+
 export default function SearchBar({ handleSearchBarToggle, }) {
     const { siteConfig: { baseUrl }, i18n } = useDocusaurusContext();
     const isHebrew = i18n.currentLocale === "he";
@@ -298,30 +305,32 @@ export default function SearchBar({ handleSearchBarToggle, }) {
             }
         }
     }, [location.pathname, location.search, location.hash, history]);
-    const searchInput = (<input placeholder={translate({
-            id: "theme.SearchBar.label",
-            message: "Search",
-            description: "The ARIA label and placeholder for search button",
-        })} aria-label={isHebrew ? "חיפוש" : "Search"} dir={isHebrew ? "rtl" : undefined} className={clsx("navbar__search-input", isHebrew && "hebrew-search-bar__input", inputValue && "navbar__search-input--has-query")} onMouseEnter={onInputMouseEnter} onFocus={onInputFocus} onBlur={onInputBlur} onChange={onInputChange} ref={searchBarRef} value={inputValue}/>);
+    const searchInput = (<input placeholder={isHebrew
+            ? "חיפוש"
+            : translate({
+                id: "theme.SearchBar.label",
+                message: "Search",
+                description: "The ARIA label and placeholder for search button",
+            })} aria-label={isHebrew ? "חיפוש" : "Search"} dir={isHebrew ? "rtl" : undefined} className={clsx("navbar__search-input", isHebrew && "hebrew-search-bar__input", inputValue && "navbar__search-input--has-query")} onMouseEnter={onInputMouseEnter} onFocus={onInputFocus} onBlur={onInputBlur} onChange={onInputChange} ref={searchBarRef} value={inputValue}/>);
 
     if (isHebrew) {
         const showLoading = loading && inputChanged;
-        const showIcon = !inputValue && !showLoading;
-        const showKeys = !inputValue && !showLoading;
         return (<div className={clsx("navbar__search", "hebrew-search-bar", styles.searchBarContainer, {
                 [styles.searchIndexLoading]: showLoading,
                 [styles.focused]: focused,
                 "hebrew-search-bar--focused": focused,
+                "hebrew-search-bar--has-query": Boolean(inputValue),
             })} hidden={hidden}>
         <div className="hebrew-search-bar__leading">
-          {showLoading && <LoadingRing className={clsx(styles.searchBarLoadingRing, "hebrew-search-bar__loading")}/>}
-          {showIcon && <span className="hebrew-search-bar__icon" aria-hidden="true"/>}
-          {inputValue !== "" ? (<button type="button" className="hebrew-search-bar__clear" onClick={onClearSearch} aria-label="נקה חיפוש">
+          {showLoading ? (<LoadingRing className={clsx(styles.searchBarLoadingRing, "hebrew-search-bar__loading")}/>) : inputValue !== "" ? (<button type="button" className="hebrew-search-bar__clear" onClick={onClearSearch} aria-label="נקה חיפוש">
               ✕
-            </button>) : showKeys && searchBarShortcut && searchBarShortcutHint ? (<div className="hebrew-search-bar__keys">
-              <kbd>{isMac ? "⌘" : "ctrl"}</kbd>
-              <kbd>K</kbd>
-            </div>) : null}
+            </button>) : (<>
+              <SearchMagnifierIcon />
+              <div className="hebrew-search-bar__keys">
+                <kbd>{isMac ? "⌘" : "ctrl"}</kbd>
+                <kbd>K</kbd>
+              </div>
+            </>)}
         </div>
         {searchInput}
       </div>);
