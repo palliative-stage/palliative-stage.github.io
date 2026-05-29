@@ -49,37 +49,38 @@ header {
 }
 
 /* Local search bar: RTL layout for Hebrew (html[dir="rtl"] from i18n) */
-html[dir='rtl'] .navbar-search-rtl .navbar__search-input {
+html[dir='rtl'] .navbar__search .navbar__search-input {
   direction: rtl;
   text-align: right;
-  /* Icon on the right; shortcut badges on the left */
-  padding-left: 3.75rem !important;
-  padding-right: 2.25rem !important;
-  background-position: right 0.6rem center !important;
+  /* Icon on the right; shortcut badges on the left (physical sides) */
+  padding: 0 2.25rem 0 3.75rem !important;
+  background: var(--ifm-navbar-search-input-background-color)
+    var(--ifm-navbar-search-input-icon) no-repeat right 0.75rem center / 1rem 1rem !important;
 }
 
-html[dir='rtl'] .navbar-search-rtl .navbar__search-input::placeholder {
+html[dir='rtl'] .navbar__search .navbar__search-input::placeholder {
   color: transparent;
 }
 
-/* Ctrl+K on the visual left (DOM order: ctrl, K) */
-html[dir='rtl'] .navbar-search-rtl .navbar__search div:has(> kbd) {
+/* Ctrl+K on the left; LTR so key order is ctrl then K (not flipped by navbar dir=rtl) */
+html[dir='rtl'] .navbar__search [class*='searchHintContainer'] {
   right: auto !important;
   left: 10px !important;
+  direction: ltr;
   flex-direction: row !important;
 }
 
-html[dir='rtl'] .navbar-search-rtl .navbar__search [class*='searchBarLoadingRing'] {
+html[dir='rtl'] .navbar__search [class*='searchBarLoadingRing'] {
   left: auto !important;
   right: 10px !important;
 }
 
-html[dir='rtl'] .navbar-search-rtl .navbar__search [class*='searchClearButton'] {
+html[dir='rtl'] .navbar__search [class*='searchClearButton'] {
   right: auto !important;
   left: 0.8rem !important;
 }
 
-html[dir='rtl'] .navbar-search-rtl [class*='searchBarContainer'] {
+html[dir='rtl'] .navbar__search [class*='searchBarContainer'] {
   margin-left: 0;
   margin-right: 16px;
 }
