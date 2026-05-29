@@ -105,6 +105,7 @@ const config = {
 				docsRouteBasePath: '/',
 				indexBlog: false,
 				language: ['en'],
+				// In-page highlights only for section hits (patched SearchBar); page-title hits stay clean
 				highlightSearchTermsOnTargetPage: true,
 				explicitSearchResultPath: true,
 				searchBarPosition: 'left',
@@ -120,7 +121,8 @@ const config = {
 		[
 			'@docusaurus/plugin-pwa',
 			{
-				offlineModeActivationStrategies: ['appInstalled', 'standalone', 'mobile'],
+				// Avoid aggressive SW precaching on mobile browsers (reduces memory pressure / tab crashes)
+				offlineModeActivationStrategies: ['appInstalled', 'standalone'],
 				pwaHead: [
 					{
 						tagName: 'link',

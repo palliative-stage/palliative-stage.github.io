@@ -2,12 +2,15 @@ import React, { useEffect, useRef } from 'react';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { trackPageView, initClickTracking, getPageName, trackSearch } from '@site/src/lib/analytics';
-import { applyRtlNavbarSearch, placeRtlSearchCaret } from '@site/src/lib/rtlNavbarSearch';
+import { cleanupPageTitleSearchHighlights } from '@site/src/lib/searchHighlightCleanup';
+import { useHistory } from '@docusaurus/router';
 
 const SEARCH_HIGHLIGHT_PARAM = '_highlight';
+const RTL_SEARCH_LABEL = 'חיפוש';
 
 export default function Root({ children }) {
   const location = useLocation();
+  const history = useHistory();
   const { i18n } = useDocusaurusContext();
   const prevPathRef = useRef(null);
   const prevSearchTrackRef = useRef(null);
@@ -21,24 +24,26 @@ export default function Root({ children }) {
       return undefined;
     }
 
-    // Run once after mount (do not observe document.body — that freezes the page).
-    const timer = window.setTimeout(() => applyRtlNavbarSearch(document), 0);
-
-    const onFocusIn = (event) => {
-      const input = event.target.closest?.('.navbar__search-input');
-      if (input) {
-        applyRtlNavbarSearch(document);
-        placeRtlSearchCaret(input);
+    const labelSearchInput = () => {
+      const input = document.querySelector('.navbar__search-input');
+      if (!input || input.getAttribute('data-rtl-search-label') === '1') {
+        return;
+      }
+      input.setAttribute('data-rtl-search-label', '1');
+      if (input.getAttribute('aria-label') === 'Search' || !input.getAttribute('aria-label')) {
+        input.setAttribute('aria-label', RTL_SEARCH_LABEL);
       }
     };
 
-    document.addEventListener('focusin', onFocusIn);
+    labelSearchInput();
+    const timer = window.setTimeout(labelSearchInput, 500);
 
-    return () => {
-      window.clearTimeout(timer);
-      document.removeEventListener('focusin', onFocusIn);
-    };
+    return () => window.clearTimeout(timer);
   }, [i18n.currentLocale]);
+
+  useEffect(() => {
+    cleanupPageTitleSearchHighlights(location, history);
+  }, [location.pathname, location.search, location.hash, history]);
 
   useEffect(() => {
     const pathname = location?.pathname || (typeof window !== 'undefined' ? window.location.pathname : null);

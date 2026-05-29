@@ -29,17 +29,11 @@ export async function legacyFetchIndexes(baseUrl, searchContext) {
 			documents,
 			index: lunr.Index.load(index),
 		}));
-		const zhDictionary = json.reduce((acc, item) => {
-			for (const tuple of item.index.invertedIndex) {
-				if (/\p{Unified_Ideograph}/u.test(tuple[0][0])) {
-					acc.add(tuple[0]);
-				}
-			}
-			return acc;
-		}, new Set());
+		// Hebrew/English site only — skip scanning the full inverted index for CJK tokens
+		// (the upstream plugin does this synchronously and can freeze low-end mobile browsers).
 		return {
 			wrappedIndexes,
-			zhDictionary: Array.from(zhDictionary),
+			zhDictionary: [],
 		};
 	} catch {
 		return { wrappedIndexes: [], zhDictionary: [] };

@@ -1,0 +1,174 @@
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import Head from "@docusaurus/Head";
+import Link from "@docusaurus/Link";
+import { translate } from "@docusaurus/Translate";
+import { usePluralForm, useDocsPreferredVersion, ReactContextError, } from "@docusaurus/theme-common";
+import { useActivePlugin } from "@docusaurus/plugin-content-docs/client";
+import useSearchQuery from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/hooks/useSearchQuery";
+import { fetchIndexes } from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/SearchBar/fetchIndexes";
+import { SearchSourceFactory } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/SearchSourceFactory";
+import { highlight } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/highlight";
+import { highlightStemmed } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/highlightStemmed";
+import { getStemmedPositions } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/getStemmedPositions";
+import LoadingRing from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/LoadingRing/LoadingRing";
+import { concatDocumentPath } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/concatDocumentPath";
+import { Mark, docsPluginIdForPreferredVersion, indexDocs, } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/proxiedGenerated";
+import styles from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/SearchPage/SearchPage.module.css";
+export default function SearchPage() {
+    return (<Layout>
+      <SearchPageContent />
+    </Layout>);
+}
+function SearchPageContent() {
+    const { siteConfig: { baseUrl }, } = useDocusaurusContext();
+    // It returns undefined for non-docs pages.
+    const activePlugin = useActivePlugin();
+    let versionUrl = baseUrl;
+    // There is an issue, see `SearchBar.tsx`.
+    try {
+        // The try-catch is a hack because useDocsPreferredVersion just throws an
+        // exception when versions are not used.
+        // The same hack is used in SearchBar.tsx
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const { preferredVersion } = useDocsPreferredVersion(activePlugin?.pluginId ?? docsPluginIdForPreferredVersion);
+        if (preferredVersion && !preferredVersion.isLast) {
+            versionUrl = preferredVersion.path + "/";
+        }
+    }
+    catch (e) {
+        if (indexDocs) {
+            if (e instanceof ReactContextError) {
+                /* ignore, happens when website doesn't use versions */
+            }
+            else {
+                throw e;
+            }
+        }
+    }
+    const { selectMessage } = usePluralForm();
+    const { searchValue, searchContext, updateSearchPath } = useSearchQuery();
+    const [searchQuery, setSearchQuery] = useState(searchValue);
+    const [searchSource, setSearchSource] = useState();
+    const [searchResults, setSearchResults] = useState();
+    const pageTitle = useMemo(() => searchQuery
+        ? translate({
+            id: "theme.SearchPage.existingResultsTitle",
+            message: 'Search results for "{query}"',
+            description: "The search page title for non-empty query",
+        }, {
+            query: searchQuery,
+        })
+        : translate({
+            id: "theme.SearchPage.emptyResultsTitle",
+            message: "Search the documentation",
+            description: "The search page title for empty query",
+        }), [searchQuery]);
+    useEffect(() => {
+        updateSearchPath(searchQuery);
+        if (searchSource) {
+            if (searchQuery) {
+                searchSource(searchQuery, (results) => {
+                    setSearchResults(results);
+                });
+            }
+            else {
+                setSearchResults(undefined);
+            }
+        }
+        // `updateSearchPath` should not be in the deps,
+        // otherwise will cause call stack overflow.
+    }, [searchQuery, searchSource]);
+    const handleSearchInputChange = useCallback((e) => {
+        setSearchQuery(e.target.value);
+    }, []);
+    useEffect(() => {
+        if (searchValue && searchValue !== searchQuery) {
+            setSearchQuery(searchValue);
+        }
+    }, [searchValue]);
+    useEffect(() => {
+        async function doFetchIndexes() {
+            const { wrappedIndexes, zhDictionary } = await fetchIndexes(versionUrl, searchContext);
+            setSearchSource(() => SearchSourceFactory(wrappedIndexes, zhDictionary, 100));
+        }
+        doFetchIndexes();
+    }, [searchContext, versionUrl]);
+    return (<React.Fragment>
+      <Head>
+        {/*
+         We should not index search pages
+          See https://github.com/facebook/docusaurus/pull/3233
+        */}
+        <meta property="robots" content="noindex, follow"/>
+        <title>{pageTitle}</title>
+      </Head>
+
+      <div className="container margin-vert--lg">
+        <h1>{pageTitle}</h1>
+
+        <input type="search" name="q" className={styles.searchQueryInput} aria-label="Search" onChange={handleSearchInputChange} value={searchQuery} autoComplete="off" autoFocus/>
+
+        {!searchSource && searchQuery && (<div>
+            <LoadingRing />
+          </div>)}
+
+        {searchResults &&
+            (searchResults.length > 0 ? (<p>
+              {selectMessage(searchResults.length, translate({
+                    id: "theme.SearchPage.documentsFound.plurals",
+                    message: "1 document found|{count} documents found",
+                    description: 'Pluralized label for "{count} documents found". Use as much plural forms (separated by "|") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)',
+                }, { count: searchResults.length }))}
+            </p>) : process.env.NODE_ENV === "production" ? (<p>
+              {translate({
+                    id: "theme.SearchPage.noResultsText",
+                    message: "No documents were found",
+                    description: "The paragraph for empty search result",
+                })}
+            </p>) : (<p>
+              ⚠️ The search index is only available when you run docusaurus
+              build!
+            </p>))}
+
+        <section>
+          {searchResults &&
+            searchResults.map((item) => (<SearchResultItem key={item.document.i} searchResult={item}/>))}
+        </section>
+      </div>
+    </React.Fragment>);
+}
+function SearchResultItem({ searchResult: { document, type, page, tokens, metadata }, }) {
+    const isTitle = type === 0;
+    const isContent = type === 2;
+    const pathItems = (isTitle ? document.b : page.b).slice();
+    const articleTitle = (isContent ? document.s : document.t);
+    if (!isTitle) {
+        pathItems.push(page.t);
+    }
+    let search = "";
+    const isPageTitleHit = isTitle || !document.h;
+    if (Mark && tokens.length > 0 && !isPageTitleHit) {
+        const params = new URLSearchParams();
+        for (const token of tokens) {
+            params.append("_highlight", token);
+        }
+        search = `?${params.toString()}`;
+    }
+    return (<article className={styles.searchResultItem}>
+      <h2>
+        <Link to={document.u + search + (document.h || "")} dangerouslySetInnerHTML={{
+            __html: isContent
+                ? highlight(articleTitle, tokens)
+                : highlightStemmed(articleTitle, getStemmedPositions(metadata, "t"), tokens, 100),
+        }}></Link>
+      </h2>
+      {pathItems.length > 0 && (<p className={styles.searchResultItemPath}>
+          {concatDocumentPath(pathItems)}
+        </p>)}
+      {isContent && (<p className={styles.searchResultItemSummary} dangerouslySetInnerHTML={{
+                __html: highlightStemmed(document.t, getStemmedPositions(metadata, "t"), tokens, 100),
+            }}/>)}
+    </article>);
+}
