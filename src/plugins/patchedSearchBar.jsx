@@ -14,6 +14,7 @@ import { searchResultLimits, Mark, searchBarShortcut, searchBarShortcutHint, sea
 import LoadingRing from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/LoadingRing/LoadingRing";
 import styles from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/SearchBar/SearchBar.module.css";
 import "@easyops-cn/docusaurus-search-local/dist/client/client/utils/proxiedGenerated";
+import { placeRtlSearchCaret } from "@site/src/lib/rtlSearchInput";
 async function fetchAutoCompleteJS() {
     const autoCompleteModule = await import("@easyops-cn/autocomplete.js");
     const autoComplete = autoCompleteModule.default;
@@ -29,7 +30,8 @@ async function fetchAutoCompleteJS() {
 }
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
 export default function SearchBar({ handleSearchBarToggle, }) {
-    const { siteConfig: { baseUrl }, } = useDocusaurusContext();
+    const { siteConfig: { baseUrl }, i18n } = useDocusaurusContext();
+    const isHebrew = i18n.currentLocale === "he";
     // It returns undefined for non-docs pages
     const activePlugin = useActivePlugin();
     let versionUrl = baseUrl;
@@ -183,8 +185,11 @@ export default function SearchBar({ handleSearchBarToggle, }) {
                 search.current?.autocomplete.open();
             }
             input.focus();
+            if (isHebrew) {
+                placeRtlSearchCaret(input);
+            }
         }
-    }, [hidden, searchContext, versionUrl, baseUrl, history]);
+    }, [hidden, searchContext, versionUrl, baseUrl, history, isHebrew]);
     useEffect(() => {
         if (!Mark) {
             return;
@@ -233,7 +238,10 @@ export default function SearchBar({ handleSearchBarToggle, }) {
         loadIndex();
         setFocused(true);
         handleSearchBarToggle?.(true);
-    }, [handleSearchBarToggle, loadIndex]);
+        if (isHebrew) {
+            placeRtlSearchCaret(searchBarRef.current);
+        }
+    }, [handleSearchBarToggle, loadIndex, isHebrew]);
     const onInputBlur = useCallback(() => {
         setFocused(false);
         handleSearchBarToggle?.(false);
@@ -259,15 +267,18 @@ export default function SearchBar({ handleSearchBarToggle, }) {
         const handleShortcut = (event) => {
             if ((isMac ? event.metaKey : event.ctrlKey) && event.code === "KeyK") {
                 event.preventDefault();
-                searchBarRef.current?.focus();
                 onInputFocus();
+                searchBarRef.current?.focus();
+                if (isHebrew) {
+                    placeRtlSearchCaret(searchBarRef.current);
+                }
             }
         };
         document.addEventListener("keydown", handleShortcut);
         return () => {
             document.removeEventListener("keydown", handleShortcut);
         };
-    }, [isMac, onInputFocus]);
+    }, [isMac, onInputFocus, isHebrew]);
     const onClearSearch = useCallback(() => {
         const params = new URLSearchParams(location.search);
         params.delete(SEARCH_PARAM_HIGHLIGHT);
@@ -287,7 +298,7 @@ export default function SearchBar({ handleSearchBarToggle, }) {
             }
         }
     }, [location.pathname, location.search, location.hash, history]);
-    return (<div className={clsx("navbar__search", styles.searchBarContainer, {
+    return (<div className={clsx("navbar__search", isHebrew && "navbar__search--he", styles.searchBarContainer, {
             [styles.searchIndexLoading]: loading && inputChanged,
             [styles.focused]: focused,
         })} hidden={hidden}>
@@ -295,7 +306,7 @@ export default function SearchBar({ handleSearchBarToggle, }) {
             id: "theme.SearchBar.label",
             message: "Search",
             description: "The ARIA label and placeholder for search button",
-        })} aria-label="Search" className={clsx("navbar__search-input", inputValue && "navbar__search-input--has-query")} onMouseEnter={onInputMouseEnter} onFocus={onInputFocus} onBlur={onInputBlur} onChange={onInputChange} ref={searchBarRef} value={inputValue}/>
+        })} aria-label={isHebrew ? "חיפוש" : "Search"} dir={isHebrew ? "rtl" : undefined} className={clsx("navbar__search-input", inputValue && "navbar__search-input--has-query")} onMouseEnter={onInputMouseEnter} onFocus={onInputFocus} onBlur={onInputBlur} onChange={onInputChange} ref={searchBarRef} value={inputValue}/>
       <LoadingRing className={styles.searchBarLoadingRing}/>
       {searchBarShortcut &&
             searchBarShortcutHint &&

@@ -48,39 +48,57 @@ header {
   }
 }
 
-/* Hebrew RTL: typing on the right; icon + Ctrl+K grouped on the physical left */
-html[dir='rtl'] .navbar__search .navbar__search-input {
-  direction: rtl;
-  text-align: right;
-  padding: 0 0.75rem 0 3.75rem !important;
-  background: var(--ifm-navbar-search-input-background-color)
-    var(--ifm-navbar-search-input-icon) no-repeat left 0.75rem center / 1rem 1rem !important;
+/*
+ * Hebrew search bar layout (physical directions):
+ * [magnifier][ctrl][K] …………………… [typed text / caret on the right]
+ * Container uses LTR so flex order is not flipped by the RTL page.
+ */
+html[dir='rtl'] .navbar__search.navbar__search--he,
+html[dir='rtl'] .navbar__search.navbar__search--he [class*='searchBarContainer'] {
+  direction: ltr;
+  margin-left: 0;
+  margin-right: 16px;
 }
 
-html[dir='rtl'] .navbar__search .navbar__search-input::placeholder {
+html[dir='rtl'] .navbar__search.navbar__search--he .navbar__search-input {
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: plaintext;
+  padding: 0 0.75rem 0 3.75rem !important;
+  background: var(--ifm-navbar-search-input-background-color)
+    var(--ifm-navbar-search-input-icon) no-repeat 0.75rem center / 1rem 1rem !important;
+}
+
+html[dir='rtl'] .navbar__search.navbar__search--he .navbar__search-input::placeholder {
   color: transparent;
 }
 
-html[dir='rtl'] .navbar__search [class*='searchHintContainer'] {
-  right: auto !important;
+/* Hide magnifier while typing so ✕ does not overlap it */
+html[dir='rtl'] .navbar__search.navbar__search--he .navbar__search-input.navbar__search-input--has-query {
+  background-image: none !important;
+  padding-left: 2.25rem !important;
+}
+
+html[dir='rtl'] .navbar__search.navbar__search--he [class*='searchHintContainer'] {
   left: 2.25rem !important;
+  right: auto !important;
+  inset-inline-start: 2.25rem !important;
+  inset-inline-end: auto !important;
   direction: ltr !important;
   flex-direction: row !important;
+  justify-content: flex-start !important;
 }
 
-html[dir='rtl'] .navbar__search [class*='searchBarLoadingRing'] {
+html[dir='rtl'] .navbar__search.navbar__search--he [class*='searchClearButton'] {
   left: 0.75rem !important;
   right: auto !important;
+  inset-inline-start: 0.75rem !important;
+  inset-inline-end: auto !important;
 }
 
-html[dir='rtl'] .navbar__search [class*='searchClearButton'] {
+html[dir='rtl'] .navbar__search.navbar__search--he [class*='searchBarLoadingRing'] {
+  left: 0.75rem !important;
   right: auto !important;
-  left: 0.8rem !important;
-}
-
-html[dir='rtl'] .navbar__search [class*='searchBarContainer'] {
-  margin-left: 0;
-  margin-right: 16px;
 }
 
 /* Mobile: collapsed search is 2rem wide — don't hide an active query in the field */
