@@ -45,6 +45,7 @@ const config = {
 					alt: 'My Site Logo', // TODO
 					src: 'img/logo.svg', // TODO
 				},
+				items: [{ type: 'search', position: 'left' }],
 			},
 			footer: {
 				// TODO - Customize footer
@@ -95,6 +96,24 @@ const config = {
 			},
 		},
 	},
+
+	themes: [
+		[
+			require.resolve('@easyops-cn/docusaurus-search-local'),
+			{
+				hashed: true,
+				docsRouteBasePath: '/',
+				indexBlog: false,
+				language: ['en'],
+				highlightSearchTermsOnTargetPage: true,
+				explicitSearchResultPath: true,
+				searchBarPosition: 'left',
+				searchResultLimits: 12,
+				removeDefaultStemmer: true,
+				ignoreFiles: [/Pain[1-5]\.md$/],
+			},
+		],
+	],
 
 	plugins: [
 		[

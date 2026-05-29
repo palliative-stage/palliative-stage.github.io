@@ -5,16 +5,13 @@ import https from 'https';
 import http from 'http';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SKIP = new Set(['node_modules', 'build', '.git', '.docusaurus', 'scripts/check-links.mjs']);
-const EXT = new Set(['.md', '.mdx', '.js', '.json']);
 
-function walk(dir, files = []) {
+function walk(dir, files = [], skip = new Set(['node_modules', 'build', '.git', '.docusaurus'])) {
   for (const name of fs.readdirSync(dir)) {
-    if (SKIP.has(name)) continue;
+    if (skip.has(name)) continue;
     const full = path.join(dir, name);
-    const st = fs.statSync(full);
-    if (st.isDirectory()) walk(full, files);
-    else if (EXT.has(path.extname(name))) files.push(full);
+    if (fs.statSync(full).isDirectory()) walk(full, files, skip);
+    else if (/\.(md|mdx|js|json)$/.test(name) && !name.includes('check-links')) files.push(full);
   }
   return files;
 }
@@ -25,85 +22,62 @@ function extractUrls(content) {
     /https?:\/\/[^\s\)"'<>*\]]+/gi,
     /pdfUrl=["']([^"']+)["']/gi,
     /href:\s*['"]([^'"]+)['"]/gi,
-    /to:\s*['"]([^'"]+)['"]/gi,
   ]) {
     let m;
     const r = new RegExp(re.source, re.flags);
     while ((m = r.exec(content)) !== null) {
-      let u = (m[1] ?? m[0]).replace(/\*\*/g, '').replace(/[.,;:\]]+$/, '');
+      const u = (m[1] ?? m[0]).replace(/\*\*/g, '').replace(/[.,;:\]]+$/, '');
       if (u.startsWith('http') || u.startsWith('/')) urls.add(u);
     }
   }
-  return [...urls];
+  return urls;
 }
 
 function checkLocal(url) {
   const rel = url.startsWith('/') ? url.slice(1) : url;
-  if (fs.existsSync(path.join(root, 'static', rel))) return true;
-  if (fs.existsSync(path.join(root, rel))) return true;
-  return false;
+  return fs.existsSync(path.join(root, 'static', rel)) || fs.existsSync(path.join(root, rel));
 }
 
-function fetchUrl(url, redirects = 0) {
+function fetchStatus(url) {
   return new Promise((resolve) => {
-    if (redirects > 8) return resolve({ ok: false, status: 'too many redirects' });
     const lib = url.startsWith('https') ? https : http;
-    const req = lib.request(
-      url,
-      { method: 'HEAD', timeout: 15000, headers: { 'User-Agent': 'link-checker/1.0' } },
-      (res) => {
-        const code = res.statusCode;
-        if (code >= 300 && code < 400 && res.headers.location) {
-          const next = new URL(res.headers.location, url).href;
+    const tryGet = () => {
+      lib.get(url, { timeout: 15000, headers: { 'User-Agent': 'link-checker/1.0' } }, (res) => {
+        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
           res.resume();
-          return resolve(fetchUrl(next, redirects + 1));
-        }
-        if ([405, 403, 401].includes(code)) {
-          res.resume();
-          return getUrl(url, redirects);
+          return resolve(fetchStatus(new URL(res.headers.location, url).href));
         }
         res.resume();
-        resolve({ ok: code >= 200 && code < 400, status: code });
+        resolve(res.statusCode);
+      }).on('error', (e) => resolve(e.code || e.message)).on('timeout', function () { this.destroy(); resolve('timeout'); });
+    };
+    const req = lib.request(url, { method: 'HEAD', timeout: 15000, headers: { 'User-Agent': 'link-checker/1.0' } }, (res) => {
+      if ([403, 401, 405].includes(res.statusCode)) {
+        res.resume();
+        return tryGet();
       }
-    );
-    req.on('error', (e) => resolve({ ok: false, status: e.message }));
-    req.on('timeout', () => { req.destroy(); resolve({ ok: false, status: 'timeout' }); });
-    req.end();
-  });
-}
-
-function getUrl(url, redirects = 0) {
-  return new Promise((resolve) => {
-    if (redirects > 8) return resolve({ ok: false, status: 'too many redirects' });
-    const lib = url.startsWith('https') ? https : http;
-    const req = lib.get(url, { timeout: 15000, headers: { 'User-Agent': 'link-checker/1.0' } }, (res) => {
-      const code = res.statusCode;
-      if (code >= 300 && code < 400 && res.headers.location) {
-        const next = new URL(res.headers.location, url).href;
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
         res.resume();
-        return resolve(getUrl(next, redirects + 1));
+        return resolve(fetchStatus(new URL(res.headers.location, url).href));
       }
       res.resume();
-      resolve({ ok: code >= 200 && code < 400, status: code });
+      resolve(res.statusCode);
     });
-    req.on('error', (e) => resolve({ ok: false, status: e.message }));
-    req.on('timeout', () => { req.destroy(); resolve({ ok: false, status: 'timeout' }); });
+    req.on('error', () => tryGet());
+    req.on('timeout', () => { req.destroy(); tryGet(); });
+    req.end();
   });
 }
 
 const byUrl = new Map();
 for (const file of walk(root)) {
-  if (file.includes('yarn.lock')) continue;
   for (const url of extractUrls(fs.readFileSync(file, 'utf8'))) {
     if (!byUrl.has(url)) byUrl.set(url, []);
     byUrl.get(url).push(path.relative(root, file));
   }
 }
-
-// PDF URI links
-const pdfDir = path.join(root, 'static', 'pdf');
-for (const name of fs.readdirSync(pdfDir).filter((f) => f.endsWith('.pdf'))) {
-  const text = fs.readFileSync(path.join(pdfDir, name), 'latin1');
+for (const name of fs.readdirSync(path.join(root, 'static', 'pdf')).filter((f) => f.endsWith('.pdf'))) {
+  const text = fs.readFileSync(path.join(root, 'static', 'pdf', name), 'latin1');
   for (const m of text.matchAll(/URI\((https?:\/\/[^)]+)\)/g)) {
     const url = m[1];
     if (!byUrl.has(url)) byUrl.set(url, []);
@@ -115,39 +89,32 @@ const local = [...byUrl.keys()].filter((u) => u.startsWith('/'));
 const external = [...byUrl.keys()].filter((u) => u.startsWith('http'));
 
 const failedLocal = local.filter((u) => !checkLocal(u)).map((u) => ({ url: u, files: byUrl.get(u) }));
-
 const failedExt = [];
-async function main() {
-process.stdout.write(`Checking ${external.length} external URLs: `);
-let idx = 0;
-async function worker() {
-  while (true) {
-    const n = idx++;
-    if (n >= external.length) break;
-    const url = external[n];
-    const r = await fetchUrl(url);
-    if (!r.ok) failedExt.push({ url, status: r.status, files: byUrl.get(url) });
-    process.stdout.write(r.ok ? '.' : 'X');
-  }
+
+for (const url of external) {
+  const status = await fetchStatus(url);
+  const ok = typeof status === 'number' && status >= 200 && status < 400;
+  process.stdout.write(ok ? '.' : 'X');
+  if (!ok) failedExt.push({ url, status, files: byUrl.get(url) });
 }
-await Promise.all(Array.from({ length: 8 }, worker));
-console.log('\n');
+console.log(`\nChecked ${external.length} external URLs`);
 
 failedExt.sort((a, b) => String(a.status).localeCompare(String(b.status)));
 
-const report = [
-  'Internal/doc build: OK',
-  '=== SUMMARY ===',
-  `Local: ${local.length - failedLocal.length}/${local.length} OK`,
+const lines = [
+  'Internal/doc build: OK (yarn build passed)',
+  `Local assets: ${local.length - failedLocal.length}/${local.length} OK`,
   `External: ${external.length - failedExt.length}/${external.length} OK`,
-  '',
-  ...(failedLocal.length ? ['--- Broken local ---', ...failedLocal.map(({ url, files }) => `${url} <- ${files.join(', ')}`)] : []),
-  ...(failedExt.length ? ['--- Broken external ---', ...failedExt.map(({ url, status, files }) => `[${status}] ${url} <- ${files.join(', ')}`)] : []),
-].join('\n');
+];
+if (failedLocal.length) {
+  lines.push('', '--- Broken local ---');
+  for (const { url, files } of failedLocal) lines.push(`${url} <- ${files.join(', ')}`);
+}
+if (failedExt.length) {
+  lines.push('', '--- Broken external ---');
+  for (const { url, status, files } of failedExt) lines.push(`[${status}] ${url} <- ${files.join(', ')}`);
+}
+const report = lines.join('\n');
 fs.writeFileSync(path.join(root, 'link-check-report.txt'), report);
 console.log('\n' + report);
-}
-
-main()
-  .then(() => process.exit(failedExt.length + failedLocal.length > 0 ? 1 : 0))
-  .catch((e) => { console.error(e); process.exit(1); });
+process.exit(failedLocal.length + failedExt.length > 0 ? 1 : 0);

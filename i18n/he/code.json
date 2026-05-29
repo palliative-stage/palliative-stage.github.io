@@ -1,0 +1,30 @@
+{
+  "theme.SearchBar.label": {
+    "message": "חיפוש",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "theme.SearchBar.noResultsText": {
+    "message": "לא נמצאו תוצאות",
+    "description": "Text shown when no search results"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "הצג את כל {count} התוצאות",
+    "description": "Link to see all search results"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "תוצאות חיפוש עבור \"{query}\"",
+    "description": "Title shown when search page has results"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "לא נמצאו תוצאות",
+    "description": "Title shown when search page has no results"
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "נמצא מסמך אחד|נמצאו {count} מסמכים",
+    "description": "Count of documents found on search page"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "לא נמצאו מסמכים",
+    "description": "Text shown when no documents match the search"
+  }
+}
