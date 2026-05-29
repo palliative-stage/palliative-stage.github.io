@@ -5,6 +5,13 @@ import { fileURLToPath } from 'url';
 const pdfDir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'static', 'pdf');
 
 const replacements = [
+  ['http://book.pallcare.info/index.php?tid=7', 'https://www.rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/scottish-palliative-care-guidelines/symptoms/symptom-management/diarrhoea/'],
+  ['http://www.nhs.uk/conditions/Hiccup/Pages/Introduction.aspx', 'https://www.nhs.uk/conditions/hiccups/'],
+  ['https://learn.nes.nhs.scot/64382/pharmacy/enhanced-palliative-care-module', 'https://learn.nes.nhs.scot/68299'],
+  ['https://nhsinform.scot/care-support-and-rights/palliative-care/symptom-control/breathlessness', 'https://www.nhsinform.scot/care-support-and-rights/palliative-care/managing-symptoms/breathlessness'],
+  ['http://www.myconditionmylife.org/', 'https://www.alliance-scotland.org.uk/blog/resources/my-condition-my-life-resource-pack/'],
+  ['https://cdel-palliative.org.il/Symptom_Control/BowelObstruction', 'https://cdel-palliative.org.il/Symptom_Control/BowelObstruction.html'],
+  ['https://cdel-palliative.org.il/Symptom_Control/Constipation', 'https://cdel-palliative.org.il/Symptom_Control/Constipation.html'],
   ['https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/anorexiacachexia/', 'https://www.rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/scottish-palliative-care-guidelines/symptoms/symptom-management/anorexiacachexia/'],
   ['https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/breathlessness/', 'https://www.rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/scottish-palliative-care-guidelines/symptoms/symptom-management/breathlessness/'],
   ['https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-control/constipation/', 'https://www.rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/scottish-palliative-care-guidelines/symptoms/symptom-management/constipation/'],

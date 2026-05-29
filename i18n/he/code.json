@@ -8,7 +8,7 @@
     "description": "Text shown when no search results"
   },
   "theme.SearchBar.seeAll": {
-    "message": "הצג את כל {count} התוצאות",
+    "message": "הצג את כל התוצאות",
     "description": "Link to see all search results"
   },
   "theme.SearchPage.existingResultsTitle": {

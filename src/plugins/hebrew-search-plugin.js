@@ -25,10 +25,14 @@ module.exports = function hebrewSearchPlugin() {
 			const fetchIndexesPath = require.resolve(
 				"@easyops-cn/docusaurus-search-local/dist/client/client/theme/SearchBar/fetchIndexes",
 			);
+			const searchSourceFactoryPath = require.resolve(
+				"@easyops-cn/docusaurus-search-local/dist/client/client/utils/SearchSourceFactory",
+			);
 			return {
 				resolve: {
 					alias: {
 						[fetchIndexesPath]: path.resolve(__dirname, "fetchIndexesDev.js"),
+						[searchSourceFactoryPath]: path.resolve(__dirname, "searchSourceFactory.js"),
 					},
 				},
 			};

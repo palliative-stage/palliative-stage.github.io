@@ -155,7 +155,7 @@ const config = {
 					{
 						tagName: 'link',
 						rel: 'mask-icon',
-						href: '/img/log.svg',
+						href: '/img/logo.svg',
 						color: 'rgb(37, 194, 160)',
 					},
 					{
