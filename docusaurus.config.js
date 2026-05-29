@@ -116,6 +116,7 @@ const config = {
 	],
 
 	plugins: [
+		require.resolve('./src/plugins/hebrew-search-plugin.js'),
 		[
 			'@docusaurus/plugin-pwa',
 			{
