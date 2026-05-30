@@ -7,6 +7,7 @@ import { useHistory } from '@docusaurus/router';
 
 const SEARCH_HIGHLIGHT_PARAM = '_highlight';
 const RTL_SEARCH_LABEL = 'חיפוש';
+const WHATSAPP_CONTACT_URL = 'https://wa.me/972544787720';
 
 export default function Root({ children }) {
   const location = useLocation();
@@ -82,5 +83,22 @@ export default function Root({ children }) {
     trackSearch('navbar', query, extra);
   }, [location.pathname, location.search, location.hash]);
 
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <a
+        className="whatsapp-contact-button"
+        href={WHATSAPP_CONTACT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="מצאת טעות? רוצה להציע שיפור? כתבו לנו ב-WhatsApp"
+        data-analytics-id="whatsapp-contact"
+        data-analytics-type="contact"
+        data-analytics-text="מצאת טעות? רוצה להציע שיפור?"
+      >
+        <span className="whatsapp-contact-button__prompt">מצאת טעות? רוצה להציע שיפור?</span>
+        <span className="whatsapp-contact-button__action">כתבו לי ב-WhatsApp</span>
+      </a>
+    </>
+  );
 }

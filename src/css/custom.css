@@ -29,6 +29,60 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.whatsapp-contact-button {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 200;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  max-width: min(19rem, calc(100vw - 2rem));
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  color: #ffffff;
+  background: #25d366;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  direction: rtl;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: right;
+  text-decoration: none;
+  transition: background-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.whatsapp-contact-button:hover,
+.whatsapp-contact-button:focus {
+  color: #ffffff;
+  background: #1ebe5d;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.whatsapp-contact-button__prompt {
+  font-size: 0.95rem;
+}
+
+.whatsapp-contact-button__action {
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+@media (max-width: 576px) {
+  .whatsapp-contact-button {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    align-items: center;
+    max-width: none;
+    padding: 0.7rem 0.9rem;
+    text-align: center;
+  }
+}
+
 header {
   background-image: url('/Icons.png');
   background-size: contain; /* This will ensure the image scales properly */
