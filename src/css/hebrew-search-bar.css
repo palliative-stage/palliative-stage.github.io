@@ -119,26 +119,15 @@
 
 @media (max-width: 576px) {
   .hebrew-search-bar__shell {
-    width: 12rem;
+    width: 9rem;
   }
 
+  /* Hide ctrl K on small screens when collapsed; keep icon + placeholder visible */
   .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__keys {
     display: none;
   }
 
   .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__input {
     padding-left: 2.25rem !important;
-  }
-
-  .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__shell {
-    width: 2.5rem;
-  }
-
-  .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__input {
-    color: transparent;
-  }
-
-  .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__input::placeholder {
-    color: transparent;
   }
 }

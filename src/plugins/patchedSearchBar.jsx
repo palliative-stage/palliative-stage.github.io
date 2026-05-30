@@ -10,7 +10,7 @@ import { fetchIndexes } from "@easyops-cn/docusaurus-search-local/dist/client/cl
 import { SearchSourceFactory } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/SearchSourceFactory";
 import { SuggestionTemplate } from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/SearchBar/SuggestionTemplate";
 import { EmptyTemplate } from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/SearchBar/EmptyTemplate";
-import { searchResultLimits, Mark, searchBarShortcut, searchBarShortcutHint, searchBarPosition, docsPluginIdForPreferredVersion, indexDocs, searchContextByPaths, hideSearchBarWithNoSearchContext, } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/proxiedGenerated";
+import { searchResultLimits, Mark, searchBarShortcut, searchBarShortcutHint, searchBarPosition, docsPluginIdForPreferredVersion, indexDocs, searchContextByPaths, } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/proxiedGenerated";
 import LoadingRing from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/LoadingRing/LoadingRing";
 import styles from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/SearchBar/SearchBar.module.css";
 import "@easyops-cn/docusaurus-search-local/dist/client/client/utils/proxiedGenerated";
@@ -97,9 +97,8 @@ export default function SearchBar({ handleSearchBarToggle, }) {
         }
         setSearchContext(nextSearchContext);
     }, [location.pathname, versionUrl]);
-    const hidden = !!hideSearchBarWithNoSearchContext &&
-        Array.isArray(searchContextByPaths) &&
-        searchContext === "";
+    // Always show search — hiding when searchContext is empty caused the bar to vanish after hydration.
+    const hidden = false;
     const loadIndex = useCallback(async () => {
         if (hidden || indexStateMap.current.get(searchContext)) {
             // Do not load the index (again) if its already loaded or in the process of being loaded.

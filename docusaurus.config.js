@@ -111,6 +111,7 @@ const config = {
 				searchBarPosition: 'left',
 				searchResultLimits: 12,
 				removeDefaultStemmer: true,
+				hideSearchBarWithNoSearchContext: false,
 				ignoreFiles: [/Pain[1-5]\.md$/],
 			},
 		],
