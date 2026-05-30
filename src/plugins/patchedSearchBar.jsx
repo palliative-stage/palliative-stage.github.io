@@ -308,58 +308,46 @@ export default function SearchBar({ handleSearchBarToggle, }) {
             }
         }
     }, [location.pathname, location.search, location.hash, history]);
-    const searchInput = (<input placeholder={isHebrew
+    const searchInputProps = {
+        placeholder: isHebrew
             ? "חיפוש"
             : translate({
                 id: "theme.SearchBar.label",
                 message: "Search",
                 description: "The ARIA label and placeholder for search button",
-            })} aria-label={isHebrew ? "חיפוש" : "Search"} dir={isHebrew ? "rtl" : undefined} className={clsx("navbar__search-input", isHebrew && "hebrew-search-bar__input", inputValue && "navbar__search-input--has-query")} onMouseEnter={onInputMouseEnter} onFocus={onInputFocus} onBlur={onInputBlur} onChange={onInputChange} ref={searchBarRef} value={inputValue}/>);
+            }),
+        "aria-label": isHebrew ? "חיפוש" : "Search",
+        dir: isHebrew ? "rtl" : undefined,
+        className: clsx("navbar__search-input", isHebrew && "hebrew-search-bar__input", inputValue && "navbar__search-input--has-query"),
+        onMouseEnter: onInputMouseEnter,
+        onFocus: onInputFocus,
+        onBlur: onInputBlur,
+        onChange: onInputChange,
+        ref: searchBarRef,
+        value: inputValue,
+    };
 
     if (isHebrew) {
         const showLoading = loading && inputChanged;
         const hasQuery = inputValue !== "";
-        const shellStyle = {
-            display: "flex",
-            flexDirection: "row",
-            direction: "ltr",
-            alignItems: "center",
-        };
-        const leadingStyle = {
-            display: "flex",
-            flexDirection: "row",
-            direction: "ltr",
-            alignItems: "center",
-            flexShrink: 0,
-        };
-        const keysStyle = {
-            display: "flex",
-            flexDirection: "row",
-            direction: "ltr",
-        };
-        const inputStyle = {
-            direction: "rtl",
-            textAlign: "right",
-        };
+        const showLeading = !showLoading && !hasQuery && !focused;
         return (<div className={clsx("navbar__search", "hebrew-search-bar", styles.searchBarContainer, {
                 [styles.searchIndexLoading]: showLoading,
                 [styles.focused]: focused,
                 "hebrew-search-bar--focused": focused,
                 "hebrew-search-bar--has-query": hasQuery,
             })} hidden={hidden} style={{ direction: "ltr", unicodeBidi: "isolate" }}>
-        <div className="hebrew-search-bar__shell" style={shellStyle}>
-          <div className="hebrew-search-bar__leading" style={leadingStyle}>
-            {showLoading ? (<LoadingRing className={clsx(styles.searchBarLoadingRing, "hebrew-search-bar__loading")}/>) : hasQuery ? (<button type="button" className="hebrew-search-bar__clear" onClick={onClearSearch} aria-label="נקה חיפוש">
-                ✕
-              </button>) : (<>
-                <SearchMagnifierIcon />
-                <div className="hebrew-search-bar__keys" aria-hidden="true" style={keysStyle}>
-                  <kbd>{isMac ? "⌘" : "ctrl"}</kbd>
-                  <kbd>K</kbd>
-                </div>
-              </>)}
-          </div>
-          {React.cloneElement(searchInput, { style: inputStyle })}
+        <div className="hebrew-search-bar__shell">
+          <input {...searchInputProps} style={{ direction: "rtl", textAlign: "right" }}/>
+          {showLoading ? (<LoadingRing className={clsx(styles.searchBarLoadingRing, "hebrew-search-bar__loading")}/>) : hasQuery ? (<button type="button" className="hebrew-search-bar__clear" onClick={onClearSearch} aria-label="נקה חיפוש">
+              ✕
+            </button>) : showLeading ? (<div className="hebrew-search-bar__leading" aria-hidden="true">
+              <SearchMagnifierIcon />
+              <div className="hebrew-search-bar__keys">
+                <kbd>{isMac ? "⌘" : "ctrl"}</kbd>
+                <kbd>K</kbd>
+              </div>
+            </div>) : null}
         </div>
       </div>);
     }
@@ -368,7 +356,7 @@ export default function SearchBar({ handleSearchBarToggle, }) {
             [styles.searchIndexLoading]: loading && inputChanged,
             [styles.focused]: focused,
         })} hidden={hidden}>
-      {searchInput}
+      <input {...searchInputProps}/>
       <LoadingRing className={styles.searchBarLoadingRing}/>
       {searchBarShortcut &&
             searchBarShortcutHint &&

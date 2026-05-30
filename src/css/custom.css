@@ -69,27 +69,47 @@ html[dir='rtl'] .hebrew-search-bar.navbar__search {
 }
 
 .hebrew-search-bar__shell {
-  display: flex;
-  flex-direction: row;
+  position: relative;
+  display: block;
   direction: ltr;
-  align-items: center;
   width: 12.5rem;
   max-width: 100%;
   height: 2rem;
   border-radius: 2rem;
   background-color: var(--ifm-navbar-search-input-background-color);
-  overflow: hidden;
+}
+
+/* autocomplete.js wraps the input in a span — keep it inside the pill */
+.hebrew-search-bar__shell > span {
+  display: block !important;
+  width: 100% !important;
 }
 
 .hebrew-search-bar__leading {
+  position: absolute;
+  left: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: row;
   direction: ltr;
   align-items: center;
-  flex-shrink: 0;
   gap: 0.35rem;
-  padding: 0 0.25rem 0 0.65rem;
-  order: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hebrew-search-bar__clear,
+.hebrew-search-bar__loading {
+  position: absolute;
+  left: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.hebrew-search-bar__clear {
+  pointer-events: auto;
 }
 
 .hebrew-search-bar__icon {
@@ -138,12 +158,9 @@ html[dir='rtl'] .hebrew-search-bar.navbar__search {
 }
 
 .hebrew-search-bar__input.navbar__search-input {
-  flex: 1 1 auto;
-  min-width: 0;
-  order: 1;
   box-sizing: border-box;
-  width: auto !important;
-  max-width: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
   height: 2rem;
   direction: rtl !important;
   text-align: right !important;
@@ -151,15 +168,20 @@ html[dir='rtl'] .hebrew-search-bar.navbar__search {
   background: transparent !important;
   background-image: none !important;
   border: none;
-  padding: 0 0.75rem 0 0 !important;
+  padding: 0 0.75rem 0 4.75rem !important;
   margin: 0;
-  border-radius: 0;
+  border-radius: 2rem;
+}
+
+.hebrew-search-bar--has-query .hebrew-search-bar__input.navbar__search-input,
+.hebrew-search-bar--focused .hebrew-search-bar__input.navbar__search-input {
+  padding-left: 2.25rem !important;
 }
 
 html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
   direction: rtl !important;
   text-align: right !important;
-  padding: 0 0.75rem 0 0 !important;
+  padding: 0 0.75rem 0 4.75rem !important;
   background-image: none !important;
 }
 
@@ -170,9 +192,10 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
 }
 
 .hebrew-search-bar .hebrew-search-bar__loading {
-  position: static;
-  left: auto;
-  top: auto;
+  position: absolute;
+  left: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .hebrew-search-bar [class*='searchHintContainer'],
@@ -191,8 +214,9 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
     width: 9rem;
   }
 
-  .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__keys {
-    display: none;
+  /* Don't use the plugin's 2rem collapsed width — it breaks the Hebrew layout */
+  .hebrew-search-bar .navbar__search-input {
+    width: 100% !important;
   }
 }
 /* rtl:end:ignore */
