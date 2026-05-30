@@ -194,6 +194,7 @@ export default function SearchBar({ handleSearchBarToggle, }) {
             input.focus();
             if (isHebrew) {
                 placeRtlSearchCaret(input);
+                window.setTimeout(() => placeRtlSearchCaret(input), 100);
             }
         }
     }, [hidden, searchContext, versionUrl, baseUrl, history, isHebrew]);
@@ -261,7 +262,10 @@ export default function SearchBar({ handleSearchBarToggle, }) {
         if (event.target.value) {
             setInputChanged(true);
         }
-    }, []);
+        if (isHebrew) {
+            placeRtlSearchCaret(event.target);
+        }
+    }, [isHebrew]);
     // Implement hint icons for the search shortcuts on mac and the rest operating systems.
     const isMac = ExecutionEnvironment.canUseDOM
         ? /mac/i.test(navigator.userAgentData?.platform ?? navigator.platform)
@@ -315,24 +319,27 @@ export default function SearchBar({ handleSearchBarToggle, }) {
 
     if (isHebrew) {
         const showLoading = loading && inputChanged;
+        const hasQuery = inputValue !== "";
         return (<div className={clsx("navbar__search", "hebrew-search-bar", styles.searchBarContainer, {
                 [styles.searchIndexLoading]: showLoading,
                 [styles.focused]: focused,
                 "hebrew-search-bar--focused": focused,
-                "hebrew-search-bar--has-query": Boolean(inputValue),
+                "hebrew-search-bar--has-query": hasQuery,
             })} hidden={hidden}>
-        <div className="hebrew-search-bar__leading">
-          {showLoading ? (<LoadingRing className={clsx(styles.searchBarLoadingRing, "hebrew-search-bar__loading")}/>) : inputValue !== "" ? (<button type="button" className="hebrew-search-bar__clear" onClick={onClearSearch} aria-label="נקה חיפוש">
-              ✕
-            </button>) : (<>
-              <SearchMagnifierIcon />
-              <div className="hebrew-search-bar__keys">
-                <kbd>{isMac ? "⌘" : "ctrl"}</kbd>
-                <kbd>K</kbd>
-              </div>
-            </>)}
+        <div className="hebrew-search-bar__shell">
+          <div className="hebrew-search-bar__chrome" aria-hidden={hasQuery ? undefined : true}>
+            {showLoading ? (<LoadingRing className={clsx(styles.searchBarLoadingRing, "hebrew-search-bar__loading")}/>) : hasQuery ? (<button type="button" className="hebrew-search-bar__clear" onClick={onClearSearch} aria-label="נקה חיפוש">
+                ✕
+              </button>) : (<>
+                <SearchMagnifierIcon />
+                <div className="hebrew-search-bar__keys">
+                  <kbd>{isMac ? "⌘" : "ctrl"}</kbd>
+                  <kbd>K</kbd>
+                </div>
+              </>)}
+          </div>
+          {searchInput}
         </div>
-        {searchInput}
       </div>);
     }
 

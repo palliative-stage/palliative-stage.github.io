@@ -1,29 +1,34 @@
 /**
- * Hebrew navbar search — LTR chrome (icon + ctrl K) on the left, RTL text on the right.
+ * Hebrew search bar: icon + ctrl K overlaid inside the left of the pill;
+ * Hebrew text and caret on the right (RTL input).
  */
 
 .hebrew-search-bar.navbar__search {
-  display: flex !important;
-  flex-direction: row !important;
   direction: ltr !important;
-  align-items: center;
-  position: relative;
   margin-left: 0;
   margin-right: 16px;
   padding: 0;
-  min-width: 10rem;
 }
 
-.hebrew-search-bar__leading {
+.hebrew-search-bar__shell {
+  position: relative;
+  display: inline-block;
+  width: 12.5rem;
+  max-width: 100%;
+}
+
+.hebrew-search-bar__chrome {
+  position: absolute;
+  left: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: row;
   align-items: center;
-  flex-shrink: 0;
   gap: 0.35rem;
-  padding-left: 0.65rem;
-  padding-right: 0.2rem;
   direction: ltr;
-  z-index: 1;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .hebrew-search-bar__icon {
@@ -40,7 +45,6 @@
   align-items: center;
   gap: 0.25rem;
   direction: ltr;
-  pointer-events: none;
   white-space: nowrap;
 }
 
@@ -70,25 +74,30 @@
   font-size: 0.85rem;
   width: 1.25rem;
   height: 1.25rem;
+  pointer-events: auto;
 }
 
 .hebrew-search-bar__input.navbar__search-input {
-  flex: 1 1 auto;
-  min-width: 3rem;
-  width: auto !important;
-  max-width: 12.5rem;
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
   direction: rtl !important;
   text-align: right !important;
   unicode-bidi: plaintext;
   background-image: none !important;
   background-color: var(--ifm-navbar-search-input-background-color) !important;
-  padding: 0 0.75rem 0 0 !important;
+  padding: 0 0.75rem 0 4.75rem !important;
   margin: 0;
+}
+
+.hebrew-search-bar--has-query .hebrew-search-bar__input.navbar__search-input {
+  padding-left: 2.25rem !important;
 }
 
 .hebrew-search-bar__input.navbar__search-input::placeholder {
   color: var(--ifm-navbar-search-input-placeholder-color);
   opacity: 0.85;
+  text-align: right;
 }
 
 .hebrew-search-bar .hebrew-search-bar__loading {
@@ -103,17 +112,14 @@
 }
 
 @media (max-width: 996px) {
-  .hebrew-search-bar__input.navbar__search-input {
-    max-width: 9rem;
+  .hebrew-search-bar__shell {
+    width: 9rem;
   }
 }
 
-/* Collapsed mobile: icon only; expand on focus or when typing */
 @media (max-width: 576px) {
-  .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) {
-    min-width: 2.5rem;
-    max-width: 2.75rem;
-    overflow: hidden;
+  .hebrew-search-bar__shell {
+    width: 12rem;
   }
 
   .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__keys {
@@ -121,32 +127,18 @@
   }
 
   .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__input {
-    flex: 0 0 0;
-    min-width: 0;
-    max-width: 0;
-    width: 0 !important;
-    padding: 0 !important;
-    border: none;
-    opacity: 0;
+    padding-left: 2.25rem !important;
   }
 
-  .hebrew-search-bar.hebrew-search-bar--focused,
-  .hebrew-search-bar.hebrew-search-bar--has-query {
-    min-width: 10rem;
-    max-width: none;
+  .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__shell {
+    width: 2.5rem;
   }
 
-  .hebrew-search-bar.hebrew-search-bar--focused .hebrew-search-bar__input,
-  .hebrew-search-bar.hebrew-search-bar--has-query .hebrew-search-bar__input {
-    flex: 1 1 auto;
-    min-width: 3rem;
-    max-width: 9rem;
-    width: auto !important;
-    opacity: 1;
-    padding: 0 0.75rem 0 0 !important;
+  .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__input {
+    color: transparent;
   }
 
-  .hebrew-search-bar.hebrew-search-bar--focused .hebrew-search-bar__keys {
-    display: flex;
+  .hebrew-search-bar:not(.hebrew-search-bar--focused):not(.hebrew-search-bar--has-query) .hebrew-search-bar__input::placeholder {
+    color: transparent;
   }
 }
