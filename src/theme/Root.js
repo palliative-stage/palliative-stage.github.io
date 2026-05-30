@@ -96,9 +96,9 @@ export default function Root({ children }) {
         data-analytics-type="contact"
         data-analytics-text="מצאת טעות? רוצה להציע שיפור?"
       >
-        <span className="whatsapp-contact-button__prompt">מצאת טעות? רוצה להציע שיפור?</span>
+        <span className="whatsapp-contact-button__prompt">מצאת טעות?</span>
         <span className="whatsapp-contact-button__action">
-          כתבו לי ב-<span dir="ltr">WhatsApp</span>
+          הציעו שיפור ב-<span dir="ltr">WhatsApp</span>
         </span>
       </a>
     </>
