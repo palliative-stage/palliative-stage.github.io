@@ -19,6 +19,7 @@ module.exports = function hebrewSearchPlugin() {
 			patchBuildIndex();
 		},
 		configureWebpack(_config, isServer) {
+			// SearchBar/SearchPage overrides use src/theme swizzles (SSR + client must match).
 			if (isServer) {
 				return {};
 			}
@@ -28,19 +29,11 @@ module.exports = function hebrewSearchPlugin() {
 			const searchSourceFactoryPath = require.resolve(
 				"@easyops-cn/docusaurus-search-local/dist/client/client/utils/SearchSourceFactory",
 			);
-			const searchBarPath = require.resolve(
-				"@easyops-cn/docusaurus-search-local/dist/client/client/theme/SearchBar/SearchBar.jsx",
-			);
-			const searchPagePath = require.resolve(
-				"@easyops-cn/docusaurus-search-local/dist/client/client/theme/SearchPage/SearchPage.jsx",
-			);
 			return {
 				resolve: {
 					alias: {
 						[fetchIndexesPath]: path.resolve(__dirname, "fetchIndexesDev.js"),
 						[searchSourceFactoryPath]: path.resolve(__dirname, "searchSourceFactory.js"),
-						[searchBarPath]: path.resolve(__dirname, "patchedSearchBar.jsx"),
-						[searchPagePath]: path.resolve(__dirname, "patchedSearchPage.jsx"),
 					},
 				},
 			};
