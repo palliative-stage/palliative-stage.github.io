@@ -95,6 +95,16 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   fill: currentColor;
 }
 
+.icon-only-admonition [class*='admonitionHeading'] {
+  font-size: 0;
+}
+
+.icon-only-admonition [class*='admonitionIcon'] {
+  font-size: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 @media (max-width: 576px) {
   .whatsapp-contact-button {
     left: 0.75rem;
