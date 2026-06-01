@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { trackPageView, initClickTracking, getPageName, trackSearch } from '@site/src/lib/analytics';
+import { initLinkErrorChecking } from '@site/src/lib/errors';
 import { cleanupPageTitleSearchHighlights } from '@site/src/lib/searchHighlightCleanup';
 import { useHistory } from '@docusaurus/router';
 
@@ -18,6 +19,7 @@ export default function Root({ children }) {
 
   useEffect(() => {
     initClickTracking();
+    initLinkErrorChecking();
   }, []);
 
   useEffect(() => {

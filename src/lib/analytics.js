@@ -11,7 +11,7 @@ const ANALYTICS_CONFIG = {
 const SESSION_KEY = 'analytics_session_id';
 const USER_KEY = 'analytics_user_pseudo_id';
 
-function generateId() {
+export function generateId() {
   if (typeof crypto !== 'undefined' && crypto.randomUUID) {
     return crypto.randomUUID();
   }
@@ -22,7 +22,7 @@ function generateId() {
   });
 }
 
-function getOrCreateSessionId() {
+export function getOrCreateSessionId() {
   try {
     let id = sessionStorage.getItem(SESSION_KEY);
     if (!id) {
@@ -35,7 +35,7 @@ function getOrCreateSessionId() {
   }
 }
 
-function getOrCreateUserId() {
+export function getOrCreateUserId() {
   try {
     let id = localStorage.getItem(USER_KEY);
     if (!id) {
@@ -58,7 +58,7 @@ function parseUtmParams() {
   };
 }
 
-function getReferrerDomain() {
+export function getReferrerDomain() {
   if (typeof document === 'undefined' || !document.referrer) return undefined;
   try {
     const url = new URL(document.referrer);
