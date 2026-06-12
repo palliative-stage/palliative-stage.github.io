@@ -26,5 +26,9 @@
   "theme.SearchPage.noResultsText": {
     "message": "לא נמצאו מסמכים",
     "description": "Text shown when no documents match the search"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "ניווט בדף זה",
+    "description": "The label used by the button on the collapsible TOC component"
   }
 }

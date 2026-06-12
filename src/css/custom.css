@@ -134,6 +134,23 @@ header {
   }
 }
 
+@media (max-width: 996px) {
+  [class*='tocCollapsible'] {
+    border: 1px solid var(--ifm-color-primary);
+    background: rgba(37, 194, 160, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  [class*='tocCollapsibleButton'] {
+    color: var(--ifm-color-primary-darkest);
+    font-weight: 700;
+  }
+
+  [class*='tocCollapsibleContent'] > ul {
+    border-top-color: rgba(37, 194, 160, 0.35);
+  }
+}
+
 /* Hebrew search bar — rtlcss must not flip these (inline styles set direction too) */
 /* rtl:begin:ignore */
 html[dir='rtl'] .hebrew-search-bar.navbar__search {
