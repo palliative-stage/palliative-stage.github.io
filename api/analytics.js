@@ -11,6 +11,12 @@ function buildConnectionString() {
   if (!url) {
     return null;
   }
+  if (/uselibpqcompat=true/i.test(url)) {
+    return url;
+  }
+  if (/sslmode=(prefer|require|verify-ca)(?=(&|$))/i.test(url)) {
+    return url.replace(/sslmode=(prefer|require|verify-ca)(?=(&|$))/i, 'sslmode=verify-full');
+  }
   if (/sslmode=/i.test(url)) {
     return url;
   }
