@@ -84,6 +84,10 @@ const config = {
 				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,
 			},
+			tableOfContents: {
+				minHeadingLevel: 1,
+				maxHeadingLevel: 3,
+			},
 		}),
 
 	i18n: {
