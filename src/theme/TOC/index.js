@@ -2,15 +2,12 @@ import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import TOCItems from '@theme/TOCItems';
-import styles from '@theme-original/TOC/styles.module.css';
+import styles from './styles.module.css';
 
-export default function TOC({
-  className,
-  toc,
-  minHeadingLevel,
-  maxHeadingLevel,
-  ...props
-}) {
+const LINK_CLASS_NAME = 'table-of-contents__link toc-highlight';
+const LINK_ACTIVE_CLASS_NAME = 'table-of-contents__link--active';
+
+export default function TOC({className, toc, ...props}) {
   const h1Headings = toc?.filter((heading) => heading.level === 1) ?? [];
   const tocWithoutH1 = toc?.filter((heading) => heading.level !== 1) ?? [];
 
@@ -20,7 +17,7 @@ export default function TOC({
         <ul className="table-of-contents table-of-contents__page-title">
           {h1Headings.map((heading) => (
             <li key={heading.id}>
-              <Link to={`#${heading.id}`} className="table-of-contents__link">
+              <Link to={`#${heading.id}`} className={LINK_CLASS_NAME}>
                 {heading.value}
               </Link>
             </li>
@@ -28,13 +25,10 @@ export default function TOC({
         </ul>
       )}
       <TOCItems
-        toc={tocWithoutH1}
-        minHeadingLevel={minHeadingLevel}
-        maxHeadingLevel={maxHeadingLevel}
-        className="table-of-contents table-of-contents__left-border"
-        linkClassName="table-of-contents__link"
-        linkActiveClassName="table-of-contents__link--active"
         {...props}
+        toc={tocWithoutH1}
+        linkClassName={LINK_CLASS_NAME}
+        linkActiveClassName={LINK_ACTIVE_CLASS_NAME}
       />
     </div>
   );
