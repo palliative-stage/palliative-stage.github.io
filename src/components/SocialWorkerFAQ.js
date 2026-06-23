@@ -23,7 +23,7 @@ function itemMatchesQuery(item, query) {
 	return haystack.includes(query);
 }
 
-function FaqAccordionItem({ item, isOpen, onToggle }) {
+function FaqAccordionItem({ item, categoryLabel, isOpen, onToggle }) {
 	const panelId = `faq-panel-${item.id}`;
 	const headerId = `faq-header-${item.id}`;
 
@@ -53,7 +53,7 @@ function FaqAccordionItem({ item, isOpen, onToggle }) {
 						▼
 					</span>
 					<span className="sw-faq__topic" dir="rtl" lang="he">
-						{item.topic}
+						{categoryLabel}
 					</span>
 				</div>
 			</div>
@@ -99,6 +99,10 @@ export default function SocialWorkerFAQ() {
 		}
 		return counts;
 	}, [items, categories]);
+
+	const categoryLabels = useMemo(() => {
+		return Object.fromEntries(categories.map((cat) => [cat.id, cat.label]));
+	}, [categories]);
 
 	const toggleItem = (id) => {
 		setOpenIds((prev) => {
@@ -175,6 +179,7 @@ export default function SocialWorkerFAQ() {
 						<FaqAccordionItem
 							key={item.id}
 							item={item}
+							categoryLabel={categoryLabels[item.categoryId]}
 							isOpen={openIds.has(item.id)}
 							onToggle={() => toggleItem(item.id)}
 						/>
