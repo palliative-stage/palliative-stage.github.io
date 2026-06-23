@@ -128,59 +128,58 @@
 	align-items: flex-start;
 	width: 100%;
 	padding: 0.85rem 1rem;
-	padding-left: 2rem;
 	border: none;
 	background: transparent;
 	color: inherit;
 	cursor: pointer;
-	position: relative;
 	gap: 0.75rem;
+	direction: ltr;
+}
+
+.sw-faq__chevron {
+	flex: 0 0 auto;
+	margin-top: 0.35rem;
+	font-size: 0.65rem;
+	line-height: 1;
+	color: var(--ifm-color-emphasis-600);
+	transition: transform 0.15s;
+}
+
+.sw-faq__chevron--open {
+	transform: rotate(180deg);
+}
+
+.sw-faq__topic {
+	flex: 0 0 auto;
+	align-self: flex-start;
+	max-width: 10.5rem;
+	font-size: 0.78rem;
+	font-weight: 600;
+	line-height: 1.35;
+	color: var(--ifm-color-emphasis-900);
+	background: var(--ifm-background-color);
+	border: 1px solid var(--ifm-color-emphasis-400);
+	border-radius: 999px;
+	padding: 0.25rem 0.6rem;
+	text-align: center;
 	direction: rtl;
+	white-space: normal;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .sw-faq__question {
-	flex: 1;
+	flex: 1 1 auto;
 	min-width: 0;
 	font-size: 1rem;
 	font-weight: 600;
 	line-height: 1.45;
 	text-align: right;
 	direction: rtl;
-}
-
-.sw-faq__topic {
-	flex-shrink: 0;
-	align-self: flex-start;
-	max-width: 11rem;
-	font-size: 0.78rem;
-	font-weight: 600;
-	line-height: 1.35;
-	color: var(--ifm-color-primary-dark);
-	background: var(--ifm-color-primary-lightest);
-	border: 1px solid var(--ifm-color-primary-light);
-	border-radius: 999px;
-	padding: 0.2rem 0.55rem;
-	text-align: center;
-	direction: rtl;
-	white-space: normal;
+	unicode-bidi: isolate;
 }
 
 .sw-faq__item-header:hover {
 	background: var(--ifm-color-emphasis-100);
-}
-
-.sw-faq__chevron {
-	position: absolute;
-	left: 0.85rem;
-	top: 50%;
-	transform: translateY(-50%);
-	font-size: 0.65rem;
-	color: var(--ifm-color-emphasis-600);
-	transition: transform 0.15s;
-}
-
-.sw-faq__chevron--open {
-	transform: translateY(-50%) rotate(180deg);
 }
 
 .sw-faq__item-body {
@@ -219,6 +218,12 @@
 	line-height: 1.6;
 	color: var(--ifm-color-emphasis-800);
 	text-align: right;
+}
+
+html[data-theme='dark'] .sw-faq__topic {
+	background: var(--ifm-color-emphasis-200);
+	border-color: var(--ifm-color-emphasis-500);
+	color: var(--ifm-font-color-base);
 }
 
 @media (max-width: 576px) {

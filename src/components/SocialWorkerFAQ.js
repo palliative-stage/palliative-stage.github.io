@@ -37,10 +37,12 @@ function FaqAccordionItem({ item, isOpen, onToggle }) {
 				aria-controls={panelId}
 				onClick={onToggle}
 			>
-				<span className="sw-faq__question">{item.question}</span>
-				<span className="sw-faq__topic">{item.topic}</span>
 				<span className={clsx('sw-faq__chevron', isOpen && 'sw-faq__chevron--open')} aria-hidden="true">
 					▼
+				</span>
+				<span className="sw-faq__topic">{item.topic}</span>
+				<span className="sw-faq__question" dir="rtl">
+					{item.question}
 				</span>
 			</button>
 			{isOpen && (
