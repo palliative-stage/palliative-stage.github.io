@@ -45,16 +45,16 @@ function FaqAccordionItem({ item, isOpen, onToggle }) {
 					}
 				}}
 			>
-				<div className="sw-faq__header-left">
+				<div className="sw-faq__question" dir="rtl" lang="he">
+					{item.question}
+				</div>
+				<div className="sw-faq__header-meta" dir="ltr">
 					<span className={clsx('sw-faq__chevron', isOpen && 'sw-faq__chevron--open')} aria-hidden="true">
 						▼
 					</span>
 					<span className="sw-faq__topic" dir="rtl" lang="he">
 						{item.topic}
 					</span>
-				</div>
-				<div className="sw-faq__question" dir="rtl" lang="he">
-					{item.question}
 				</div>
 			</div>
 			{isOpen && (
