@@ -33,6 +33,7 @@ function FaqAccordionItem({ item, isOpen, onToggle }) {
 				type="button"
 				id={headerId}
 				className="sw-faq__item-header"
+				dir="ltr"
 				aria-expanded={isOpen}
 				aria-controls={panelId}
 				onClick={onToggle}
@@ -40,10 +41,12 @@ function FaqAccordionItem({ item, isOpen, onToggle }) {
 				<span className={clsx('sw-faq__chevron', isOpen && 'sw-faq__chevron--open')} aria-hidden="true">
 					▼
 				</span>
-				<span className="sw-faq__topic">{item.topic}</span>
-				<span className="sw-faq__question" dir="rtl">
-					{item.question}
+				<span className="sw-faq__topic" dir="rtl">
+					{item.topic}
 				</span>
+				<bdi className="sw-faq__question" dir="rtl">
+					{item.question}
+				</bdi>
 			</button>
 			{isOpen && (
 				<div id={panelId} role="region" aria-labelledby={headerId} className="sw-faq__item-body">
@@ -102,16 +105,16 @@ export default function SocialWorkerFAQ() {
 	};
 
 	return (
-		<div className="sw-faq" dir="rtl">
-			<p className="sw-faq__intro">
+		<div className="sw-faq">
+			<p className="sw-faq__intro" dir="rtl">
 				מאגר שאלות ותשובות לעובדים סוציאליים בטיפול פליאטיבי – מסודר לפי נושאים.
 			</p>
 
-			<div className="sw-faq__disclaimer" role="note">
+			<div className="sw-faq__disclaimer" role="note" dir="rtl">
 				<strong>חשוב:</strong> {meta.disclaimer}
 			</div>
 
-			<div className="sw-faq__search-wrap">
+			<div className="sw-faq__search-wrap" dir="rtl">
 				<label className="sw-faq__search-label" htmlFor="sw-faq-search">
 					חיפוש בשאלות ותשובות
 				</label>
@@ -129,7 +132,7 @@ export default function SocialWorkerFAQ() {
 				/>
 			</div>
 
-			<div className="sw-faq__chips" role="group" aria-label="סינון לפי קטגוריה">
+			<div className="sw-faq__chips" role="group" aria-label="סינון לפי קטגוריה" dir="rtl">
 				<button
 					type="button"
 					className={clsx('sw-faq__chip', categoryId === ALL_CATEGORY && 'sw-faq__chip--active')}
@@ -151,12 +154,12 @@ export default function SocialWorkerFAQ() {
 				))}
 			</div>
 
-			<p className="sw-faq__results-count" aria-live="polite">
+			<p className="sw-faq__results-count" aria-live="polite" dir="rtl">
 				מציג {filteredItems.length} מתוך {items.length}
 			</p>
 
 			{filteredItems.length === 0 ? (
-				<p className="sw-faq__empty">לא נמצאו תוצאות. נסו מילת חיפוש אחרת או בחרו קטגוריה אחרת.</p>
+				<p className="sw-faq__empty" dir="rtl">לא נמצאו תוצאות. נסו מילת חיפוש אחרת או בחרו קטגוריה אחרת.</p>
 			) : (
 				<div className="sw-faq__list">
 					{filteredItems.map((item) => (
