@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
-import {createSlugger} from '@docusaurus/utils-common';
+import {createSlugger} from '@docusaurus/utils';
 import {useDoc} from '@docusaurus/theme-common/internal';
 
 const LINK_CLASS_NAME = 'table-of-contents__link toc-highlight';
