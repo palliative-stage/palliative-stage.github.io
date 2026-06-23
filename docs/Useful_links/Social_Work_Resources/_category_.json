@@ -1,8 +1,6 @@
 {
   "label": "תמיכה בעובדים סוציאליים",
   "position": 2,
-  "link": {
-    "type": "doc",
-    "id": "Useful_links/Social_Work_Resources/index"
-  }
+  "collapsible": true,
+  "collapsed": false
 }
