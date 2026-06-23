@@ -29,27 +29,34 @@ function FaqAccordionItem({ item, isOpen, onToggle }) {
 
 	return (
 		<div className="sw-faq__item">
-			<button
-				type="button"
+			<div
 				id={headerId}
 				className="sw-faq__item-header"
+				role="button"
+				tabIndex={0}
 				dir="ltr"
 				aria-expanded={isOpen}
 				aria-controls={panelId}
 				onClick={onToggle}
+				onKeyDown={(e) => {
+					if (e.key === 'Enter' || e.key === ' ') {
+						e.preventDefault();
+						onToggle();
+					}
+				}}
 			>
-				<span className="sw-faq__header-left">
+				<div className="sw-faq__header-left">
 					<span className={clsx('sw-faq__chevron', isOpen && 'sw-faq__chevron--open')} aria-hidden="true">
 						▼
 					</span>
-					<span className="sw-faq__topic" dir="rtl">
+					<span className="sw-faq__topic" dir="rtl" lang="he">
 						{item.topic}
 					</span>
-				</span>
-				<bdi className="sw-faq__question" dir="rtl">
+				</div>
+				<div className="sw-faq__question" dir="rtl" lang="he">
 					{item.question}
-				</bdi>
-			</button>
+				</div>
+			</div>
 			{isOpen && (
 				<div id={panelId} role="region" aria-labelledby={headerId} className="sw-faq__item-body">
 					<p className="sw-faq__answer">{item.answer}</p>
