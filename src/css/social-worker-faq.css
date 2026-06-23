@@ -17,13 +17,6 @@
 	line-height: 1.55;
 }
 
-.sw-faq__sources {
-	margin-bottom: 1.25rem;
-	font-size: 0.92rem;
-	color: var(--ifm-color-emphasis-700);
-	line-height: 1.5;
-}
-
 .sw-faq__search-wrap {
 	margin-bottom: 1rem;
 }
@@ -160,14 +153,6 @@
 	font-size: 0.8rem;
 	font-weight: 600;
 	color: var(--ifm-color-primary-dark);
-}
-
-.sw-faq__freq {
-	font-size: 0.75rem;
-	color: var(--ifm-color-emphasis-600);
-	background: var(--ifm-color-emphasis-100);
-	padding: 0.1rem 0.45rem;
-	border-radius: 999px;
 }
 
 .sw-faq__question {

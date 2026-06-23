@@ -39,9 +39,6 @@ function FaqAccordionItem({ item, isOpen, onToggle }) {
 			>
 				<span className="sw-faq__item-meta">
 					<span className="sw-faq__topic">{item.topic}</span>
-					{item.frequency > 0 && (
-						<span className="sw-faq__freq">נשאל ~{item.frequency} פעמים</span>
-					)}
 				</span>
 				<span className="sw-faq__question">{item.question}</span>
 				<span className={clsx('sw-faq__chevron', isOpen && 'sw-faq__chevron--open')} aria-hidden="true">
@@ -107,17 +104,12 @@ export default function SocialWorkerFAQ() {
 	return (
 		<div className="sw-faq" dir="rtl">
 			<p className="sw-faq__intro">
-				מאגר שאלות ותשובות שנאספו מקבוצות וואטסאפ מקצועיות של עובדים סוציאליים בטיפול פליאטיבי – מסודר
-				לפי נושאים ושכיחות.
+				מאגר שאלות ותשובות לעובדים סוציאליים בטיפול פליאטיבי – מסודר לפי נושאים.
 			</p>
 
 			<div className="sw-faq__disclaimer" role="note">
 				<strong>חשוב:</strong> {meta.disclaimer}
 			</div>
-
-			<p className="sw-faq__sources">
-				<strong>מקורות:</strong> {meta.sources.join(' · ')}
-			</p>
 
 			<div className="sw-faq__search-wrap">
 				<label className="sw-faq__search-label" htmlFor="sw-faq-search">
