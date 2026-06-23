@@ -4,7 +4,7 @@ import {useCollapsible, Collapsible} from '@docusaurus/theme-common';
 import TOCItems from '@theme/TOCItems';
 import CollapseButton from '@theme/TOCCollapsible/CollapseButton';
 import {TocPageTitle} from '@theme/TOC/tocPageTitle';
-import styles from '@theme/TOCCollapsible/styles.module.css';
+import styles from './styles.module.css';
 
 export default function TOCCollapsible({
   toc,
