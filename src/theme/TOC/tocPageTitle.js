@@ -1,21 +1,24 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import Link from '@docusaurus/Link';
-import {createSlugger} from '@docusaurus/utils';
+import GitHubSlugger from 'github-slugger';
 import {useDoc} from '@docusaurus/theme-common/internal';
 
 const LINK_CLASS_NAME = 'table-of-contents__link toc-highlight';
 
 export function useContentPageTitle() {
   const {contentTitle, metadata, frontMatter} = useDoc();
-  if (frontMatter.hide_title) {
-    return null;
-  }
-  const title = contentTitle ?? metadata.title;
-  if (!title) {
-    return null;
-  }
-  const slugger = createSlugger();
-  return {value: title, id: slugger.slug(title)};
+
+  return useMemo(() => {
+    if (frontMatter.hide_title) {
+      return null;
+    }
+    const title = contentTitle ?? metadata.title;
+    if (!title) {
+      return null;
+    }
+    const slugger = new GitHubSlugger();
+    return {value: title, id: slugger.slug(title)};
+  }, [contentTitle, metadata.title, frontMatter.hide_title]);
 }
 
 export function TocPageTitle() {
