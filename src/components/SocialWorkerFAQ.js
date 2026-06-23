@@ -38,6 +38,7 @@ function FaqAccordionItem({ item, isOpen, onToggle }) {
 				onClick={onToggle}
 			>
 				<span className="sw-faq__question">{item.question}</span>
+				<span className="sw-faq__topic">{item.topic}</span>
 				<span className={clsx('sw-faq__chevron', isOpen && 'sw-faq__chevron--open')} aria-hidden="true">
 					▼
 				</span>
