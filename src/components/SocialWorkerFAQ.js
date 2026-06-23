@@ -38,11 +38,13 @@ function FaqAccordionItem({ item, isOpen, onToggle }) {
 				aria-controls={panelId}
 				onClick={onToggle}
 			>
-				<span className={clsx('sw-faq__chevron', isOpen && 'sw-faq__chevron--open')} aria-hidden="true">
-					▼
-				</span>
-				<span className="sw-faq__topic" dir="rtl">
-					{item.topic}
+				<span className="sw-faq__header-left">
+					<span className={clsx('sw-faq__chevron', isOpen && 'sw-faq__chevron--open')} aria-hidden="true">
+						▼
+					</span>
+					<span className="sw-faq__topic" dir="rtl">
+						{item.topic}
+					</span>
 				</span>
 				<bdi className="sw-faq__question" dir="rtl">
 					{item.question}
