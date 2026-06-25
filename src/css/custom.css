@@ -161,10 +161,17 @@ header {
   [class*='tocCollapsibleButton'] {
     color: var(--ifm-color-primary-darkest);
     font-weight: 700;
+    background-color: var(--ifm-background-color);
   }
 
   [class*='tocCollapsibleContent'] > ul {
     border-top-color: rgba(37, 194, 160, 0.35);
+  }
+
+  [class*='tocCollapsibleContent'],
+  [class*='tocCollapsibleContent'] ul,
+  [class*='tocCollapsibleContent'] a {
+    background-color: var(--ifm-background-color);
   }
 }
 
