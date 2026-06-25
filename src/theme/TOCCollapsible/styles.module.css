@@ -27,12 +27,24 @@
   .tocCollapsible {
     position: sticky;
     top: var(--ifm-navbar-height);
-    z-index: calc(var(--ifm-z-index-fixed) - 1);
+    z-index: var(--ifm-z-index-fixed);
     margin-top: 0;
+    background-color: var(--ifm-background-color);
+    border: 1px solid var(--ifm-color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .tocCollapsibleContent {
+    background-color: var(--ifm-background-color);
+  }
+
+  .tocCollapsibleExpanded {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   }
 
   .tocCollapsibleExpanded .tocCollapsibleContent {
-    max-height: calc(100vh - var(--ifm-navbar-height) - 3rem);
-    overflow-y: auto;
+    max-height: calc(100vh - var(--ifm-navbar-height) - 3rem) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
   }
 }
