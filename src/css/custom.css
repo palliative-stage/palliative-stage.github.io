@@ -157,8 +157,13 @@ header {
   font-weight: 700;
 }
 
-/* Mobile in-page TOC — sticky pinned bar; expanded list in an opaque portal sheet */
+/* Mobile in-page TOC — fixed pinned bar with layout spacer; expanded list in portal */
 @media (max-width: 996px) {
+  .theme-doc-toc-mobile-spacer {
+    display: block;
+    width: 100%;
+  }
+
   .docs-doc-page article {
     position: relative;
     z-index: 0;
@@ -170,18 +175,8 @@ header {
     z-index: 0;
   }
 
-  .theme-doc-toc-mobile {
-    position: -webkit-sticky;
-    position: sticky;
-    top: var(--ifm-navbar-height);
-    z-index: 201;
-    isolation: isolate;
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    background-color: var(--ifm-background-color);
-    border: 1px solid var(--ifm-color-primary);
-    border-radius: var(--ifm-global-radius);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  .theme-doc-markdown :is(h1, h2, h3, h4, h5, h6) {
+    scroll-margin-top: calc(var(--ifm-navbar-height) + 3.5rem);
   }
 
   .theme-doc-toc-mobile[class*='tocCollapsibleExpanded'] {
@@ -193,9 +188,13 @@ header {
   .theme-doc-toc-mobile [class*='tocCollapsibleButton'] {
     color: var(--ifm-color-primary-darkest);
     font-weight: 700;
-    background-color: var(--ifm-background-color);
     width: 100%;
     border-radius: var(--ifm-global-radius);
+    background-color: #ffffff !important;
+  }
+
+  html[data-theme='dark'] .theme-doc-toc-mobile [class*='tocCollapsibleButton'] {
+    background-color: var(--ifm-background-color) !important;
   }
 
   .theme-doc-toc-mobile[class*='tocCollapsibleExpanded'] [class*='tocCollapsibleButton'] {

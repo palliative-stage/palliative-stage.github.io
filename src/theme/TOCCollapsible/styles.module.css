@@ -7,7 +7,33 @@
   .tocCollapsible {
     margin-top: 0;
     margin-bottom: 0;
-    background-color: var(--ifm-background-color);
+  }
+
+  .tocMobilePinned {
+    position: fixed;
+    top: var(--ifm-navbar-height);
+    left: 0;
+    right: 0;
+    z-index: 201;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 0.3rem;
+    background-color: #ffffff !important;
+    border: 1px solid var(--ifm-color-primary);
+    border-radius: var(--ifm-global-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  html[data-theme='dark'] .tocMobilePinned {
+    background-color: var(--ifm-background-color) !important;
+  }
+
+  .tocMobilePinned [class*='tocCollapsibleButton'] {
+    background-color: #ffffff !important;
+  }
+
+  html[data-theme='dark'] .tocMobilePinned [class*='tocCollapsibleButton'] {
+    background-color: var(--ifm-background-color) !important;
   }
 
   .tocCollapsiblePanel,
