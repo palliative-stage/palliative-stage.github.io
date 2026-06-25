@@ -226,7 +226,7 @@ export default function SearchBar({ handleSearchBarToggle, }) {
         // Code blocks will be re-rendered after this `useEffect` ran.
         // So we make the marking run after a macro task.
         setTimeout(() => {
-            const root = document.querySelector("article");
+            const root = document.querySelector(".theme-doc-markdown");
             if (!root) {
                 return;
             }
@@ -302,7 +302,7 @@ export default function SearchBar({ handleSearchBarToggle, }) {
         setInputValue("");
         search.current?.autocomplete.setVal("");
         if (Mark) {
-            const root = document.querySelector("article");
+            const root = document.querySelector(".theme-doc-markdown");
             if (root) {
                 new Mark(root).unmark();
             }

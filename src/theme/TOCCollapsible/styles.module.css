@@ -3,6 +3,12 @@
   margin: 1rem 0;
 }
 
+@media (max-width: 996px) {
+  .tocCollapsible {
+    margin-top: 0;
+  }
+}
+
 .tocCollapsibleContent > ul {
   border-left: none;
   border-top: 1px solid var(--ifm-color-emphasis-300);
@@ -20,4 +26,8 @@
 
 .tocCollapsibleExpanded {
   transform: none;
+}
+
+.tocCollapsiblePanel {
+  background-color: var(--ifm-background-color);
 }

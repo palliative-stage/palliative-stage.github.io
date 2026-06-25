@@ -29,12 +29,14 @@ export default function TOCCollapsible({
         lazy
         className={styles.tocCollapsibleContent}
         collapsed={collapsed}>
-        <TocPageTitle />
-        <TOCItems
-          toc={tocWithoutH1}
-          minHeadingLevel={minHeadingLevel}
-          maxHeadingLevel={maxHeadingLevel}
-        />
+        <div className={styles.tocCollapsiblePanel}>
+          <TocPageTitle />
+          <TOCItems
+            toc={tocWithoutH1}
+            minHeadingLevel={minHeadingLevel}
+            maxHeadingLevel={maxHeadingLevel}
+          />
+        </div>
       </Collapsible>
     </div>
   );
