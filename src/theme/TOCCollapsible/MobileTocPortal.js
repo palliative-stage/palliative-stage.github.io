@@ -2,6 +2,8 @@ import React, {useLayoutEffect, useState} from 'react';
 import {createPortal} from 'react-dom';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
+const PORTAL_OPEN_CLASS = 'mobile-toc-portal-open';
+
 function getAnchorBottom(anchorEl) {
   if (!anchorEl) {
     return 0;
@@ -9,8 +11,40 @@ function getAnchorBottom(anchorEl) {
   return Math.round(anchorEl.getBoundingClientRect().bottom);
 }
 
+function lockBodyScroll() {
+  const scrollY = window.scrollY;
+  const {body} = document;
+
+  body.style.position = 'fixed';
+  body.style.top = `-${scrollY}px`;
+  body.style.left = '0';
+  body.style.right = '0';
+  body.style.width = '100%';
+  body.style.overflow = 'hidden';
+  document.documentElement.classList.add(PORTAL_OPEN_CLASS);
+
+  return () => {
+    body.style.position = '';
+    body.style.top = '';
+    body.style.left = '';
+    body.style.right = '';
+    body.style.width = '';
+    body.style.overflow = '';
+    document.documentElement.classList.remove(PORTAL_OPEN_CLASS);
+    window.scrollTo(0, scrollY);
+  };
+}
+
 export default function MobileTocPortal({anchorRef, children}) {
   const [top, setTop] = useState(0);
+
+  useLayoutEffect(() => {
+    if (!ExecutionEnvironment.canUseDOM) {
+      return undefined;
+    }
+
+    return lockBodyScroll();
+  }, []);
 
   useLayoutEffect(() => {
     if (!ExecutionEnvironment.canUseDOM) {
@@ -23,11 +57,9 @@ export default function MobileTocPortal({anchorRef, children}) {
 
     updatePosition();
     window.addEventListener('resize', updatePosition);
-    window.addEventListener('scroll', updatePosition, true);
 
     return () => {
       window.removeEventListener('resize', updatePosition);
-      window.removeEventListener('scroll', updatePosition, true);
     };
   }, [anchorRef]);
 

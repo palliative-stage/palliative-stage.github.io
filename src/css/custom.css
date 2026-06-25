@@ -207,14 +207,26 @@ header {
   left: 0;
   right: 0;
   z-index: 200;
+  overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
   box-sizing: border-box;
   padding: 0 0.3rem 0.75rem;
   background-color: #ffffff;
   border: 1px solid var(--ifm-color-primary);
   border-top: none;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+html.mobile-toc-portal-open {
+  overflow: hidden;
+  height: 100%;
+}
+
+html.mobile-toc-portal-open body {
+  overflow: hidden;
 }
 
 html[data-theme='dark'] .mobile-toc-portal__sheet {
