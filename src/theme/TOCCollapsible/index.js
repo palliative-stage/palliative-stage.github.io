@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import clsx from 'clsx';
-import {useCollapsible, Collapsible} from '@docusaurus/theme-common';
+import {useCollapsible, Collapsible, useWindowSize} from '@docusaurus/theme-common';
 import TOCItems from '@theme/TOCItems';
 import CollapseButton from '@theme/TOCCollapsible/CollapseButton';
+import MobileTocPortal from '@theme/TOCCollapsible/MobileTocPortal';
 import {TocPageTitle} from '@theme/TOC/tocPageTitle';
 import styles from './styles.module.css';
+
+function useIsMobileViewport() {
+  const windowSize = useWindowSize();
+  return windowSize === 'mobile' || windowSize === 'ssr';
+}
 
 export default function TOCCollapsible({
   toc,
@@ -12,32 +18,47 @@ export default function TOCCollapsible({
   minHeadingLevel,
   maxHeadingLevel,
 }) {
+  const isMobileViewport = useIsMobileViewport();
+  const anchorRef = useRef(null);
   const {collapsed, toggleCollapsed} = useCollapsible({
     initialState: true,
   });
   const tocWithoutH1 = toc?.filter((heading) => heading.level !== 1) ?? [];
 
+  const panel = (
+    <div className={styles.tocCollapsiblePanel}>
+      <TocPageTitle />
+      <TOCItems
+        toc={tocWithoutH1}
+        minHeadingLevel={minHeadingLevel}
+        maxHeadingLevel={maxHeadingLevel}
+      />
+    </div>
+  );
+
   return (
     <div
+      ref={anchorRef}
       className={clsx(
         styles.tocCollapsible,
         !collapsed && styles.tocCollapsibleExpanded,
         className,
       )}>
       <CollapseButton collapsed={collapsed} onClick={toggleCollapsed} />
-      <Collapsible
-        lazy
-        className={styles.tocCollapsibleContent}
-        collapsed={collapsed}>
-        <div className={styles.tocCollapsiblePanel}>
-          <TocPageTitle />
-          <TOCItems
-            toc={tocWithoutH1}
-            minHeadingLevel={minHeadingLevel}
-            maxHeadingLevel={maxHeadingLevel}
-          />
-        </div>
-      </Collapsible>
+      {isMobileViewport ? (
+        !collapsed && (
+          <MobileTocPortal anchorRef={anchorRef} onClose={toggleCollapsed}>
+            {panel}
+          </MobileTocPortal>
+        )
+      ) : (
+        <Collapsible
+          lazy
+          className={styles.tocCollapsibleContent}
+          collapsed={collapsed}>
+          {panel}
+        </Collapsible>
+      )}
     </div>
   );
 }

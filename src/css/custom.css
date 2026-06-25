@@ -157,78 +157,128 @@ header {
   font-weight: 700;
 }
 
-/* Mobile in-page TOC — sticky bar always; dropdown panel when expanded */
+/* Mobile in-page TOC — sticky bar; expanded list rendered in a body portal */
 @media (max-width: 996px) {
-  .theme-doc-markdown {
-    position: relative;
-    z-index: 0;
-  }
-
   .theme-doc-toc-mobile {
     position: -webkit-sticky;
     position: sticky;
     top: var(--ifm-navbar-height);
-    z-index: 300;
+    z-index: 302;
     margin-top: 0;
-  }
-
-  .theme-doc-toc-mobile:not([class*='tocCollapsibleExpanded']) {
     background-color: var(--ifm-background-color);
     border: 1px solid var(--ifm-color-primary);
     border-radius: var(--ifm-global-radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
+  .theme-doc-toc-mobile[class*='tocCollapsibleExpanded'] {
+    border-radius: var(--ifm-global-radius) var(--ifm-global-radius) 0 0;
+    border-bottom: none;
+    box-shadow: none;
+  }
+
   .theme-doc-toc-mobile [class*='tocCollapsibleButton'] {
     color: var(--ifm-color-primary-darkest);
     font-weight: 700;
     background-color: var(--ifm-background-color);
-  }
-
-  .theme-doc-toc-mobile:not([class*='tocCollapsibleExpanded']) [class*='tocCollapsibleButton'] {
     border-radius: var(--ifm-global-radius);
   }
 
   .theme-doc-toc-mobile[class*='tocCollapsibleExpanded'] [class*='tocCollapsibleButton'] {
-    border: 1px solid var(--ifm-color-primary);
-    border-bottom: none;
     border-radius: var(--ifm-global-radius) var(--ifm-global-radius) 0 0;
   }
+}
 
-  .theme-doc-toc-mobile[class*='tocCollapsibleExpanded'] [class*='tocCollapsibleContent'] {
-    position: absolute;
-    top: 100%;
-    left: -0.3rem;
-    right: -0.3rem;
-    z-index: 1;
-    background-color: var(--ifm-background-color) !important;
-    border: 1px solid var(--ifm-color-primary);
-    border-top: none;
-    border-radius: 0 0 var(--ifm-global-radius) var(--ifm-global-radius);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    max-height: calc(100vh - var(--ifm-navbar-height) - 3rem);
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
-  }
+.mobile-toc-portal__backdrop {
+  position: fixed;
+  top: var(--ifm-navbar-height);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 300;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: default;
+}
 
-  .theme-doc-toc-mobile [class*='tocCollapsiblePanel'] {
-    background-color: var(--ifm-background-color) !important;
-  }
+.mobile-toc-portal__sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 301;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  padding: 0 0.3rem 0.75rem;
+  background-color: #ffffff;
+  border: 1px solid var(--ifm-color-primary);
+  border-top: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
 
-  .theme-doc-toc-mobile [class*='tocCollapsiblePanel'] ul {
-    border-top-color: rgba(37, 194, 160, 0.35);
-    background-color: var(--ifm-background-color) !important;
-  }
+html[data-theme='dark'] .mobile-toc-portal__sheet {
+  background-color: var(--ifm-background-color);
+}
 
-  .theme-doc-toc-mobile [class*='tocCollapsiblePanel'] li,
-  .theme-doc-toc-mobile .table-of-contents__link {
-    background-color: var(--ifm-background-color) !important;
-    color: var(--ifm-color-primary-darkest) !important;
-  }
+.mobile-toc-portal__sheet .table-of-contents__page-title > li > .table-of-contents__link {
+  color: var(--ifm-color-primary-darkest);
+  font-weight: 700;
+  background-color: #ffffff;
+}
 
-  .theme-doc-toc-mobile .table-of-contents__left-border > li > .table-of-contents__link {
-    color: var(--ifm-color-primary) !important;
-  }
+html[data-theme='dark'] .mobile-toc-portal__sheet .table-of-contents__page-title > li > .table-of-contents__link {
+  background-color: var(--ifm-background-color);
+}
+
+.mobile-toc-portal__sheet .table-of-contents__left-border > li > .table-of-contents__link {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  background-color: #ffffff;
+}
+
+html[data-theme='dark'] .mobile-toc-portal__sheet .table-of-contents__left-border > li > .table-of-contents__link {
+  background-color: var(--ifm-background-color);
+}
+
+.mobile-toc-portal__sheet .table-of-contents__left-border ul .table-of-contents__link {
+  color: var(--ifm-color-emphasis-700);
+  font-weight: 500;
+  background-color: #ffffff;
+}
+
+html[data-theme='dark'] .mobile-toc-portal__sheet .table-of-contents__left-border ul .table-of-contents__link {
+  background-color: var(--ifm-background-color);
+}
+
+.mobile-toc-portal__sheet ul {
+  border-top: 1px solid rgba(37, 194, 160, 0.35);
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0.2rem 0;
+}
+
+html[data-theme='dark'] .mobile-toc-portal__sheet ul {
+  background-color: var(--ifm-background-color);
+}
+
+.mobile-toc-portal__sheet li {
+  background-color: #ffffff;
+  margin: 0.4rem 0.8rem;
+}
+
+html[data-theme='dark'] .mobile-toc-portal__sheet li {
+  background-color: var(--ifm-background-color);
+}
+
+.mobile-toc-portal__sheet a {
+  display: block;
+  background-color: #ffffff;
+}
+
+html[data-theme='dark'] .mobile-toc-portal__sheet a {
+  background-color: var(--ifm-background-color);
 }
 
 /* Hebrew search bar — rtlcss must not flip these (inline styles set direction too) */
