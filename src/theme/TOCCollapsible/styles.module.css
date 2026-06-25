@@ -22,3 +22,17 @@
 .tocCollapsibleExpanded {
   transform: none;
 }
+
+@media (max-width: 996px) {
+  .tocCollapsible {
+    position: sticky;
+    top: var(--ifm-navbar-height);
+    z-index: calc(var(--ifm-z-index-fixed) - 1);
+    margin-top: 0;
+  }
+
+  .tocCollapsibleExpanded .tocCollapsibleContent {
+    max-height: calc(100vh - var(--ifm-navbar-height) - 3rem);
+    overflow-y: auto;
+  }
+}

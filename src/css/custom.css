@@ -160,7 +160,7 @@ header {
 @media (max-width: 996px) {
   [class*='tocCollapsible'] {
     border: 1px solid var(--ifm-color-primary);
-    background: rgba(37, 194, 160, 0.08);
+    background: var(--ifm-background-color);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
 
