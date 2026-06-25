@@ -157,20 +157,49 @@ header {
   font-weight: 700;
 }
 
+/* Mobile in-page TOC — sticky bar + readable expanded panel */
 @media (max-width: 996px) {
-  [class*='tocCollapsibleButton'] {
+  .theme-doc-markdown {
+    position: relative;
+    z-index: 0;
+  }
+
+  .theme-doc-toc-mobile {
+    position: -webkit-sticky;
+    position: sticky;
+    top: var(--ifm-navbar-height);
+    z-index: 201;
+    isolation: isolate;
+    margin-top: 0;
+    background-color: var(--ifm-background-color);
+    border: 1px solid var(--ifm-color-primary);
+    border-radius: var(--ifm-global-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .theme-doc-toc-mobile[class*='tocCollapsibleExpanded'] {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+  }
+
+  .theme-doc-toc-mobile [class*='tocCollapsibleButton'] {
     color: var(--ifm-color-primary-darkest);
     font-weight: 700;
     background-color: var(--ifm-background-color);
   }
 
-  [class*='tocCollapsibleContent'] > ul {
-    border-top-color: rgba(37, 194, 160, 0.35);
+  .theme-doc-toc-mobile [class*='tocCollapsibleContent'] {
+    background-color: var(--ifm-background-color);
+    max-height: calc(100vh - var(--ifm-navbar-height) - 3rem);
+    overflow-y: auto !important;
   }
 
-  [class*='tocCollapsibleContent'],
-  [class*='tocCollapsibleContent'] ul,
-  [class*='tocCollapsibleContent'] a {
+  .theme-doc-toc-mobile [class*='tocCollapsibleContent'] > ul {
+    border-top-color: rgba(37, 194, 160, 0.35);
+    background-color: var(--ifm-background-color);
+  }
+
+  .theme-doc-toc-mobile [class*='tocCollapsibleContent'] li,
+  .theme-doc-toc-mobile [class*='tocCollapsibleContent'] a {
     background-color: var(--ifm-background-color);
   }
 }

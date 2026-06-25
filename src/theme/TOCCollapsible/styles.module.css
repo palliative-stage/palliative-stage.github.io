@@ -1,5 +1,4 @@
 .tocCollapsible {
-  background-color: var(--ifm-menu-color-background-active);
   border-radius: var(--ifm-global-radius);
   margin: 1rem 0;
 }
@@ -21,62 +20,4 @@
 
 .tocCollapsibleExpanded {
   transform: none;
-}
-
-.tocCollapsibleBackdrop {
-  position: fixed;
-  inset: 0;
-  top: var(--ifm-navbar-height);
-  z-index: calc(var(--ifm-z-index-fixed) - 1);
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: rgba(0, 0, 0, 0.35);
-  cursor: default;
-}
-
-.tocCollapsiblePlaceholder {
-  display: block;
-}
-
-@media (max-width: 996px) {
-  .tocCollapsible {
-    position: sticky;
-    top: var(--ifm-navbar-height);
-    z-index: var(--ifm-z-index-fixed);
-    margin-top: 0;
-    background-color: var(--ifm-background-color);
-    border: 1px solid var(--ifm-color-primary);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  }
-
-  .tocCollapsibleContent {
-    background-color: var(--ifm-background-color);
-  }
-
-  .tocCollapsibleMobileOpen {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: var(--ifm-navbar-height);
-    z-index: var(--ifm-z-index-fixed);
-    box-sizing: border-box;
-    width: 100%;
-    max-height: calc(100vh - var(--ifm-navbar-height));
-    margin: 0;
-    padding: 0 0.3rem;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    background-color: var(--ifm-background-color);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  }
-
-  .tocCollapsibleMobileOpen .tocCollapsibleContent {
-    max-height: none !important;
-    overflow: visible !important;
-  }
 }
