@@ -6,6 +6,13 @@
 @media (max-width: 996px) {
   .tocCollapsible {
     margin-top: 0;
+    margin-bottom: 0;
+    background-color: var(--ifm-background-color);
+  }
+
+  .tocCollapsiblePanel,
+  .tocCollapsibleContent {
+    background-color: var(--ifm-background-color);
   }
 }
 
