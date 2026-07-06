@@ -6,7 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: 'Palliative Care',
+	title: 'טיפול פליאטיבי',
+	tagline: 'הנחיות למטפלים בישראל',
 //	url: 'https://palliative-stage.github.io',
 	url: 'https://cdel-palliative.org.il/',
 	baseUrl: '/',
@@ -39,6 +40,18 @@ const config = {
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
+			image: 'img/og-image.png',
+			metadata: [
+				{name: 'twitter:card', content: 'summary_large_image'},
+				{property: 'og:image:width', content: '1200'},
+				{property: 'og:image:height', content: '630'},
+				{property: 'og:image:alt', content: 'טיפול פליאטיבי – מרכז תום, פליאציה NET, NHS Scotland'},
+				{
+					name: 'description',
+					content:
+						'הנחיות סקוטיות לטיפול פליאטיבי, מותאמות לישראל. שיתוף פעולה של קבוצת פליאציה NET ומרכז תום (האוניברסיטה העברית).',
+				},
+			],
 			navbar: {
 				title: 'טיפול פליאטיבי', // TODO
 				logo: {

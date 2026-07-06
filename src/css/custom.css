@@ -115,22 +115,21 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   }
 }
 
-header {
+.theme-doc-markdown > header {
   background-image: url('/Icons.png');
-  background-size: contain; /* This will ensure the image scales properly */
-  background-repeat: no-repeat; /* Changed from repeat-y to prevent duplicates */
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-/* Specific adjustments for different screen sizes */
 @media only screen and (max-width: 599px) {
-  header {
-    background-size: 150px; /* Smaller size for mobile */
+  .theme-doc-markdown > header {
+    background-size: 150px;
   }
 }
 
 @media only screen and (min-width: 600px) {
-  header {
-    background-size: 300px; /* Your original desktop size */
+  .theme-doc-markdown > header {
+    background-size: 300px;
   }
 }
 
