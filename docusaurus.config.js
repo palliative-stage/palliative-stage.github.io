@@ -42,6 +42,8 @@ const config = {
 		({
 			image: 'img/og-image.png',
 			metadata: [
+				{property: 'og:site_name', content: 'טיפול פליאטיבי'},
+				{property: 'og:type', content: 'website'},
 				{name: 'twitter:card', content: 'summary_large_image'},
 				{property: 'og:image:width', content: '1200'},
 				{property: 'og:image:height', content: '630'},
@@ -132,6 +134,7 @@ const config = {
 
 	plugins: [
 		require.resolve('./src/plugins/hebrew-search-plugin.js'),
+		require.resolve('./src/plugins/homepage-og-plugin.js'),
 		[
 			'@docusaurus/plugin-pwa',
 			{
