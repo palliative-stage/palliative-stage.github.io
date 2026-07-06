@@ -1,4 +1,4 @@
-import React, {useCallback, useLayoutEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import clsx from 'clsx';
 import {useCollapsible, Collapsible, useWindowSize} from '@docusaurus/theme-common';
 import TOCItems from '@theme/TOCItems';
@@ -9,7 +9,19 @@ import styles from './styles.module.css';
 
 function useIsMobileViewport() {
   const windowSize = useWindowSize();
-  return windowSize === 'mobile' || windowSize === 'ssr';
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // SSR and the first client paint must agree (desktop layout) to avoid hydration
+  // corrupting the doc body. Switch to mobile layout only after mount.
+  if (!mounted) {
+    return false;
+  }
+
+  return windowSize === 'mobile';
 }
 
 export default function TOCCollapsible({
