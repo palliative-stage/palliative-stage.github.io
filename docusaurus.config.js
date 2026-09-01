@@ -112,6 +112,8 @@ const config = {
 		},
 	},
 
+	clientModules: [require.resolve('./src/clientModules/hashScroll.js')],
+
 	themes: [
 		[
 			require.resolve('@easyops-cn/docusaurus-search-local'),
