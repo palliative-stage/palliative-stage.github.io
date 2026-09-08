@@ -55,45 +55,48 @@ const config = {
 				},
 			],
 			navbar: {
-				title: 'טיפול פליאטיבי', // TODO
+				title: 'טיפול פליאטיבי',
 				logo: {
-					alt: 'My Site Logo', // TODO
-					src: 'img/logo.svg', // TODO
+					alt: 'טיפול פליאטיבי',
+					src: 'img/logo.svg',
 				},
 				items: [{ type: 'search', position: 'left' }],
 			},
 			footer: {
-				// TODO - Customize footer
 				style: 'dark',
 				links: [
 					{
-						title: 'Docs',
+						title: 'האתר',
 						items: [
 							{
-								label: 'Tutorial',
+								label: 'הקדמה',
 								to: '/',
+							},
+							{
+								label: 'תמיכה בעובדים סוציאליים',
+								to: '/Useful_links/Social_Work_Resources',
 							},
 						],
 					},
 					{
-						title: 'Community',
+						title: 'שותפים',
 						items: [
 							{
-								label: 'Stack Overflow',
-								href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+								label: 'פליאציה NET',
+								to: '/',
 							},
 							{
-								label: 'Discord',
-								href: 'https://discordapp.com/invite/docusaurus',
+								label: 'מרכז תום, האוניברסיטה העברית',
+								to: '/',
 							},
 							{
-								label: 'Twitter',
-								href: 'https://twitter.com/docusaurus',
+								label: 'NHS Scotland – Scottish Palliative Care Guidelines',
+								href: 'https://www.rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/scottish-palliative-care-guidelines/about-this-toolkit/',
 							},
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`, // TODO
+				copyright: `© ${new Date().getFullYear()} כל הזכויות שמורות. שיתוף פעולה של פליאציה NET ומרכז תום (האוניברסיטה העברית). התוכן המקורי של NHS Scotland שמור לארגון.`,
 			},
 			prism: {
 				theme: lightCodeTheme,
