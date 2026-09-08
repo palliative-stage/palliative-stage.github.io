@@ -66,19 +66,6 @@ const config = {
 				style: 'dark',
 				links: [
 					{
-						title: 'האתר',
-						items: [
-							{
-								label: 'הקדמה',
-								to: '/',
-							},
-							{
-								label: 'תמיכה בעובדים סוציאליים',
-								to: '/Useful_links/Social_Work_Resources',
-							},
-						],
-					},
-					{
 						title: 'שותפים',
 						items: [
 							{
@@ -90,7 +77,7 @@ const config = {
 							},
 							{
 								label: 'NHS Scotland – Scottish Palliative Care Guidelines',
-								href: 'https://www.rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/scottish-palliative-care-guidelines/about-this-toolkit/',
+								href: 'https://www.palliativecareguidelines.scot.nhs.uk/scottish-palliative-care-guidelines/',
 							},
 						],
 					},

@@ -19,7 +19,7 @@ slug: /
 הנחיות אלו נבחרו מהסיבות הבאות:  
 
 * ההנחיות נכתבו ע"י ארגון בריאות ציבורי שאינו למטרות רווח, בחסות משרד הבריאות הסקוטי לצורך יצירת סטנדרט לאומי. הן עברו ביקורת עמיתים קפדנית ומותאמות בשפתן למומחים ולעובדי בריאות שאינם מומחים בתחום.
-*הן מבוססות ראיות (מעטות לעתים, עקב מיעוט מחקרים בתחום) ונסיון קליני של מומחים בתחום, עליהם ניתן לקרוא [באתר המקור](https://www.rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/scottish-palliative-care-guidelines/about-this-toolkit/).  
+*הן מבוססות ראיות (מעטות לעתים, עקב מיעוט מחקרים בתחום) ונסיון קליני של מומחים בתחום, עליהם ניתן לקרוא [באתר המקור](https://www.palliativecareguidelines.scot.nhs.uk/scottish-palliative-care-guidelines/).  
 ההנחיות מתעדכנות מעת לעת (עדכון מקיף אחרון ב-2019) ,תחת כל הנחייה ניתן לראות מתי עודכנה לאחרונה וכן ניתן לעיין ברשימת עדכונים 
 [כאן](https://www.rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/scottish-palliative-care-guidelines/about-this-toolkit/guideline-schedule/).
 
