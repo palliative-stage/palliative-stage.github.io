@@ -1,7 +1,9 @@
 # Website
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website
-generator.
+generator. The live site is [cdel-palliative.org.il](https://cdel-palliative.org.il/), deployed on
+[Vercel](https://vercel.com/) from the `master` branch. Serverless routes under `/api` (analytics
+and error reporting) run only on Vercel.
 
 ### Installation
 
@@ -29,21 +31,23 @@ contents hosting service.
 
 ### Deployment
 
-Push to the master branch, GitHub will publish the updated version to the `gb-pages` branch and in
-that way deploy it automatically.
+Push to `master`. Vercel builds the site and publishes it. Do not use GitHub Pages for production:
+the `/api/*` endpoints do not run there.
 
-### Error logging and email alerts
+### Analytics and error logging
 
-Broken links and in-site 404 pages are recorded in PostgreSQL and can trigger email alerts via
-[Resend](https://resend.com/).
+Page views, search, and clicks are stored in PostgreSQL. Broken links and in-site 404 pages are
+recorded in the same database and can trigger email alerts via [Resend](https://resend.com/).
 
-1. Run `scripts/errors-schema.sql` against the same database as analytics (`DATABASE_URL`).
-2. Deploy the site on Vercel (the `/api/errors` endpoint does not run on GitHub Pages alone).
-3. Set these Vercel environment variables:
+1. Run `scripts/analytics-schema.sql` against the database (`DATABASE_URL`).
+2. Run `scripts/errors-schema.sql` against the same database.
+3. Deploy on Vercel.
+4. Set these Vercel environment variables:
 
 | Variable | Description |
 |----------|-------------|
-| `DATABASE_URL` | PostgreSQL connection string (same as analytics) |
+| `DATABASE_URL` | PostgreSQL connection string (analytics and errors) |
+| `ANALYTICS_ALLOWED_ORIGINS` | CORS allowlist for `/api/analytics` (production: `https://cdel-palliative.org.il`) |
 | `RESEND_API_KEY` | Resend API key |
 | `ERROR_ALERT_TO` | Inbox that receives alerts |
 | `ERROR_ALERT_FROM` | Verified sender address in Resend |
