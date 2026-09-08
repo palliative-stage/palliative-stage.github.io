@@ -481,3 +481,12 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
   }
 }
 /* rtl:end:ignore */
+
+/* English bibliographic citations inside RTL pages */
+/* rtl:begin:ignore */
+.references-ltr {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: isolate;
+}
+/* rtl:end:ignore */

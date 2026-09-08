@@ -82,12 +82,11 @@ const config = {
 						title: 'שותפים',
 						items: [
 							{
-								label: 'פליאציה NET',
-								to: '/',
+								html: 'פליאציה NET',
 							},
 							{
 								label: 'מרכז תום, האוניברסיטה העברית',
-								to: '/',
+								href: 'https://cdel.huji.ac.il/',
 							},
 							{
 								label: 'NHS Scotland – Scottish Palliative Care Guidelines',
