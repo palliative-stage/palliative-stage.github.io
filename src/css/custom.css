@@ -115,21 +115,28 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   }
 }
 
-.theme-doc-markdown > header {
+/* Partner banner (מרכז תום / פליאציה NET / NHS Scotland).
+   Docusaurus omits the <header> wrapper when the doc already has a markdown H1,
+   so the banner is painted on that H1: logos on the physical left, RTL title on the right. */
+.theme-doc-markdown > header,
+.theme-doc-markdown > h1:first-child {
   background-image: url('/Icons.png');
-  background-size: contain;
   background-repeat: no-repeat;
+  background-position: left center;
+  background-size: auto 5.5rem;
+  min-height: 6rem;
+  padding-left: 34rem;
+  box-sizing: border-box;
 }
 
-@media only screen and (max-width: 599px) {
-  .theme-doc-markdown > header {
-    background-size: 150px;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .theme-doc-markdown > header {
-    background-size: 300px;
+@media only screen and (max-width: 996px) {
+  .theme-doc-markdown > header,
+  .theme-doc-markdown > h1:first-child {
+    background-position: left top;
+    background-size: min(100%, 34rem) auto;
+    min-height: 0;
+    padding-left: 0;
+    padding-top: 6.5rem;
   }
 }
 
