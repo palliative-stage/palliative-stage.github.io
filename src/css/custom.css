@@ -115,30 +115,41 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   }
 }
 
-/* Partner banner (מרכז תום / פליאציה NET / NHS Scotland).
-   Docusaurus omits the <header> wrapper when the doc already has a markdown H1,
-   so the banner is painted on that H1: logos on the physical left, RTL title on the right. */
-.theme-doc-markdown > header,
-.theme-doc-markdown > h1:first-child {
+/*
+ * Partner banner (מרכז תום / פליאציה NET / NHS Scotland).
+ *
+ * History:
+ * - 2023-10 / 2024-11: `header { background-image: url('/Icons.png') }` with
+ *   no background-position. That painted the Docusaurus synthetic <header>
+ *   (the title wrapper) and kept the image on the physical left because the
+ *   CSS initial 0% 0% is not rewritten by rtlcss.
+ * - 2026-07-06 (LinkedIn fix 2): selector became `.theme-doc-markdown > header`.
+ *   Pages with a markdown H1 do not get that wrapper, so the banner vanished.
+ * - 2026-09-08: painting the H1 with `left` / `padding-left` put the banner on
+ *   the title line; rtlcss then flipped those to the right.
+ *
+ * Restore: a block above the title, physical left, rtlcss ignored.
+ */
+/* rtl:begin:ignore */
+.theme-doc-markdown::before {
+  content: '';
+  display: block;
+  height: 5.25rem;
+  margin: 0 0 0.85rem;
   background-image: url('/Icons.png');
   background-repeat: no-repeat;
-  background-position: left center;
-  background-size: auto 5.5rem;
-  min-height: 6rem;
-  padding-left: 34rem;
-  box-sizing: border-box;
+  background-position: left top;
+  background-size: auto 5.25rem;
 }
 
-@media only screen and (max-width: 996px) {
-  .theme-doc-markdown > header,
-  .theme-doc-markdown > h1:first-child {
-    background-position: left top;
-    background-size: min(100%, 34rem) auto;
-    min-height: 0;
-    padding-left: 0;
-    padding-top: 6.5rem;
+@media only screen and (max-width: 599px) {
+  .theme-doc-markdown::before {
+    height: 3.25rem;
+    margin-bottom: 0.6rem;
+    background-size: auto 3.25rem;
   }
 }
+/* rtl:end:ignore */
 
 /* In-page TOC — distinguish heading levels by nesting depth */
 .table-of-contents__page-title > li > .table-of-contents__link {
