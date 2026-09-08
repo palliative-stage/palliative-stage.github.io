@@ -1,0 +1,68 @@
+# https://cdel-palliative.org.il
+# Scottish Palliative Care Guidelines, adapted for Israel.
+# A collaboration between the Palliative NET group and the Tom Center
+# (Hebrew University of Jerusalem).
+#
+# This site exists to put palliative care guidance in front of clinicians,
+# patients and families in Israel. Crawling, indexing and citation are all
+# welcome, including by AI assistants. Nothing here is restricted.
+#
+# Note: /search is intentionally NOT disallowed. It carries a noindex meta
+# tag, and a crawler has to be able to fetch the page in order to see that
+# tag. Disallowing it here would hide the noindex instead of enforcing it.
+
+User-agent: *
+Allow: /
+
+# AI crawlers, named explicitly so the intent is on the record rather than
+# left to the default. Under the robots.txt standard a crawler that matches
+# a specific group ignores the "*" group, so each one is restated in full.
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Google AI (Gemini / Vertex AI training and grounding)
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Common Crawl
+User-agent: CCBot
+Allow: /
+
+# Microsoft / Bing AI
+User-agent: Bingbot
+Allow: /
+
+# Meta
+User-agent: meta-externalagent
+Allow: /
+
+# Apple
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://cdel-palliative.org.il/sitemap.xml
