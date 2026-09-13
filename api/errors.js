@@ -6,6 +6,7 @@
 const { Pool } = require('pg');
 const UAParser = require('ua-parser-js');
 const { sendErrorAlert } = require('./lib/mail');
+const { parseHttpUrl, probeUrl } = require('./lib/safeProbeUrl');
 
 function buildConnectionString() {
   const url = process.env.DATABASE_URL;
@@ -34,8 +35,6 @@ function getPool() {
   return pool;
 }
 
-const PROBE_TIMEOUT_MS = 5000;
-const PROBE_USER_AGENT = 'PalliativeSiteErrorChecker/1.0';
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 30;
 const rateLimitMap = new Map();
@@ -82,16 +81,7 @@ function normalizeFailedUrl(raw) {
 }
 
 function isProbeableUrl(raw) {
-  if (!raw || typeof raw !== 'string') return false;
-  const trimmed = raw.trim();
-  if (!trimmed || trimmed.startsWith('#')) return false;
-  if (/^(mailto:|tel:|javascript:)/i.test(trimmed)) return false;
-  try {
-    const url = new URL(trimmed);
-    return url.protocol === 'http:' || url.protocol === 'https:';
-  } catch {
-    return false;
-  }
+  return parseHttpUrl(raw) != null;
 }
 
 function buildExtra(payload) {
@@ -129,53 +119,6 @@ function checkRateLimit(ip) {
   if (entry.count >= RATE_LIMIT_MAX) return false;
   entry.count += 1;
   return true;
-}
-
-async function probeUrl(rawUrl) {
-  const url = normalizeFailedUrl(rawUrl);
-  if (!url) {
-    return { ok: false, skipped: true };
-  }
-
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), PROBE_TIMEOUT_MS);
-
-  try {
-    let method = 'HEAD';
-    let response = await fetch(url, {
-      method,
-      redirect: 'follow',
-      signal: controller.signal,
-      headers: { 'User-Agent': PROBE_USER_AGENT },
-    });
-
-    if (response.status === 405 || response.status === 501) {
-      method = 'GET';
-      response = await fetch(url, {
-        method,
-        redirect: 'follow',
-        signal: controller.signal,
-        headers: { 'User-Agent': PROBE_USER_AGENT },
-      });
-    }
-
-    return {
-      ok: response.status < 400,
-      statusCode: response.status,
-      failedUrl: url,
-      probeMethod: method,
-    };
-  } catch (err) {
-    return {
-      ok: false,
-      statusCode: null,
-      failedUrl: url,
-      probeMethod: 'HEAD',
-      probeError: err.name === 'AbortError' ? 'timeout' : String(err.message || err).slice(0, 255),
-    };
-  } finally {
-    clearTimeout(timer);
-  }
 }
 
 async function wasRecentlyEmailed(client, failedUrl, errorType) {
