@@ -33,6 +33,9 @@ const config = {
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
 				},
+				sitemap: {
+					ignorePatterns: ['/login', '/account/**', '/admin/**'],
+				},
 			}),
 		],
 	],
@@ -124,6 +127,26 @@ const config = {
 	],
 
 	plugins: [
+		function localApiProxyPlugin() {
+			return {
+				name: 'local-api-proxy',
+				configureWebpack() {
+					const target = process.env.DEV_API_PROXY;
+					if (!target) return {};
+					return {
+						devServer: {
+							proxy: {
+								'/api': {
+									target,
+									secure: false,
+									changeOrigin: true,
+								},
+							},
+						},
+					};
+				},
+			};
+		},
 		require.resolve('./src/plugins/hebrew-search-plugin.js'),
 		require.resolve('./src/plugins/homepage-og-plugin.js'),
 		[

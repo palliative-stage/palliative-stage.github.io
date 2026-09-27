@@ -3,6 +3,7 @@ import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { Analytics } from '@vercel/analytics/react';
 import { trackPageView, initClickTracking, getPageName, trackSearch } from '@site/src/lib/analytics';
+import StaffNav from '@site/src/components/StaffNav';
 import { initLinkErrorChecking } from '@site/src/lib/errors';
 import { cleanupPageTitleSearchHighlights } from '@site/src/lib/searchHighlightCleanup';
 import { useHistory } from '@docusaurus/router';
@@ -91,6 +92,7 @@ export default function Root({ children }) {
       {process.env.NODE_ENV === 'production' && (
         <Analytics mode="production" debug={false} />
       )}
+      <StaffNav />
       {children}
       <a
         className="whatsapp-contact-button"

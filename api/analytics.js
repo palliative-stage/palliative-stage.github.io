@@ -3,43 +3,9 @@
  * POST /api/analytics - accepts single event or array of events.
  */
 
-const { Pool } = require('pg');
 const UAParser = require('ua-parser-js');
-
-function buildConnectionString() {
-  const url = process.env.DATABASE_URL;
-  if (!url) {
-    return null;
-  }
-  if (/uselibpqcompat=true/i.test(url)) {
-    return url;
-  }
-  if (/sslmode=(prefer|require|verify-ca)(?=(&|$))/i.test(url)) {
-    return url.replace(/sslmode=(prefer|require|verify-ca)(?=(&|$))/i, 'sslmode=verify-full');
-  }
-  if (/sslmode=/i.test(url)) {
-    return url;
-  }
-  const separator = url.includes('?') ? '&' : '?';
-  return `${url}${separator}sslmode=verify-full`;
-}
-
-let pool;
-function getPool() {
-  if (!pool) {
-    const connectionString = buildConnectionString();
-    if (!connectionString) {
-      return null;
-    }
-    pool = new Pool({
-      connectionString,
-      max: 2,
-      idleTimeoutMillis: 5000,
-      connectionTimeoutMillis: 5000,
-    });
-  }
-  return pool;
-}
+const { getPool } = require('./lib/db');
+const { getSessionUser } = require('./lib/auth');
 
 function getDeviceType(userAgent) {
   if (!userAgent) return 'desktop';
@@ -139,9 +105,9 @@ async function processEvent(client, event, meta) {
       event_id, session_id, event_type, occurred_at, page_url, page_route, section,
       element_id, element_type, element_text_short, search_query, results_count, search_location,
       extra, entry_id, country, device_type, browser_name, os_name, language,
-      referrer_domain, utm_source, utm_medium, utm_campaign
+      referrer_domain, utm_source, utm_medium, utm_campaign, actor_role
     ) VALUES (
-      $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24
+      $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25
     )`,
     [
       event_id,
@@ -168,6 +134,7 @@ async function processEvent(client, event, meta) {
       utm_source ? String(utm_source).slice(0, 255) : null,
       utm_medium ? String(utm_medium).slice(0, 255) : null,
       utm_campaign ? String(utm_campaign).slice(0, 255) : null,
+      meta.actor_role || null,
     ]
   );
 }
@@ -246,10 +213,18 @@ module.exports = async function handler(req, res) {
     return;
   }
 
+  let actor = null;
+  try {
+    actor = await getSessionUser(req);
+  } catch (err) {
+    console.error('Analytics actor lookup failed:', err);
+  }
+
   const meta = {
     country: req.headers['x-vercel-ip-country'] || null,
     language: (req.headers['accept-language'] || '').split(',')[0]?.trim() || null,
     device_type: getDeviceType(req.headers['user-agent']),
+    actor_role: actor && actor.role ? actor.role : null,
   };
 
   const client = await dbPool.connect();

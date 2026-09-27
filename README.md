@@ -53,6 +53,31 @@ recorded in the same database and can trigger email alerts via [Resend](https://
 | `ERROR_ALERT_FROM` | Verified sender address in Resend |
 | `ERROR_EMAIL_ENABLED` | Optional; set to `false` to disable emails |
 | `ERRORS_ALLOWED_ORIGINS` | Optional CORS allowlist (defaults to `ANALYTICS_ALLOWED_ORIGINS`) |
+| `AUTH_SECRET` | Long random string used to hash staff session tokens |
+
+### Staff login
+
+There is no public registration. Accounts are created by the super-admin.
+
+1. Run `scripts/users-schema.sql` against `DATABASE_URL` (the seed script does this too).
+   That script also adds `events.actor_role`, which `/api/analytics` fills from the login cookie.
+2. Set `AUTH_SECRET` in Vercel.
+3. Create the super-admin once. The password is not stored in the repo:
+
+```
+SUPERADMIN_PASSWORD='your-initial-password' node scripts/seed-superadmin.js
+```
+
+The default email is `talmonf@gmail.com`. Override it with `SUPERADMIN_EMAIL`.
+If that account already exists, the script leaves the password unchanged.
+The first sign-in must change the password.
+
+- Super-admin: `/admin/users` (English) to add an Admin or a regular User and set an initial password.
+- Admin and super-admin: `/admin/analytics` (Hebrew). The default filter is the last 30 days, with admin activity hidden.
+- Regular users can sign in and change their password. They have no staff screens yet.
+
+To exercise the API locally, run `yarn dev:api` and start the site with `DEV_API_PROXY=http://127.0.0.1:3001`.
+On PowerShell: `$env:DEV_API_PROXY='http://127.0.0.1:3001'; yarn start`.
 
 **What triggers an alert:** the first occurrence of each `failed_url` + `error_type` within 24
 hours sends one email. Later duplicates are stored in the `errors` table but do not send another

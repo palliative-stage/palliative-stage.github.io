@@ -490,3 +490,229 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
   unicode-bidi: isolate;
 }
 /* rtl:end:ignore */
+
+.staff-nav-slot {
+  display: flex;
+  align-items: center;
+}
+
+.staff-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-inline-start: 0.75rem;
+}
+
+/* On a narrow RTL navbar the search box is pinned to the physical left.
+   Staff links sit in a bar under the navbar so they stay clickable. */
+/* rtl:begin:ignore */
+@media (max-width: 996px) {
+  .staff-nav-slot {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    direction: rtl;
+    justify-content: flex-start;
+    padding: 0.2rem 0.85rem 0.45rem;
+    background: var(--ifm-navbar-background-color);
+    border-bottom: 1px solid var(--ifm-toc-border-color);
+    box-shadow: var(--ifm-navbar-shadow);
+  }
+
+  .navbar:has(.staff-nav) ~ .main-wrapper {
+    padding-top: 2.4rem;
+  }
+}
+/* rtl:end:ignore */
+
+.staff-nav__button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+}
+
+.staff-page {
+  box-sizing: border-box;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4.5rem;
+}
+
+.staff-page--en {
+  direction: ltr;
+  text-align: left;
+}
+
+.staff-page h1 {
+  margin-bottom: 0.4rem;
+}
+
+.staff-card {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 1rem 1.1rem 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.staff-login {
+  max-width: 28rem;
+  margin: 2rem auto;
+}
+
+.staff-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.staff-form label,
+.staff-filters label {
+  display: grid;
+  gap: 0.3rem;
+  font-weight: 600;
+}
+
+.staff-form input,
+.staff-form select,
+.staff-filters input[type='date'],
+.staff-reset input {
+  font: inherit;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+.staff-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem 1rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.staff-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.staff-check {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.staff-error {
+  color: var(--ifm-color-danger);
+  margin: 0;
+}
+
+.staff-ok {
+  color: var(--ifm-color-success-darkest, var(--ifm-color-success-dark));
+  margin: 0;
+}
+
+.staff-muted {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.92rem;
+}
+
+.staff-callout {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+.staff-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.staff-kpi {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 0.8rem 0.95rem;
+  background: var(--ifm-background-surface-color);
+}
+
+.staff-kpi strong {
+  display: block;
+  font-size: 1.55rem;
+  line-height: 1.2;
+}
+
+.staff-grid-2,
+.staff-grid-3 {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.staff-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.staff-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}
+
+.staff-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.staff-table th,
+.staff-table td {
+  text-align: start;
+  padding: 0.45rem 0.3rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  vertical-align: top;
+}
+
+.staff-reset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.staff-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 150px;
+}
+
+.staff-bars__col {
+  flex: 1 1 0;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  min-width: 0;
+}
+
+.staff-bars__bar {
+  width: 100%;
+  background: var(--ifm-color-primary);
+  border-radius: 3px 3px 0 0;
+}
+
+.staff-bars__axis {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.35rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.85rem;
+}
