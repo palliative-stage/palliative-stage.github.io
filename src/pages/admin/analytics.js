@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { usePluginData } from '@docusaurus/useGlobalData';
 import StaffShell from '@site/src/components/StaffShell';
 import { staffFetch } from '@site/src/lib/staffApi';
 import { useStaffSession } from '@site/src/lib/useStaffSession';
@@ -108,6 +109,9 @@ export default function AnalyticsPage() {
   const { siteConfig } = useDocusaurusContext();
   const { loading: sessionLoading, user } = useStaffSession();
   const siteHosts = siteHostnames(siteConfig.url);
+  const { pages: sitePages = [] } = usePluginData('page-titles-plugin') || {};
+  const titleToPath = new Map(sitePages.map((page) => [page.title, page.path]));
+  const pathToTitle = new Map(sitePages.map((page) => [page.path, page.title]));
   const initial = defaultRange();
   const [from, setFrom] = useState(initial.from);
   const [to, setTo] = useState(initial.to);
@@ -334,9 +338,12 @@ export default function AnalyticsPage() {
                   </thead>
                   <tbody>
                     {report.topPages.map((row) => (
-                      <tr key={row.page}>
+                      <tr key={row.route || '—'}>
                         <td>
-                          <PageLink page={row.page} route={row.route} />
+                          <PageLink
+                            page={(row.route && pathToTitle.get(row.route)) || row.route || '—'}
+                            route={row.route}
+                          />
                         </td>
                         <td>{numberFormat.format(row.views)}</td>
                         <td>{percentFormat.format(row.share)}</td>
@@ -347,33 +354,16 @@ export default function AnalyticsPage() {
               )}
             </section>
 
-            <section className="staff-card">
-              <h2>חיפוש</h2>
-              <p className="staff-callout">
-                חיפושים ללא תוצאות: {numberFormat.format(report.summary.zeroResultSearches)}
-              </p>
-              {report.topSearches.length === 0 ? (
-                <p>אין נתונים</p>
-              ) : (
-                <table className="staff-table">
-                  <thead>
-                    <tr>
-                      <th>חיפוש</th>
-                      <th>פעמים</th>
-                      <th>ללא תוצאות</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {report.topSearches.map((row) => (
-                      <tr key={row.query}>
-                        <td>{row.query}</td>
-                        <td>{numberFormat.format(row.searches)}</td>
-                        <td>{numberFormat.format(row.zeroResults)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
+            <section>
+              <h2>קהל</h2>
+              <AudienceCard
+                title="מדינה"
+                rows={report.audience.countries}
+                labelFor={countryLabel}
+                tableDir="ltr"
+              />
+              <AudienceCard title="מכשיר" rows={report.audience.devices} labelFor={deviceLabel} />
+              <AudienceCard title="מקור" rows={report.audience.referrers} labelFor={referrerLabel} />
             </section>
           </div>
 
@@ -402,7 +392,7 @@ export default function AnalyticsPage() {
                           )}
                       </td>
                       <td>
-                        {row.page ? <PageLink page={row.page} route={row.route} /> : '—'}
+                        {row.page ? <PageLink page={row.page} route={titleToPath.get(row.page)} /> : '—'}
                       </td>
                       <td>{numberFormat.format(row.clicks)}</td>
                     </tr>
@@ -412,13 +402,33 @@ export default function AnalyticsPage() {
             )}
           </section>
 
-          <section>
-            <h2>קהל</h2>
-            <div className="staff-grid-3">
-              <AudienceCard title="מכשיר" rows={report.audience.devices} labelFor={deviceLabel} />
-              <AudienceCard title="מקור" rows={report.audience.referrers} labelFor={referrerLabel} />
-              <AudienceCard title="מדינה" rows={report.audience.countries} labelFor={countryLabel} />
-            </div>
+          <section className="staff-card">
+            <h2>חיפוש</h2>
+            <p className="staff-callout">
+              חיפושים ללא תוצאות: {numberFormat.format(report.summary.zeroResultSearches)}
+            </p>
+            {report.topSearches.length === 0 ? (
+              <p>אין נתונים</p>
+            ) : (
+              <table className="staff-table">
+                <thead>
+                  <tr>
+                    <th>חיפוש</th>
+                    <th>פעמים</th>
+                    <th>ללא תוצאות</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {report.topSearches.map((row) => (
+                    <tr key={row.query}>
+                      <td>{row.query}</td>
+                      <td>{numberFormat.format(row.searches)}</td>
+                      <td>{numberFormat.format(row.zeroResults)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </section>
         </>
       )}
@@ -534,14 +544,14 @@ function referrerLabel(key) {
   return key;
 }
 
-function AudienceCard({ title, rows, labelFor }) {
+function AudienceCard({ title, rows, labelFor, tableDir }) {
   return (
     <div className="staff-card">
       <h3>{title}</h3>
       {rows.length === 0 ? (
         <p>אין נתונים</p>
       ) : (
-        <table className="staff-table">
+        <table className="staff-table" dir={tableDir}>
           <tbody>
             {rows.map((row) => (
               <tr key={row.key}>

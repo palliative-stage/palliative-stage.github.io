@@ -953,7 +953,7 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
   padding: 0.35rem 0.55rem;
   border-radius: 6px;
   background: var(--ifm-color-emphasis-900);
-  color: var(--ifm-background-color);
+  color: var(--ifm-color-emphasis-0);
   font-size: 0.85rem;
   white-space: nowrap;
   pointer-events: none;

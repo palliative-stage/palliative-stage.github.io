@@ -33,10 +33,6 @@ function hideAdminsFromQuery(query) {
   return raw === '1' || raw === 'true';
 }
 
-function pageRouteSql(alias) {
-  return `MODE() WITHIN GROUP (ORDER BY NULLIF(split_part(${alias}.page_route, '#', 1), ''))`;
-}
-
 function userLabel(row) {
   const name = [row.first_name, row.last_name].filter(Boolean).join(' ');
   return name ? `${name} (${row.email})` : row.email;
@@ -106,13 +102,12 @@ module.exports = async function handler(req, res) {
     );
 
     const pagesResult = await pool.query(
-      `SELECT COALESCE(NULLIF(e.entry_id, ''), NULLIF(e.page_route, ''), '—') AS page,
-              ${pageRouteSql('e')} AS route,
+      `SELECT NULLIF(split_part(e.page_route, '#', 1), '') AS route,
               COUNT(*)::int AS views
        FROM events e
        WHERE e.event_type = 'page_view' AND ${where}
        GROUP BY 1
-       ORDER BY views DESC, page ASC
+       ORDER BY views DESC, route ASC
        LIMIT 12`,
       params
     );
@@ -135,8 +130,7 @@ module.exports = async function handler(req, res) {
     const clickResult = await pool.query(
       `SELECT COALESCE(NULLIF(e.element_text_short, ''), NULLIF(e.element_id, ''), '—') AS label,
               e.element_id AS element_id,
-              COALESCE(NULLIF(e.entry_id, ''), NULLIF(split_part(e.page_route, '#', 1), '')) AS page,
-              ${pageRouteSql('e')} AS route,
+              NULLIF(e.entry_id, '') AS page,
               COUNT(*)::int AS clicks
        FROM events e
        WHERE e.event_type = 'click' AND ${where}
@@ -210,7 +204,6 @@ module.exports = async function handler(req, res) {
         views: byDay.get(day) || 0,
       })),
       topPages: pagesResult.rows.map((row) => ({
-        page: row.page,
         route: row.route,
         views: row.views,
         share: pageViewsTotal ? row.views / pageViewsTotal : 0,
@@ -224,7 +217,6 @@ module.exports = async function handler(req, res) {
         label: row.label,
         elementId: row.element_id,
         page: row.page,
-        route: row.route,
         clicks: row.clicks,
       })),
       audience: {

@@ -11,6 +11,7 @@ import { useHistory } from '@docusaurus/router';
 const SEARCH_HIGHLIGHT_PARAM = '_highlight';
 const RTL_SEARCH_LABEL = 'חיפוש';
 const WHATSAPP_CONTACT_URL = 'https://wa.me/972544787720';
+const PAGE_TITLE_WAIT_MS = 2000;
 
 export default function Root({ children }) {
   const location = useLocation();
@@ -52,10 +53,32 @@ export default function Root({ children }) {
 
   useEffect(() => {
     const pathname = location?.pathname || (typeof window !== 'undefined' ? window.location.pathname : null);
-    if (pathname && pathname !== prevPathRef.current) {
-      prevPathRef.current = pathname;
-      trackPageView(getPageName());
+    if (!pathname || pathname === prevPathRef.current) return undefined;
+    const isFirstView = prevPathRef.current === null;
+    prevPathRef.current = pathname;
+    const pageUrl = window.location.href;
+
+    if (isFirstView) {
+      trackPageView(getPageName(), pageUrl);
+      return undefined;
     }
+
+    // The document title updates after navigation, so wait for it before recording the view.
+    const previousTitle = document.title;
+    let sent = false;
+    const send = () => {
+      if (sent) return;
+      sent = true;
+      observer.disconnect();
+      window.clearTimeout(timer);
+      trackPageView(getPageName(), pageUrl);
+    };
+    const observer = new MutationObserver(() => {
+      if (document.title !== previousTitle) send();
+    });
+    observer.observe(document.head, { childList: true, subtree: true, characterData: true });
+    const timer = window.setTimeout(send, PAGE_TITLE_WAIT_MS);
+    return send;
   }, [location?.pathname]);
 
   useEffect(() => {

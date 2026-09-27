@@ -149,6 +149,7 @@ const config = {
 		},
 		require.resolve('./src/plugins/hebrew-search-plugin.js'),
 		require.resolve('./src/plugins/homepage-og-plugin.js'),
+		require.resolve('./src/plugins/page-titles-plugin.js'),
 		[
 			'@docusaurus/plugin-pwa',
 			{

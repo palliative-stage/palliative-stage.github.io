@@ -132,12 +132,12 @@ function trackEvent(eventType, props = {}) {
   } catch (_) {}
 }
 
-function trackPageView(pageName) {
+function trackPageView(pageName, pageUrl) {
   const name = pageName != null ? String(pageName).slice(0, 255) : getPageName();
   trackEvent('page_view', {
     entry_id: name || undefined,
     section: name ? 'doc' : 'landing',
-    page_url: typeof window !== 'undefined' ? window.location.href : undefined,
+    page_url: pageUrl || (typeof window !== 'undefined' ? window.location.href : undefined),
   });
 }
 
@@ -201,7 +201,8 @@ function initClickTracking() {
         entry_id: pageName || undefined,
       });
     },
-    { passive: true }
+    // Capture phase: the router changes the URL during the bubbling click handler.
+    { passive: true, capture: true }
   );
 }
 
