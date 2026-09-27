@@ -2,10 +2,35 @@ import React, { useEffect, useRef, useState } from 'react';
 import { staffFetch } from '@site/src/lib/staffApi';
 
 const ERRORS = {
-  invalid_credentials: 'האימייל או הסיסמה שגויים.',
-  too_many_attempts: 'יותר מדי ניסיונות. נסו שוב מאוחר יותר.',
-  unavailable: 'לא ניתן להתחבר כרגע. נסו שוב.',
+  invalid_credentials: 'The email or password is incorrect.',
+  too_many_attempts: 'Too many attempts. Try again later.',
+  unavailable: 'Unable to sign in right now. Try again.',
 };
+
+function EyeIcon({ off }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"
+      />
+      <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="2" />
+      {off && (
+        <path
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          d="M4 4l16 16"
+        />
+      )}
+    </svg>
+  );
+}
 
 export default function LoginDialog({ onClose, onSuccess }) {
   const emailRef = useRef(null);
@@ -13,6 +38,7 @@ export default function LoginDialog({ onClose, onSuccess }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (emailRef.current) emailRef.current.focus();
@@ -55,17 +81,30 @@ export default function LoginDialog({ onClose, onSuccess }) {
       }}
     >
       <form
-        className="staff-card staff-dialog staff-form"
+        className="staff-card staff-dialog staff-dialog--en staff-form"
         role="dialog"
         aria-modal="true"
         aria-labelledby="staff-login-title"
-        dir="rtl"
-        lang="he"
+        dir="ltr"
+        lang="en"
         onSubmit={onSubmit}
       >
-        <h2 id="staff-login-title">כניסה</h2>
+        <div className="staff-dialog__header">
+          <h2 id="staff-login-title">Log in</h2>
+          <button type="button" className="staff-dialog__close" aria-label="Close" onClick={onClose}>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                d="M6 6l12 12M18 6L6 18"
+              />
+            </svg>
+          </button>
+        </div>
         <label>
-          אימייל
+          Email
           <input
             ref={emailRef}
             type="email"
@@ -77,15 +116,26 @@ export default function LoginDialog({ onClose, onSuccess }) {
           />
         </label>
         <label>
-          סיסמה
-          <input
-            type="password"
-            name="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
+          Password
+          <span className="staff-password">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+            />
+            <button
+              type="button"
+              className="staff-password__toggle"
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+              aria-pressed={showPassword}
+              onClick={() => setShowPassword((visible) => !visible)}
+            >
+              <EyeIcon off={showPassword} />
+            </button>
+          </span>
         </label>
         {error && (
           <p className="staff-error" role="alert">
@@ -93,7 +143,7 @@ export default function LoginDialog({ onClose, onSuccess }) {
           </p>
         )}
         <button className="button button--primary" type="submit" disabled={submitting}>
-          כניסה
+          Log in
         </button>
       </form>
     </div>

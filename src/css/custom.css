@@ -636,6 +636,85 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
   margin: 0;
 }
 
+/* rtl:begin:ignore */
+.staff-dialog--en {
+  direction: ltr;
+  text-align: left;
+}
+
+.staff-dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.staff-dialog__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ifm-color-emphasis-700);
+  cursor: pointer;
+}
+
+.staff-dialog__close:hover,
+.staff-dialog__close:focus {
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-hover-overlay);
+}
+
+.staff-dialog__close svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.staff-password {
+  position: relative;
+  display: block;
+}
+
+.staff-password input {
+  width: 100%;
+  padding-right: 2.4rem;
+}
+
+.staff-password__toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.25rem;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ifm-color-emphasis-700);
+  cursor: pointer;
+}
+/* rtl:end:ignore */
+
+.staff-password__toggle:hover,
+.staff-password__toggle:focus {
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-hover-overlay);
+}
+
+.staff-password__toggle svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
 .staff-page {
   box-sizing: border-box;
   max-width: 1100px;

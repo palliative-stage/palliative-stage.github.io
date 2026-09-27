@@ -39,7 +39,7 @@ the `/api/*` endpoints do not run there.
 Page views, search, and clicks are stored in PostgreSQL. Broken links and in-site 404 pages are
 recorded in the same database and can trigger email alerts via [Resend](https://resend.com/).
 
-1. Run `scripts/analytics-schema.sql` against the database (`DATABASE_URL`).
+1. Run the SQL scripts in [`scripts/sql/INDEX.md`](scripts/sql/INDEX.md) against the database (`DATABASE_URL`). Newest scripts are listed first. Check off a script in that index after you run it on production.
 2. Run `scripts/errors-schema.sql` against the same database.
 3. Deploy on Vercel.
 4. Set these Vercel environment variables:
@@ -59,8 +59,8 @@ recorded in the same database and can trigger email alerts via [Resend](https://
 
 There is no public registration. Accounts are created by the super-admin.
 
-1. Run `scripts/users-schema.sql` against `DATABASE_URL` (the seed script does this too).
-   That script also adds `events.actor_role`, which `/api/analytics` fills from the login cookie.
+1. Run any unchecked scripts in [`scripts/sql/INDEX.md`](scripts/sql/INDEX.md) against `DATABASE_URL`.
+   `/api/analytics` fills `events.actor_role` and `events.user_id` from the login cookie.
 2. Set `AUTH_SECRET` in Vercel.
 3. Create the super-admin once. The password is not stored in the repo:
 

@@ -92,12 +92,16 @@ async function processEvent(client, event, meta) {
   const now = new Date().toISOString();
 
   await client.query(
-    `INSERT INTO sessions (session_id, user_pseudo_id, country, device_type, first_event_at, last_event_at, first_seen_at, last_seen_at)
-     VALUES ($1, $2, $3, $4, $5, $5, $5, $5)
+    `INSERT INTO sessions (
+       session_id, user_pseudo_id, country, device_type,
+       first_event_at, last_event_at, first_seen_at, last_seen_at, user_id
+     )
+     VALUES ($1, $2, $3, $4, $5, $5, $5, $5, $6)
      ON CONFLICT (session_id) DO UPDATE SET
        last_event_at = EXCLUDED.last_event_at,
-       last_seen_at = EXCLUDED.last_seen_at`,
-    [session_id, user_pseudo_id || null, country, deviceType, occurred_at || now]
+       last_seen_at = EXCLUDED.last_seen_at,
+       user_id = COALESCE(EXCLUDED.user_id, sessions.user_id)`,
+    [session_id, user_pseudo_id || null, country, deviceType, occurred_at || now, meta.user_id || null]
   );
 
   await client.query(
@@ -105,9 +109,9 @@ async function processEvent(client, event, meta) {
       event_id, session_id, event_type, occurred_at, page_url, page_route, section,
       element_id, element_type, element_text_short, search_query, results_count, search_location,
       extra, entry_id, country, device_type, browser_name, os_name, language,
-      referrer_domain, utm_source, utm_medium, utm_campaign, actor_role
+      referrer_domain, utm_source, utm_medium, utm_campaign, actor_role, user_id
     ) VALUES (
-      $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25
+      $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26
     )`,
     [
       event_id,
@@ -135,6 +139,7 @@ async function processEvent(client, event, meta) {
       utm_medium ? String(utm_medium).slice(0, 255) : null,
       utm_campaign ? String(utm_campaign).slice(0, 255) : null,
       meta.actor_role || null,
+      meta.user_id || null,
     ]
   );
 }
@@ -225,6 +230,7 @@ module.exports = async function handler(req, res) {
     language: (req.headers['accept-language'] || '').split(',')[0]?.trim() || null,
     device_type: getDeviceType(req.headers['user-agent']),
     actor_role: actor && actor.role ? actor.role : null,
+    user_id: actor && actor.user_id ? actor.user_id : null,
   };
 
   const client = await dbPool.connect();

@@ -1,5 +1,4 @@
--- Privacy-friendly analytics schema for PostgreSQL (e.g. Neon)
--- Run this script to create the required tables before deploying the API.
+-- Analytics tables. Already applied on production.
 
 CREATE TABLE IF NOT EXISTS sessions (
   session_id TEXT PRIMARY KEY,
@@ -36,14 +35,10 @@ CREATE TABLE IF NOT EXISTS events (
   referrer_domain VARCHAR(255),
   utm_source VARCHAR(255),
   utm_medium VARCHAR(255),
-  utm_campaign VARCHAR(255),
-  actor_role TEXT
+  utm_campaign VARCHAR(255)
 );
 
 CREATE INDEX IF NOT EXISTS idx_events_session_id ON events(session_id);
 CREATE INDEX IF NOT EXISTS idx_events_event_type ON events(event_type);
 CREATE INDEX IF NOT EXISTS idx_events_occurred_at ON events(occurred_at);
 CREATE INDEX IF NOT EXISTS idx_events_entry_id ON events(entry_id);
-
--- Existing databases created before actor_role: safe to re-run.
-ALTER TABLE events ADD COLUMN IF NOT EXISTS actor_role TEXT;
