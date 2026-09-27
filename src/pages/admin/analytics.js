@@ -379,6 +379,7 @@ export default function AnalyticsPage() {
 
           <section className="staff-card">
             <h2>לחיצות</h2>
+            <p className="staff-muted">לא כולל מעבר לדפים מתוך דף הקדמה.</p>
             {report.topClicks.length === 0 ? (
               <p>אין נתונים</p>
             ) : (

@@ -9,6 +9,8 @@ const { sendJson } = require('../_lib/http');
 const { requireUser } = require('../_lib/auth');
 const { resolveAnalyticsRange, enumerateDays } = require('../_lib/analyticsRange');
 
+// Clicks on the home page are mostly navigation to other pages, already covered by top pages.
+const HOME_PAGE_TITLE = 'הקדמה';
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 function rangeSql(alias) {
@@ -133,11 +135,13 @@ module.exports = async function handler(req, res) {
               NULLIF(e.entry_id, '') AS page,
               COUNT(*)::int AS clicks
        FROM events e
-       WHERE e.event_type = 'click' AND ${where}
+       WHERE e.event_type = 'click'
+         AND e.entry_id IS DISTINCT FROM $5
+         AND ${where}
        GROUP BY 1, 2, 3
        ORDER BY clicks DESC, label ASC
        LIMIT 20`,
-      params
+      [...params, HOME_PAGE_TITLE]
     );
 
     const deviceResult = await pool.query(
