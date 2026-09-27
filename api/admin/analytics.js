@@ -3,10 +3,10 @@
  * Aggregates for admin and super-admin. Defaults: last 30 days, hide admins.
  */
 
-const { getPool } = require('../lib/db');
-const { sendJson } = require('../lib/http');
-const { requireUser } = require('../lib/auth');
-const { resolveAnalyticsRange, enumerateDays } = require('../lib/analyticsRange');
+const { getPool } = require('../_lib/db');
+const { sendJson } = require('../_lib/http');
+const { requireUser } = require('../_lib/auth');
+const { resolveAnalyticsRange, enumerateDays } = require('../_lib/analyticsRange');
 
 function rangeSql(alias) {
   const occurred = alias ? `${alias}.occurred_at` : 'occurred_at';

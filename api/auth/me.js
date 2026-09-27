@@ -2,8 +2,8 @@
  * GET /api/auth/me
  */
 
-const { sendJson } = require('../lib/http');
-const { getSessionUser, toPublicUser } = require('../lib/auth');
+const { sendJson } = require('../_lib/http');
+const { getSessionUser, toPublicUser } = require('../_lib/auth');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {

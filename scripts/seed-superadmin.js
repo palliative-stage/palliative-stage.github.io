@@ -11,8 +11,8 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-const { getPool } = require('../api/lib/db');
-const { hashPassword, normalizeEmail, isAcceptablePassword } = require('../api/lib/auth');
+const { getPool } = require('../api/_lib/db');
+const { hashPassword, normalizeEmail, isAcceptablePassword } = require('../api/_lib/auth');
 
 async function main() {
   const email = normalizeEmail(process.env.SUPERADMIN_EMAIL || 'talmonf@gmail.com');

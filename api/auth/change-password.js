@@ -3,8 +3,8 @@
  * Body: { currentPassword, newPassword }
  */
 
-const { getPool } = require('../lib/db');
-const { sendJson, readJsonBody } = require('../lib/http');
+const { getPool } = require('../_lib/db');
+const { sendJson, readJsonBody } = require('../_lib/http');
 const {
   requireUser,
   verifyPassword,
@@ -17,7 +17,7 @@ const {
   setSessionCookie,
   toPublicUser,
   destroySession,
-} = require('../lib/auth');
+} = require('../_lib/auth');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {

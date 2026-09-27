@@ -2,8 +2,8 @@
  * POST /api/auth/logout
  */
 
-const { sendJson } = require('../lib/http');
-const { destroySession, clearSessionCookie } = require('../lib/auth');
+const { sendJson } = require('../_lib/http');
+const { destroySession, clearSessionCookie } = require('../_lib/auth');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {

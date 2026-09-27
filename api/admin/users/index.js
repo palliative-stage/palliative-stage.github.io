@@ -5,14 +5,14 @@
  */
 
 const crypto = require('crypto');
-const { getPool } = require('../../lib/db');
-const { sendJson, readJsonBody } = require('../../lib/http');
+const { getPool } = require('../../_lib/db');
+const { sendJson, readJsonBody } = require('../../_lib/http');
 const {
   requireUser,
   normalizeEmail,
   isAcceptablePassword,
   hashPassword,
-} = require('../../lib/auth');
+} = require('../../_lib/auth');
 
 function toListUser(row) {
   return {

@@ -4,8 +4,8 @@
  */
 
 const UAParser = require('ua-parser-js');
-const { getPool } = require('./lib/db');
-const { getSessionUser } = require('./lib/auth');
+const { getPool } = require('./_lib/db');
+const { getSessionUser } = require('./_lib/auth');
 
 function getDeviceType(userAgent) {
   if (!userAgent) return 'desktop';

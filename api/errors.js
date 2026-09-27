@@ -5,8 +5,8 @@
 
 const { Pool } = require('pg');
 const UAParser = require('ua-parser-js');
-const { sendErrorAlert } = require('./lib/mail');
-const { parseHttpUrl, probeUrl } = require('./lib/safeProbeUrl');
+const { sendErrorAlert } = require('./_lib/mail');
+const { parseHttpUrl, probeUrl } = require('./_lib/safeProbeUrl');
 
 function buildConnectionString() {
   const url = process.env.DATABASE_URL;
