@@ -833,24 +833,35 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
   line-height: 1.2;
 }
 
-.staff-grid-2,
-.staff-grid-3 {
+.staff-table {
+  display: table;
+  width: 100%;
+  margin-bottom: 0;
+  border-collapse: collapse;
+}
+
+.staff-overview {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1rem;
+  align-items: start;
   margin-bottom: 1rem;
 }
 
-.staff-grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+.staff-audience {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1rem;
+  align-items: start;
 }
 
-.staff-grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+.staff-audience h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
 }
 
-.staff-table {
-  width: 100%;
-  border-collapse: collapse;
+.staff-audience .staff-table {
+  font-size: 0.9rem;
 }
 
 .staff-table th,

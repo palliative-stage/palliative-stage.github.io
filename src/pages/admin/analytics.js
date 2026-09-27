@@ -77,6 +77,14 @@ function formatDayMonth(iso) {
   return `${iso.slice(8, 10)}/${iso.slice(5, 7)}`;
 }
 
+function normalizePath(path) {
+  let result = path;
+  try {
+    result = decodeURI(path);
+  } catch {}
+  return result.length > 1 ? result.replace(/\/+$/, '') : result;
+}
+
 function siteHostnames(siteUrl) {
   const hosts = [];
   try {
@@ -111,7 +119,7 @@ export default function AnalyticsPage() {
   const siteHosts = siteHostnames(siteConfig.url);
   const { pages: sitePages = [] } = usePluginData('page-titles-plugin') || {};
   const titleToPath = new Map(sitePages.map((page) => [page.title, page.path]));
-  const pathToTitle = new Map(sitePages.map((page) => [page.path, page.title]));
+  const pathToTitle = new Map(sitePages.map((page) => [normalizePath(page.path), page.title]));
   const initial = defaultRange();
   const [from, setFrom] = useState(initial.from);
   const [to, setTo] = useState(initial.to);
@@ -322,7 +330,7 @@ export default function AnalyticsPage() {
             <DailyChart points={report.dailyPageViews} />
           </section>
 
-          <div className="staff-grid-2">
+          <div className="staff-overview">
             <section className="staff-card">
               <h2>הדפים הנצפים ביותר</h2>
               {report.topPages.length === 0 ? (
@@ -341,8 +349,8 @@ export default function AnalyticsPage() {
                       <tr key={row.route || '—'}>
                         <td>
                           <PageLink
-                            page={(row.route && pathToTitle.get(row.route)) || row.route || '—'}
-                            route={row.route}
+                            page={(row.route && pathToTitle.get(normalizePath(row.route))) || row.route || '—'}
+                            route={row.route && normalizePath(row.route)}
                           />
                         </td>
                         <td>{numberFormat.format(row.views)}</td>
@@ -354,16 +362,18 @@ export default function AnalyticsPage() {
               )}
             </section>
 
-            <section>
+            <section className="staff-card">
               <h2>קהל</h2>
-              <AudienceCard
-                title="מדינה"
-                rows={report.audience.countries}
-                labelFor={countryLabel}
-                tableDir="ltr"
-              />
-              <AudienceCard title="מכשיר" rows={report.audience.devices} labelFor={deviceLabel} />
-              <AudienceCard title="מקור" rows={report.audience.referrers} labelFor={referrerLabel} />
+              <div className="staff-audience">
+                <AudienceTable
+                  title="מדינה"
+                  rows={report.audience.countries}
+                  labelFor={countryLabel}
+                  tableDir="ltr"
+                />
+                <AudienceTable title="מכשיר" rows={report.audience.devices} labelFor={deviceLabel} />
+                <AudienceTable title="מקור" rows={report.audience.referrers} labelFor={referrerLabel} />
+              </div>
             </section>
           </div>
 
@@ -544,9 +554,9 @@ function referrerLabel(key) {
   return key;
 }
 
-function AudienceCard({ title, rows, labelFor, tableDir }) {
+function AudienceTable({ title, rows, labelFor, tableDir }) {
   return (
-    <div className="staff-card">
+    <div>
       <h3>{title}</h3>
       {rows.length === 0 ? (
         <p>אין נתונים</p>
