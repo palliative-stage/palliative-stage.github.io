@@ -53,6 +53,8 @@ describe('cookies and emails', () => {
     assert.equal(auth.normalizePersonName('a'.repeat(81)), null);
     assert.equal(auth.normalizeOccupation('nurse'), 'nurse');
     assert.equal(auth.normalizeOccupation('teacher'), null);
+    assert.equal(auth.normalizeOccupationOther('  פיזיותרפיסטית '), 'פיזיותרפיסטית');
+    assert.equal(auth.normalizeOccupationOther(''), null);
   });
 
   it('includes profile fields on the public user', () => {
@@ -63,7 +65,8 @@ describe('cookies and emails', () => {
         must_change_password: 0,
         first_name: 'דנה',
         last_name: 'לוי',
-        occupation: 'nurse',
+        occupation: 'other',
+        occupation_other: 'פיזיותרפיסטית',
       }),
       {
         email: 'a@b.com',
@@ -71,7 +74,8 @@ describe('cookies and emails', () => {
         mustChangePassword: false,
         firstName: 'דנה',
         lastName: 'לוי',
-        occupation: 'nurse',
+        occupation: 'other',
+        occupationOther: 'פיזיותרפיסטית',
       }
     );
   });

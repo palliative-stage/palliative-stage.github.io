@@ -74,17 +74,25 @@ function normalizeEmail(email) {
   return value;
 }
 
-function normalizePersonName(value) {
+function normalizeShortText(value) {
   if (typeof value !== 'string') return null;
-  const name = value.trim().replace(/\s+/g, ' ');
-  if (!name || name.length > MAX_NAME_LENGTH) return null;
-  if (/[\u0000-\u001F\u007F]/.test(name)) return null;
-  return name;
+  const text = value.trim().replace(/\s+/g, ' ');
+  if (!text || text.length > MAX_NAME_LENGTH) return null;
+  if (/[\u0000-\u001F\u007F]/.test(text)) return null;
+  return text;
+}
+
+function normalizePersonName(value) {
+  return normalizeShortText(value);
 }
 
 function normalizeOccupation(value) {
   if (typeof value !== 'string' || !OCCUPATIONS.includes(value)) return null;
   return value;
+}
+
+function normalizeOccupationOther(value) {
+  return normalizeShortText(value);
 }
 
 function isAcceptablePassword(password) {
@@ -167,6 +175,7 @@ function toPublicUser(row) {
     firstName: row.first_name || '',
     lastName: row.last_name || '',
     occupation: row.occupation || null,
+    occupationOther: row.occupation_other || '',
   };
 }
 
@@ -223,7 +232,7 @@ async function getSessionUser(req) {
   if (!pool) return null;
   const { rows } = await pool.query(
     `SELECT u.user_id, u.email, u.role, u.must_change_password, u.failed_login_count, u.locked_until,
-            u.first_name, u.last_name, u.occupation
+            u.first_name, u.last_name, u.occupation, u.occupation_other
      FROM auth_sessions s
      JOIN users u ON u.user_id = s.user_id
      WHERE s.token_hash = $1 AND s.expires_at > NOW()`,
@@ -266,6 +275,7 @@ module.exports = {
   normalizeEmail,
   normalizePersonName,
   normalizeOccupation,
+  normalizeOccupationOther,
   isAcceptablePassword,
   hashToken,
   readCookie,

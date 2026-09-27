@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import StaffShell from '@site/src/components/StaffShell';
-import { publishStaffUser, staffFetch } from '@site/src/lib/staffApi';
+import { needsProfile, publishStaffUser, staffFetch, staffHome } from '@site/src/lib/staffApi';
 import { useStaffSession } from '@site/src/lib/useStaffSession';
 
 const OCCUPATIONS = [
@@ -13,6 +13,7 @@ const OCCUPATIONS = [
 const ERRORS = {
   invalid_name: 'יש למלא שם פרטי ושם משפחה.',
   invalid_occupation: 'יש לבחור עיסוק.',
+  invalid_occupation_other: 'יש לפרט את העיסוק.',
   password_change_required: 'יש להחליף סיסמה לפני המשך.',
   unauthorized: 'ההתחברות פגה. היכנסו שוב.',
   unavailable: 'לא ניתן לשמור כרגע. נסו שוב.',
@@ -23,6 +24,7 @@ export default function ProfilePage() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [occupation, setOccupation] = useState('');
+  const [occupationOther, setOccupationOther] = useState('');
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -43,6 +45,7 @@ export default function ProfilePage() {
     setFirstName(user.firstName || '');
     setLastName(user.lastName || '');
     setOccupation(user.occupation || '');
+    setOccupationOther(user.occupationOther || '');
   }, [user]);
 
   async function onSubmit(event) {
@@ -53,11 +56,20 @@ export default function ProfilePage() {
     try {
       const { ok, data } = await staffFetch('/api/auth/profile', {
         method: 'PATCH',
-        body: JSON.stringify({ firstName, lastName, occupation }),
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          occupation,
+          occupationOther: occupation === 'other' ? occupationOther : '',
+        }),
       });
       if (!ok || !data || !data.user) {
         setError(ERRORS[(data && data.error) || 'unavailable'] || ERRORS.unavailable);
         setSubmitting(false);
+        return;
+      }
+      if (needsProfile(user)) {
+        window.location.assign(staffHome(data.user));
         return;
       }
       publishStaffUser(data.user);
@@ -80,6 +92,7 @@ export default function ProfilePage() {
     <StaffShell title="עדכון פרופיל">
       <form className="staff-card staff-login staff-form" onSubmit={onSubmit}>
         <h1>עדכון פרופיל</h1>
+        {needsProfile(user) && <p>ברוכים הבאים! נא להשלים את פרטי הפרופיל.</p>}
         <label>
           שם פרטי
           <input
@@ -120,6 +133,20 @@ export default function ProfilePage() {
             ))}
           </select>
         </label>
+        {occupation === 'other' && (
+          <label>
+            פירוט העיסוק
+            <input
+              type="text"
+              name="occupationOther"
+              autoComplete="organization-title"
+              value={occupationOther}
+              onChange={(event) => setOccupationOther(event.target.value)}
+              required
+              maxLength={80}
+            />
+          </label>
+        )}
         {notice && <p className="staff-ok">{notice}</p>}
         {error && (
           <p className="staff-error" role="alert">

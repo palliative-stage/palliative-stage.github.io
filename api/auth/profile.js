@@ -1,6 +1,7 @@
 /**
  * PATCH /api/auth/profile
- * Body: { firstName, lastName, occupation }
+ * Body: { firstName, lastName, occupation, occupationOther }
+ * occupationOther is required when occupation is 'other' and ignored otherwise.
  */
 
 const { getPool } = require('../_lib/db');
@@ -9,6 +10,7 @@ const {
   requireUser,
   normalizePersonName,
   normalizeOccupation,
+  normalizeOccupationOther,
   toPublicUser,
 } = require('../_lib/auth');
 
@@ -46,13 +48,21 @@ module.exports = async function handler(req, res) {
     sendJson(res, 400, { error: 'invalid_occupation' });
     return;
   }
+  let occupationOther = null;
+  if (occupation === 'other') {
+    occupationOther = normalizeOccupationOther(body && body.occupationOther);
+    if (!occupationOther) {
+      sendJson(res, 400, { error: 'invalid_occupation_other' });
+      return;
+    }
+  }
 
   try {
     await pool.query(
       `UPDATE users
-       SET first_name = $1, last_name = $2, occupation = $3, updated_at = NOW()
-       WHERE user_id = $4`,
-      [firstName, lastName, occupation, user.user_id]
+       SET first_name = $1, last_name = $2, occupation = $3, occupation_other = $4, updated_at = NOW()
+       WHERE user_id = $5`,
+      [firstName, lastName, occupation, occupationOther, user.user_id]
     );
     sendJson(res, 200, {
       user: toPublicUser({
@@ -60,6 +70,7 @@ module.exports = async function handler(req, res) {
         first_name: firstName,
         last_name: lastName,
         occupation,
+        occupation_other: occupationOther,
       }),
     });
   } catch (err) {

@@ -27,9 +27,18 @@ export async function staffFetch(url, options = {}) {
   return { ok: res.ok, status: res.status, data };
 }
 
+export function needsProfile(user) {
+  return Boolean(user && (!user.firstName || !user.lastName || !user.occupation));
+}
+
 export function staffDestination(user) {
   if (!user) return '/login';
   if (user.mustChangePassword) return '/account/password';
+  if (needsProfile(user)) return '/account/profile';
+  return staffHome(user);
+}
+
+export function staffHome(user) {
   if (user.role === 'admin' || user.role === 'super_admin') return '/admin/analytics';
   return '/';
 }

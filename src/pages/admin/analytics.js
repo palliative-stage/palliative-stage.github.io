@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import StaffShell from '@site/src/components/StaffShell';
 import { staffFetch } from '@site/src/lib/staffApi';
 import { useStaffSession } from '@site/src/lib/useStaffSession';
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const MAX_X_LABELS = 8;
+const Y_TICKS = 4;
 const numberFormat = new Intl.NumberFormat('he-IL');
 const percentFormat = new Intl.NumberFormat('he-IL', {
   style: 'percent',
@@ -24,18 +28,15 @@ const DEVICE_LABELS = {
   unknown: 'לא ידוע',
 };
 
-const COUNTRY_LABELS = {
-  IL: 'ישראל',
-  US: 'ארצות הברית',
-  GB: 'בריטניה',
-  DE: 'גרמניה',
-  FR: 'צרפת',
-  unknown: 'לא ידוע',
-};
+const countryNames =
+  typeof Intl !== 'undefined' && Intl.DisplayNames
+    ? new Intl.DisplayNames(['en'], { type: 'region' })
+    : null;
 
 const ERRORS = {
   invalid_range: 'טווח התאריכים אינו תקין.',
   range_too_long: 'ניתן לבחור עד 366 ימים.',
+  invalid_user: 'המשתמש שנבחר אינו תקין.',
   unavailable: 'לא ניתן לטעון את הנתונים. נסו שוב.',
 };
 
@@ -71,6 +72,30 @@ function activePreset(from, to) {
   return [7, 30, 90].find((days) => from === addIsoDays(today, -(days - 1))) || null;
 }
 
+function formatDayMonth(iso) {
+  return `${iso.slice(8, 10)}/${iso.slice(5, 7)}`;
+}
+
+function siteHostnames(siteUrl) {
+  const hosts = [];
+  try {
+    const host = new URL(siteUrl).hostname.replace(/^www\./, '');
+    hosts.push(host, `www.${host}`);
+  } catch {}
+  if (typeof window !== 'undefined') hosts.push(window.location.hostname);
+  return hosts;
+}
+
+function niceAxis(max) {
+  if (max <= 0) return { top: 1, step: 1 };
+  const raw = max / Y_TICKS;
+  const magnitude = 10 ** Math.floor(Math.log10(raw));
+  const normalized = raw / magnitude;
+  const factor = normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10;
+  const step = Math.max(1, factor * magnitude);
+  return { top: Math.ceil(max / step) * step, step };
+}
+
 function inclusiveDays(from, to) {
   const [y1, m1, d1] = from.split('-').map(Number);
   const [y2, m2, d2] = to.split('-').map(Number);
@@ -80,11 +105,16 @@ function inclusiveDays(from, to) {
 export default function AnalyticsPage() {
   const history = useHistory();
   const location = useLocation();
+  const { siteConfig } = useDocusaurusContext();
   const { loading: sessionLoading, user } = useStaffSession();
+  const siteHosts = siteHostnames(siteConfig.url);
   const initial = defaultRange();
   const [from, setFrom] = useState(initial.from);
   const [to, setTo] = useState(initial.to);
   const [hideAdmins, setHideAdmins] = useState(true);
+  const [userId, setUserId] = useState('');
+  const [users, setUsers] = useState([]);
+  const [userQuery, setUserQuery] = useState('');
   const [ready, setReady] = useState(false);
   const [report, setReport] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -118,6 +148,8 @@ export default function AnalyticsPage() {
       setTo(urlTo);
     }
     if (params.get('hideAdmins') === '0') setHideAdmins(false);
+    const urlUser = params.get('userId');
+    if (urlUser && UUID_RE.test(urlUser)) setUserId(urlUser);
     setReady(true);
   }, []);
 
@@ -136,7 +168,9 @@ export default function AnalyticsPage() {
       return undefined;
     }
 
-    const search = `?from=${from}&to=${to}&hideAdmins=${hideAdmins ? '1' : '0'}`;
+    const search =
+      `?from=${from}&to=${to}&hideAdmins=${hideAdmins ? '1' : '0'}` +
+      (userId ? `&userId=${userId}` : '');
     if (location.search !== search) {
       history.replace({ pathname: location.pathname, search });
     }
@@ -163,6 +197,7 @@ export default function AnalyticsPage() {
           return;
         }
         setReport(data);
+        if (data.users) setUsers(data.users);
         setLoading(false);
       })
       .catch((err) => {
@@ -176,12 +211,21 @@ export default function AnalyticsPage() {
       cancelled = true;
       controller.abort();
     };
-  }, [ready, allowed, from, to, hideAdmins, history, location.pathname, location.search]);
+  }, [ready, allowed, from, to, hideAdmins, userId, history, location.pathname, location.search]);
+
+  useEffect(() => {
+    if (!userId || userQuery) return;
+    const match = users.find((item) => item.userId === userId);
+    if (match) setUserQuery(match.label);
+  }, [users, userId, userQuery]);
 
   const preset = activePreset(from, to);
-  const maxViews = report
-    ? report.dailyPageViews.reduce((max, point) => Math.max(max, point.views), 0)
-    : 0;
+
+  function onUserQuery(value) {
+    setUserQuery(value);
+    const match = users.find((item) => item.label === value);
+    setUserId(match ? match.userId : '');
+  }
 
   function applyPreset(days) {
     const today = jerusalemToday();
@@ -214,10 +258,28 @@ export default function AnalyticsPage() {
           עד תאריך
           <input type="date" value={to} onChange={(event) => setTo(event.target.value)} />
         </label>
+        <label>
+          משתמש
+          <span className="staff-user-filter">
+            <input
+              type="search"
+              list="staff-analytics-users"
+              placeholder="כל המשתמשים"
+              value={userQuery}
+              onChange={(event) => onUserQuery(event.target.value)}
+            />
+            <datalist id="staff-analytics-users">
+              {users.map((item) => (
+                <option key={item.userId} value={item.label} />
+              ))}
+            </datalist>
+          </span>
+        </label>
         <label className="staff-check">
           <input
             type="checkbox"
-            checked={hideAdmins}
+            checked={hideAdmins && !userId}
+            disabled={Boolean(userId)}
             onChange={(event) => setHideAdmins(event.target.checked)}
           />
           הסתר פעילות מנהלים
@@ -253,28 +315,7 @@ export default function AnalyticsPage() {
 
           <section className="staff-card">
             <h2>פעילות לאורך זמן</h2>
-            <div
-              className="staff-bars"
-              role="img"
-              aria-label={`צפיות יומיות, שיא ${numberFormat.format(maxViews)}`}
-            >
-              {report.dailyPageViews.map((point) => (
-                <div
-                  key={point.day}
-                  className="staff-bars__col"
-                  title={`${formatIso(point.day)}: ${numberFormat.format(point.views)}`}
-                >
-                  <div
-                    className="staff-bars__bar"
-                    style={{ height: maxViews && point.views ? `${(point.views / maxViews) * 100}%` : '0%' }}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="staff-bars__axis">
-              <span>{formatIso(report.from)}</span>
-              <span>{formatIso(report.to)}</span>
-            </div>
+            <DailyChart points={report.dailyPageViews} />
           </section>
 
           <div className="staff-grid-2">
@@ -294,7 +335,9 @@ export default function AnalyticsPage() {
                   <tbody>
                     {report.topPages.map((row) => (
                       <tr key={row.page}>
-                        <td>{row.page}</td>
+                        <td>
+                          <PageLink page={row.page} route={row.route} />
+                        </td>
                         <td>{numberFormat.format(row.views)}</td>
                         <td>{percentFormat.format(row.share)}</td>
                       </tr>
@@ -343,17 +386,23 @@ export default function AnalyticsPage() {
                 <thead>
                   <tr>
                     <th>לחיצה</th>
+                    <th>בדף</th>
                     <th>פעמים</th>
                   </tr>
                 </thead>
                 <tbody>
                   {report.topClicks.map((row) => (
-                    <tr key={`${row.label}-${row.elementId || ''}`}>
+                    <tr key={`${row.label}-${row.elementId || ''}-${row.page || ''}`}>
                       <td>
                         {row.label}
-                        {row.elementId && row.elementId !== row.label && (
-                          <span className="staff-muted"> · {row.elementId}</span>
-                        )}
+                        {row.elementId &&
+                          row.elementId !== row.label &&
+                          !siteHosts.includes(row.elementId) && (
+                            <span className="staff-muted"> · {row.elementId}</span>
+                          )}
+                      </td>
+                      <td>
+                        {row.page ? <PageLink page={row.page} route={row.route} /> : '—'}
                       </td>
                       <td>{numberFormat.format(row.clicks)}</td>
                     </tr>
@@ -377,6 +426,87 @@ export default function AnalyticsPage() {
   );
 }
 
+function PageLink({ page, route }) {
+  if (!route) return page;
+  return (
+    <a href={route} target="_blank" rel="noopener noreferrer">
+      {page}
+    </a>
+  );
+}
+
+function DailyChart({ points }) {
+  const [active, setActive] = useState(null);
+  const max = points.reduce((result, point) => Math.max(result, point.views), 0);
+  const { top, step } = niceAxis(max);
+  const ticks = [];
+  for (let value = 0; value <= top; value += step) ticks.push(value);
+  const labelEvery = Math.max(1, Math.ceil(points.length / MAX_X_LABELS));
+  const edge = Math.max(1, Math.floor(points.length * 0.15));
+
+  function tooltipPosition(index) {
+    if (index < edge) return { insetInlineStart: 0 };
+    if (index >= points.length - edge) return { insetInlineEnd: 0 };
+    return { left: '50%', transform: 'translateX(-50%)' };
+  }
+
+  return (
+    <div
+      className="staff-chart"
+      role="img"
+      aria-label={`צפיות יומיות, שיא ${numberFormat.format(max)}`}
+      onMouseLeave={() => setActive(null)}
+    >
+      <div className="staff-chart__y" aria-hidden="true">
+        <span className="staff-chart__y-size">{numberFormat.format(top)}</span>
+        {ticks.map((value) => (
+          <span key={value} style={{ bottom: `${(value / top) * 100}%` }}>
+            {numberFormat.format(value)}
+          </span>
+        ))}
+      </div>
+      <div className="staff-chart__plot">
+        {ticks.map((value) => (
+          <div
+            key={value}
+            className="staff-chart__grid"
+            style={{ bottom: `${(value / top) * 100}%` }}
+          />
+        ))}
+        <div className="staff-chart__bars">
+          {points.map((point, index) => (
+            <div
+              key={point.day}
+              className={`staff-chart__col${active === index ? ' staff-chart__col--active' : ''}`}
+              onMouseEnter={() => setActive(index)}
+              onClick={() => setActive((current) => (current === index ? null : index))}
+            >
+              <div
+                className="staff-chart__bar"
+                style={{ height: point.views ? `${(point.views / top) * 100}%` : '0%' }}
+              />
+              {active === index && (
+                <div className="staff-chart__tooltip" style={tooltipPosition(index)}>
+                  <bdi dir="ltr">{formatDayMonth(point.day)}</bdi>
+                  <strong>{numberFormat.format(point.views)} צפיות</strong>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div />
+      <div className="staff-chart__x" aria-hidden="true">
+        {points.map((point, index) => (
+          <span key={point.day}>
+            {index % labelEvery === 0 && <bdi dir="ltr">{formatDayMonth(point.day)}</bdi>}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Kpi({ label, value }) {
   return (
     <div className="staff-kpi">
@@ -391,7 +521,12 @@ function deviceLabel(key) {
 }
 
 function countryLabel(key) {
-  return COUNTRY_LABELS[key] || key;
+  if (key === 'unknown') return 'Unknown';
+  try {
+    return (countryNames && countryNames.of(key)) || key;
+  } catch {
+    return key;
+  }
 }
 
 function referrerLabel(key) {

@@ -3,7 +3,12 @@ import { createPortal } from 'react-dom';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import LoginDialog from '@site/src/components/LoginDialog';
-import { STAFF_USER_EVENT, staffFetch } from '@site/src/lib/staffApi';
+import {
+  STAFF_USER_EVENT,
+  needsProfile,
+  staffDestination,
+  staffFetch,
+} from '@site/src/lib/staffApi';
 
 function staffInitials(user) {
   const first = Array.from(String(user.firstName || '').trim());
@@ -107,8 +112,8 @@ export default function StaffNav() {
 
   const onLogin = useCallback((nextUser) => {
     setLoginOpen(false);
-    if (nextUser && nextUser.mustChangePassword) {
-      window.location.assign('/account/password');
+    if (nextUser && (nextUser.mustChangePassword || needsProfile(nextUser))) {
+      window.location.assign(staffDestination(nextUser));
       return;
     }
     setUser(nextUser);

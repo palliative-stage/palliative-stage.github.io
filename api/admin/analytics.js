@@ -1,6 +1,7 @@
 /**
- * GET /api/admin/analytics?from=YYYY-MM-DD&to=YYYY-MM-DD&hideAdmins=1
- * Aggregates for admin and super-admin. Defaults: last 30 days, hide admins.
+ * GET /api/admin/analytics?from=YYYY-MM-DD&to=YYYY-MM-DD&hideAdmins=1&userId=<uuid>
+ * Aggregates for admin and super-admin. Defaults: last 30 days, hide admins, all users.
+ * hideAdmins is ignored when userId is set.
  */
 
 const { getPool } = require('../_lib/db');
@@ -8,9 +9,12 @@ const { sendJson } = require('../_lib/http');
 const { requireUser } = require('../_lib/auth');
 const { resolveAnalyticsRange, enumerateDays } = require('../_lib/analyticsRange');
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 function rangeSql(alias) {
   const occurred = alias ? `${alias}.occurred_at` : 'occurred_at';
   const role = alias ? `${alias}.actor_role` : 'actor_role';
+  const userId = alias ? `${alias}.user_id` : 'user_id';
   return `
     ${occurred} >= ($1::date::timestamp AT TIME ZONE 'Asia/Jerusalem')
     AND ${occurred} < (($2::date + 1)::timestamp AT TIME ZONE 'Asia/Jerusalem')
@@ -19,6 +23,7 @@ function rangeSql(alias) {
       OR ${role} IS NULL
       OR ${role} = 'user'
     )
+    AND ($4::uuid IS NULL OR ${userId} = $4::uuid)
   `;
 }
 
@@ -26,6 +31,15 @@ function hideAdminsFromQuery(query) {
   const raw = query && query.hideAdmins;
   if (raw == null || raw === '') return true;
   return raw === '1' || raw === 'true';
+}
+
+function pageRouteSql(alias) {
+  return `MODE() WITHIN GROUP (ORDER BY NULLIF(split_part(${alias}.page_route, '#', 1), ''))`;
+}
+
+function userLabel(row) {
+  const name = [row.first_name, row.last_name].filter(Boolean).join(' ');
+  return name ? `${name} (${row.email})` : row.email;
 }
 
 module.exports = async function handler(req, res) {
@@ -50,11 +64,23 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  const hideAdmins = hideAdminsFromQuery(query);
-  const params = [range.from, range.to, hideAdmins];
+  const rawUserId = typeof query.userId === 'string' ? query.userId : '';
+  if (rawUserId && !UUID_RE.test(rawUserId)) {
+    sendJson(res, 400, { error: 'invalid_user' });
+    return;
+  }
+  const userId = rawUserId || null;
+  const hideAdmins = userId ? false : hideAdminsFromQuery(query);
+  const params = [range.from, range.to, hideAdmins, userId];
   const where = rangeSql('e');
 
   try {
+    const usersResult = await pool.query(
+      `SELECT user_id, email, first_name, last_name
+       FROM users
+       ORDER BY NULLIF(first_name, '') NULLS LAST, NULLIF(last_name, '') NULLS LAST, email`
+    );
+
     const summaryResult = await pool.query(
       `SELECT
          COUNT(*) FILTER (WHERE e.event_type = 'page_view')::int AS page_views,
@@ -81,6 +107,7 @@ module.exports = async function handler(req, res) {
 
     const pagesResult = await pool.query(
       `SELECT COALESCE(NULLIF(e.entry_id, ''), NULLIF(e.page_route, ''), '—') AS page,
+              ${pageRouteSql('e')} AS route,
               COUNT(*)::int AS views
        FROM events e
        WHERE e.event_type = 'page_view' AND ${where}
@@ -108,12 +135,14 @@ module.exports = async function handler(req, res) {
     const clickResult = await pool.query(
       `SELECT COALESCE(NULLIF(e.element_text_short, ''), NULLIF(e.element_id, ''), '—') AS label,
               e.element_id AS element_id,
+              COALESCE(NULLIF(e.entry_id, ''), NULLIF(split_part(e.page_route, '#', 1), '')) AS page,
+              ${pageRouteSql('e')} AS route,
               COUNT(*)::int AS clicks
        FROM events e
        WHERE e.event_type = 'click' AND ${where}
-       GROUP BY 1, 2
+       GROUP BY 1, 2, 3
        ORDER BY clicks DESC, label ASC
-       LIMIT 12`,
+       LIMIT 20`,
       params
     );
 
@@ -168,6 +197,8 @@ module.exports = async function handler(req, res) {
       from: range.from,
       to: range.to,
       hideAdmins,
+      userId,
+      users: usersResult.rows.map((row) => ({ userId: row.user_id, label: userLabel(row) })),
       empty:
         summary.pageViews === 0 &&
         summary.searches === 0 &&
@@ -180,6 +211,7 @@ module.exports = async function handler(req, res) {
       })),
       topPages: pagesResult.rows.map((row) => ({
         page: row.page,
+        route: row.route,
         views: row.views,
         share: pageViewsTotal ? row.views / pageViewsTotal : 0,
       })),
@@ -191,6 +223,8 @@ module.exports = async function handler(req, res) {
       topClicks: clickResult.rows.map((row) => ({
         label: row.label,
         elementId: row.element_id,
+        page: row.page,
+        route: row.route,
         clicks: row.clicks,
       })),
       audience: {
