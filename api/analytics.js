@@ -37,6 +37,9 @@ function buildExtra(payload) {
   if (payload.entry_hostname != null) extra.entry_hostname = payload.entry_hostname;
   if (payload.entry_origin != null) extra.entry_origin = payload.entry_origin;
   if (payload.entry_url != null) extra.entry_url = payload.entry_url;
+  if (typeof payload.link_url === 'string' && /^https?:\/\//i.test(payload.link_url)) {
+    extra.link_url = payload.link_url.slice(0, 500);
+  }
   return Object.keys(extra).length > 0 ? extra : null;
 }
 

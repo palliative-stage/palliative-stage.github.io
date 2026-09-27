@@ -193,12 +193,17 @@ function initClickTracking() {
 
       const pageName = getPageName();
 
+      const linkUrl = linkOrButton.tagName === 'A' && /^https?:/i.test(linkOrButton.href)
+        ? linkOrButton.href.slice(0, 500)
+        : undefined;
+
       trackEvent('click', {
         element_id: elementId,
         element_type: elementType,
         element_text_short: elementTextShort || undefined,
         section: section || undefined,
         entry_id: pageName || undefined,
+        link_url: linkUrl,
       });
     },
     // Capture phase: the router changes the URL during the bubbling click handler.

@@ -85,6 +85,11 @@ function normalizePath(path) {
   return result.length > 1 ? result.replace(/\/+$/, '') : result;
 }
 
+function safeLinkUrl(url) {
+  if (typeof url !== 'string') return null;
+  return /^https?:\/\//i.test(url) ? url : null;
+}
+
 function siteHostnames(siteUrl) {
   const hosts = [];
   try {
@@ -386,8 +391,8 @@ export default function AnalyticsPage() {
               <table className="staff-table">
                 <thead>
                   <tr>
+                    <th>דף</th>
                     <th>לחיצה</th>
-                    <th>בדף</th>
                     <th>פעמים</th>
                   </tr>
                 </thead>
@@ -395,15 +400,18 @@ export default function AnalyticsPage() {
                   {report.topClicks.map((row) => (
                     <tr key={`${row.label}-${row.elementId || ''}-${row.page || ''}`}>
                       <td>
-                        {row.label}
+                        {row.page ? <PageLink page={row.page} route={titleToPath.get(row.page)} /> : '—'}
+                      </td>
+                      <td>
+                        <PageLink
+                          page={row.label}
+                          route={safeLinkUrl(row.linkUrl) || titleToPath.get(row.label)}
+                        />
                         {row.elementId &&
                           row.elementId !== row.label &&
                           !siteHosts.includes(row.elementId) && (
                             <span className="staff-muted"> · {row.elementId}</span>
                           )}
-                      </td>
-                      <td>
-                        {row.page ? <PageLink page={row.page} route={titleToPath.get(row.page)} /> : '—'}
                       </td>
                       <td>{numberFormat.format(row.clicks)}</td>
                     </tr>

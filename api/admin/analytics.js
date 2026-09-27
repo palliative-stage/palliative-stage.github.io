@@ -133,6 +133,7 @@ module.exports = async function handler(req, res) {
       `SELECT COALESCE(NULLIF(e.element_text_short, ''), NULLIF(e.element_id, ''), '—') AS label,
               e.element_id AS element_id,
               NULLIF(e.entry_id, '') AS page,
+              MODE() WITHIN GROUP (ORDER BY e.extra->>'link_url') AS link_url,
               COUNT(*)::int AS clicks
        FROM events e
        WHERE e.event_type = 'click'
@@ -221,6 +222,7 @@ module.exports = async function handler(req, res) {
         label: row.label,
         elementId: row.element_id,
         page: row.page,
+        linkUrl: row.link_url,
         clicks: row.clicks,
       })),
       audience: {
