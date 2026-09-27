@@ -18,6 +18,8 @@ const SCRYPT_P = 1;
 const SCRYPT_KEYLEN = 32;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_NAME_LENGTH = 80;
+const OCCUPATIONS = ['doctor', 'nurse', 'social_worker', 'other'];
 
 let dummyHash;
 
@@ -69,6 +71,19 @@ function normalizeEmail(email) {
   if (typeof email !== 'string') return null;
   const value = email.trim().toLowerCase();
   if (!value || value.length > 254 || !EMAIL_RE.test(value)) return null;
+  return value;
+}
+
+function normalizePersonName(value) {
+  if (typeof value !== 'string') return null;
+  const name = value.trim().replace(/\s+/g, ' ');
+  if (!name || name.length > MAX_NAME_LENGTH) return null;
+  if (/[\u0000-\u001F\u007F]/.test(name)) return null;
+  return name;
+}
+
+function normalizeOccupation(value) {
+  if (typeof value !== 'string' || !OCCUPATIONS.includes(value)) return null;
   return value;
 }
 
@@ -149,6 +164,9 @@ function toPublicUser(row) {
     email: row.email,
     role: row.role,
     mustChangePassword: Boolean(row.must_change_password),
+    firstName: row.first_name || '',
+    lastName: row.last_name || '',
+    occupation: row.occupation || null,
   };
 }
 
@@ -204,7 +222,8 @@ async function getSessionUser(req) {
   const pool = getPool();
   if (!pool) return null;
   const { rows } = await pool.query(
-    `SELECT u.user_id, u.email, u.role, u.must_change_password, u.failed_login_count, u.locked_until
+    `SELECT u.user_id, u.email, u.role, u.must_change_password, u.failed_login_count, u.locked_until,
+            u.first_name, u.last_name, u.occupation
      FROM auth_sessions s
      JOIN users u ON u.user_id = s.user_id
      WHERE s.token_hash = $1 AND s.expires_at > NOW()`,
@@ -245,6 +264,8 @@ module.exports = {
   verifyPassword,
   getDummyHash,
   normalizeEmail,
+  normalizePersonName,
+  normalizeOccupation,
   isAcceptablePassword,
   hashToken,
   readCookie,

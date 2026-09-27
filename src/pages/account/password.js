@@ -17,22 +17,19 @@ export default function ChangePasswordPage() {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const [notice, setNotice] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const forced = Boolean(user && user.mustChangePassword);
 
   useEffect(() => {
     if (loading) return;
-    if (!user) {
-      window.location.replace('/login');
-      return;
-    }
-    if (!user.mustChangePassword) {
-      window.location.replace(staffDestination(user));
-    }
+    if (!user) window.location.replace('/login');
   }, [loading, user]);
 
   async function onSubmit(event) {
     event.preventDefault();
     setError('');
+    setNotice('');
     if (newPassword !== confirmPassword) {
       setError('הסיסמאות אינן תואמות.');
       return;
@@ -48,26 +45,34 @@ export default function ChangePasswordPage() {
         setSubmitting(false);
         return;
       }
-      window.location.assign(staffDestination(data.user));
+      if (user.mustChangePassword) {
+        window.location.assign(staffDestination(data.user));
+        return;
+      }
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+      setNotice('הסיסמה עודכנה.');
+      setSubmitting(false);
     } catch {
       setError(ERRORS.unavailable);
       setSubmitting(false);
     }
   }
 
-  if (loading || !user || !user.mustChangePassword) {
+  if (loading || !user) {
     return (
-      <StaffShell title="החלפת סיסמה">
+      <StaffShell title="שינוי סיסמה">
         <p>טוען...</p>
       </StaffShell>
     );
   }
 
   return (
-    <StaffShell title="החלפת סיסמה">
+    <StaffShell title="שינוי סיסמה">
       <form className="staff-card staff-login staff-form" onSubmit={onSubmit}>
-        <h1>החלפת סיסמה</h1>
-        <p>יש לבחור סיסמה חדשה לפני המשך השימוש.</p>
+        <h1>שינוי סיסמה</h1>
+        {forced && <p>יש לבחור סיסמה חדשה לפני המשך השימוש.</p>}
         <label>
           סיסמה נוכחית
           <input
@@ -104,6 +109,7 @@ export default function ChangePasswordPage() {
           />
         </label>
         <p className="staff-muted">לפחות 10 תווים.</p>
+        {notice && <p className="staff-ok">{notice}</p>}
         {error && (
           <p className="staff-error" role="alert">
             {error}

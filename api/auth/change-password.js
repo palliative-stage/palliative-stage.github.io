@@ -55,7 +55,8 @@ module.exports = async function handler(req, res) {
 
   try {
     const { rows } = await pool.query(
-      `SELECT user_id, email, password_hash, role, must_change_password, failed_login_count, locked_until
+      `SELECT user_id, email, password_hash, role, must_change_password, failed_login_count, locked_until,
+              first_name, last_name, occupation
        FROM users WHERE user_id = $1`,
       [user.user_id]
     );

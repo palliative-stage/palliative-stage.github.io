@@ -1,3 +1,10 @@
+export const STAFF_USER_EVENT = 'ps-staff-user';
+
+export function publishStaffUser(user) {
+  if (typeof window === 'undefined') return;
+  window.dispatchEvent(new CustomEvent(STAFF_USER_EVENT, { detail: user }));
+}
+
 export async function staffFetch(url, options = {}) {
   const headers = { ...(options.headers || {}) };
   if (options.body != null && !headers['Content-Type']) {

@@ -1,16 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
-import { staffFetch } from '@site/src/lib/staffApi';
+import LoginDialog from '@site/src/components/LoginDialog';
+import { STAFF_USER_EVENT, staffFetch } from '@site/src/lib/staffApi';
+
+function staffInitials(user) {
+  const first = Array.from(String(user.firstName || '').trim());
+  const last = Array.from(String(user.lastName || '').trim());
+  if (first.length && last.length) return first[0] + last[0];
+  const fromEmail = Array.from(String(user.email || '')).slice(0, 2).join('');
+  return fromEmail || '?';
+}
 
 export default function StaffNav() {
   const location = useLocation();
+  const accountRef = useRef(null);
+  const loginButtonRef = useRef(null);
   const [user, setUser] = useState(undefined);
   const [slot, setSlot] = useState(null);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
+    setMenuOpen(false);
     staffFetch('/api/auth/me')
       .then(({ data }) => {
         if (!cancelled) setUser(data && data.user ? data.user : null);
@@ -24,18 +38,26 @@ export default function StaffNav() {
   }, [location.pathname]);
 
   useEffect(() => {
+    const onUser = (event) => {
+      setUser(event.detail || null);
+    };
+    window.addEventListener(STAFF_USER_EVENT, onUser);
+    return () => window.removeEventListener(STAFF_USER_EVENT, onUser);
+  }, []);
+
+  useEffect(() => {
     const find = () => {
       const items = document.querySelector('.navbar__inner > .navbar__items:not(.navbar__items--right)');
       if (!items) return null;
-      let slot = items.querySelector(':scope > .staff-nav-slot');
-      if (!slot) {
-        slot = document.createElement('div');
-        slot.className = 'staff-nav-slot';
+      let next = items.querySelector(':scope > .staff-nav-slot');
+      if (!next) {
+        next = document.createElement('div');
+        next.className = 'staff-nav-slot';
         const brand = items.querySelector('.navbar__brand');
-        if (brand) brand.insertAdjacentElement('afterend', slot);
-        else items.appendChild(slot);
+        if (brand) brand.insertAdjacentElement('afterend', next);
+        else items.appendChild(next);
       }
-      return slot;
+      return next;
     };
 
     const attach = () => {
@@ -47,16 +69,50 @@ export default function StaffNav() {
 
     attach();
     const timer = window.setTimeout(attach, 0);
-    const navbar = document.querySelector('.navbar');
-    const observer = navbar ? new MutationObserver(attach) : null;
-    if (navbar && observer) observer.observe(navbar, { childList: true });
+    const root = document.querySelector('#__docusaurus') || document.body;
+    const observer = new MutationObserver(attach);
+    observer.observe(root, { childList: true, subtree: true });
     window.addEventListener('resize', attach);
     return () => {
       window.clearTimeout(timer);
       window.removeEventListener('resize', attach);
-      if (observer) observer.disconnect();
+      observer.disconnect();
     };
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const onPointer = (event) => {
+      if (accountRef.current && !accountRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+    const onKey = (event) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+    document.addEventListener('mousedown', onPointer);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onPointer);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [menuOpen]);
+
+  const closeLogin = useCallback(() => {
+    setLoginOpen(false);
+    window.setTimeout(() => {
+      if (loginButtonRef.current) loginButtonRef.current.focus();
+    }, 0);
+  }, []);
+
+  const onLogin = useCallback((nextUser) => {
+    setLoginOpen(false);
+    if (nextUser && nextUser.mustChangePassword) {
+      window.location.assign('/account/password');
+      return;
+    }
+    setUser(nextUser);
+  }, []);
 
   if (!slot || user === undefined) return null;
 
@@ -69,29 +125,72 @@ export default function StaffNav() {
     window.location.href = '/';
   }
 
-  return createPortal(
-    <div className="staff-nav">
-      {!user && (
-        <Link className="navbar__link" to="/login">
-          כניסה
-        </Link>
+  return (
+    <>
+      {createPortal(
+        <div className="staff-nav">
+          {!user && (
+            <button
+              ref={loginButtonRef}
+              type="button"
+              className="staff-nav__login"
+              onClick={() => setLoginOpen(true)}
+            >
+              כניסה
+            </button>
+          )}
+          {user && (
+            <div className="staff-nav__account" ref={accountRef}>
+              <button
+                type="button"
+                className="staff-nav__avatar"
+                aria-label="הפרופיל שלי"
+                aria-haspopup="menu"
+                aria-expanded={menuOpen}
+                onClick={() => setMenuOpen((open) => !open)}
+              >
+                {staffInitials(user)}
+              </button>
+              {menuOpen && (
+                <ul className="staff-nav__menu" role="menu">
+                  <li role="none">
+                    <Link role="menuitem" to="/account/profile" onClick={() => setMenuOpen(false)}>
+                      עדכון פרופיל
+                    </Link>
+                  </li>
+                  <li role="none">
+                    <Link role="menuitem" to="/account/password" onClick={() => setMenuOpen(false)}>
+                      שינוי סיסמה
+                    </Link>
+                  </li>
+                  {showAnalytics && (
+                    <li role="none">
+                      <Link role="menuitem" to="/admin/analytics" onClick={() => setMenuOpen(false)}>
+                        אנליטיקה
+                      </Link>
+                    </li>
+                  )}
+                  {showUsers && (
+                    <li role="none">
+                      <Link role="menuitem" to="/admin/users" onClick={() => setMenuOpen(false)}>
+                        משתמשים
+                      </Link>
+                    </li>
+                  )}
+                  <li role="none">
+                    <button type="button" role="menuitem" onClick={logout}>
+                      יציאה
+                    </button>
+                  </li>
+                </ul>
+              )}
+            </div>
+          )}
+        </div>,
+        slot
       )}
-      {showAnalytics && (
-        <Link className="navbar__link" to="/admin/analytics">
-          אנליטיקה
-        </Link>
-      )}
-      {showUsers && (
-        <Link className="navbar__link" to="/admin/users">
-          Users
-        </Link>
-      )}
-      {user && (
-        <button type="button" className="navbar__link staff-nav__button" onClick={logout}>
-          יציאה
-        </button>
-      )}
-    </div>,
-    slot
+      {loginOpen &&
+        createPortal(<LoginDialog onClose={closeLogin} onSuccess={onLogin} />, document.body)}
+    </>
   );
 }

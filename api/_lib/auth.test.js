@@ -46,4 +46,33 @@ describe('cookies and emails', () => {
     assert.equal(auth.isAcceptablePassword('short'), false);
     assert.equal(auth.isAcceptablePassword('long-enough'), true);
   });
+
+  it('normalizes profile names and occupations', () => {
+    assert.equal(auth.normalizePersonName('  דנה   לוי '), 'דנה לוי');
+    assert.equal(auth.normalizePersonName('   '), null);
+    assert.equal(auth.normalizePersonName('a'.repeat(81)), null);
+    assert.equal(auth.normalizeOccupation('nurse'), 'nurse');
+    assert.equal(auth.normalizeOccupation('teacher'), null);
+  });
+
+  it('includes profile fields on the public user', () => {
+    assert.deepEqual(
+      auth.toPublicUser({
+        email: 'a@b.com',
+        role: 'user',
+        must_change_password: 0,
+        first_name: 'דנה',
+        last_name: 'לוי',
+        occupation: 'nurse',
+      }),
+      {
+        email: 'a@b.com',
+        role: 'user',
+        mustChangePassword: false,
+        firstName: 'דנה',
+        lastName: 'לוי',
+        occupation: 'nurse',
+      }
+    );
+  });
 });

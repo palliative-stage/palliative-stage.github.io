@@ -10,6 +10,7 @@ const login = require('../api/auth/login');
 const logout = require('../api/auth/logout');
 const me = require('../api/auth/me');
 const changePassword = require('../api/auth/change-password');
+const profile = require('../api/auth/profile');
 const users = require('../api/admin/users');
 const resetPassword = require('../api/admin/users/reset-password');
 const analyticsReport = require('../api/admin/analytics');
@@ -20,6 +21,7 @@ const routes = {
   'POST /api/auth/logout': logout,
   'GET /api/auth/me': me,
   'POST /api/auth/change-password': changePassword,
+  'PATCH /api/auth/profile': profile,
   'GET /api/admin/users': users,
   'POST /api/admin/users': users,
   'POST /api/admin/users/reset-password': resetPassword,
