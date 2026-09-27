@@ -3,6 +3,60 @@ import StaffShell from '@site/src/components/StaffShell';
 import { staffDestination, staffFetch } from '@site/src/lib/staffApi';
 import { useStaffSession } from '@site/src/lib/useStaffSession';
 
+function EyeIcon({ off }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"
+      />
+      <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="2" />
+      {off && (
+        <path
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          d="M4 4l16 16"
+        />
+      )}
+    </svg>
+  );
+}
+
+function PasswordField({ label, name, autoComplete, value, onChange, minLength, shown, onToggle }) {
+  return (
+    <label>
+      {label}
+      <span className="staff-password">
+        <input
+          type={shown ? 'text' : 'password'}
+          name={name}
+          autoComplete={autoComplete}
+          dir="ltr"
+          minLength={minLength}
+          value={value}
+          onChange={onChange}
+          required
+        />
+        <button
+          type="button"
+          className="staff-password__toggle"
+          aria-label={shown ? 'הסתר סיסמה' : 'הצג סיסמה'}
+          aria-pressed={shown}
+          onClick={onToggle}
+        >
+          <EyeIcon off={shown} />
+        </button>
+      </span>
+    </label>
+  );
+}
+
 const ERRORS = {
   invalid_credentials: 'הסיסמה הנוכחית שגויה.',
   too_many_attempts: 'יותר מדי ניסיונות. נסו שוב מאוחר יותר.',
@@ -19,6 +73,9 @@ export default function ChangePasswordPage() {
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [showCurrent, setShowCurrent] = useState(false);
+  const [showNew, setShowNew] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const forced = Boolean(user && user.mustChangePassword);
 
   useEffect(() => {
@@ -73,41 +130,35 @@ export default function ChangePasswordPage() {
       <form className="staff-card staff-login staff-form" onSubmit={onSubmit}>
         <h1>שינוי סיסמה</h1>
         {forced && <p>יש לבחור סיסמה חדשה לפני המשך השימוש.</p>}
-        <label>
-          סיסמה נוכחית
-          <input
-            type="password"
-            name="currentPassword"
-            autoComplete="current-password"
-            value={currentPassword}
-            onChange={(event) => setCurrentPassword(event.target.value)}
-            required
-          />
-        </label>
-        <label>
-          סיסמה חדשה
-          <input
-            type="password"
-            name="newPassword"
-            autoComplete="new-password"
-            minLength={10}
-            value={newPassword}
-            onChange={(event) => setNewPassword(event.target.value)}
-            required
-          />
-        </label>
-        <label>
-          אימות סיסמה חדשה
-          <input
-            type="password"
-            name="confirmPassword"
-            autoComplete="new-password"
-            minLength={10}
-            value={confirmPassword}
-            onChange={(event) => setConfirmPassword(event.target.value)}
-            required
-          />
-        </label>
+        <PasswordField
+          label="סיסמה נוכחית"
+          name="currentPassword"
+          autoComplete="current-password"
+          value={currentPassword}
+          onChange={(event) => setCurrentPassword(event.target.value)}
+          shown={showCurrent}
+          onToggle={() => setShowCurrent((visible) => !visible)}
+        />
+        <PasswordField
+          label="סיסמה חדשה"
+          name="newPassword"
+          autoComplete="new-password"
+          minLength={10}
+          value={newPassword}
+          onChange={(event) => setNewPassword(event.target.value)}
+          shown={showNew}
+          onToggle={() => setShowNew((visible) => !visible)}
+        />
+        <PasswordField
+          label="אימות סיסמה חדשה"
+          name="confirmPassword"
+          autoComplete="new-password"
+          minLength={10}
+          value={confirmPassword}
+          onChange={(event) => setConfirmPassword(event.target.value)}
+          shown={showConfirm}
+          onToggle={() => setShowConfirm((visible) => !visible)}
+        />
         <p className="staff-muted">לפחות 10 תווים.</p>
         {notice && <p className="staff-ok">{notice}</p>}
         {error && (
