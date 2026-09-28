@@ -10,6 +10,9 @@ const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const MAX_X_LABELS = 8;
 const Y_TICKS = 4;
+const MAX_CLICK_ROWS = 20;
+// Clicks recorded before navigation was tagged; the old "הקודם / הבא" links start with these words.
+const PAGINATION_LABEL_RE = /^(הבא|הקודם)\s/;
 const numberFormat = new Intl.NumberFormat('he-IL');
 const percentFormat = new Intl.NumberFormat('he-IL', {
   style: 'percent',
@@ -122,8 +125,15 @@ export default function AnalyticsPage() {
   const { siteConfig } = useDocusaurusContext();
   const { loading: sessionLoading, user } = useStaffSession();
   const siteHosts = siteHostnames(siteConfig.url);
-  const { pages: sitePages = [] } = usePluginData('page-titles-plugin') || {};
+  const { pages: sitePages = [], sidebarLabels = [] } = usePluginData('page-titles-plugin') || {};
   const titleToPath = new Map(sitePages.map((page) => [page.title, page.path]));
+  const navigationLabels = new Set([
+    ...sidebarLabels,
+    ...sitePages.map((page) => page.title),
+    ...((siteConfig.themeConfig.navbar && siteConfig.themeConfig.navbar.items) || [])
+      .map((item) => item.label)
+      .filter(Boolean),
+  ]);
   const pathToTitle = new Map(sitePages.map((page) => [normalizePath(page.path), page.title]));
   const initial = defaultRange();
   const [from, setFrom] = useState(initial.from);
@@ -237,6 +247,16 @@ export default function AnalyticsPage() {
   }, [users, userId, userQuery]);
 
   const preset = activePreset(from, to);
+  const clickRows = report
+    ? report.topClicks
+        .filter((row) => !navigationLabels.has(row.label) && !PAGINATION_LABEL_RE.test(row.label))
+        .slice(0, MAX_CLICK_ROWS)
+    : [];
+
+  const stubViews = new Map(
+    ((report && report.stubPages) || []).map((row) => [normalizePath(row.route), row.views])
+  );
+  const stubRows = ((report && report.stubPages) || []).filter((row) => row.views > 0);
 
   function onUserQuery(value) {
     setUserQuery(value);
@@ -350,18 +370,30 @@ export default function AnalyticsPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {report.topPages.map((row) => (
-                      <tr key={row.route || '—'}>
-                        <td>
-                          <PageLink
-                            page={(row.route && pathToTitle.get(normalizePath(row.route))) || row.route || '—'}
-                            route={row.route && normalizePath(row.route)}
-                          />
-                        </td>
-                        <td>{numberFormat.format(row.views)}</td>
-                        <td>{percentFormat.format(row.share)}</td>
-                      </tr>
-                    ))}
+                    {report.topPages.map((row) => {
+                      const path = row.route && normalizePath(row.route);
+                      const beforeContent = (path && stubViews.get(path)) || 0;
+                      return (
+                        <tr
+                          key={row.route || '—'}
+                          className={beforeContent > 0 && beforeContent >= row.views ? 'staff-row--stub' : undefined}
+                        >
+                          <td>
+                            <PageLink page={(path && pathToTitle.get(path)) || row.route || '—'} route={path} />
+                          </td>
+                          <td>
+                            {numberFormat.format(row.views)}
+                            {beforeContent > 0 && beforeContent < row.views && (
+                              <span className="staff-stub-note">
+                                {' '}
+                                ({numberFormat.format(beforeContent)} לפני שהתוכן עלה)
+                              </span>
+                            )}
+                          </td>
+                          <td>{percentFormat.format(row.share)}</td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               )}
@@ -383,9 +415,45 @@ export default function AnalyticsPage() {
           </div>
 
           <section className="staff-card">
+            <h2>ערכים שטרם עלו</h2>
+            <p className="staff-muted">
+              צפיות בדפים המסומנים כ"הערך יעלה בקרוב", או בדפים שהתוכן שלהם עלה מאוחר יותר – עד תאריך העלאת
+              התוכן.
+            </p>
+            {stubRows.length === 0 ? (
+              <p>אין נתונים</p>
+            ) : (
+              <table className="staff-table">
+                <thead>
+                  <tr>
+                    <th>דף</th>
+                    <th>צפיות לפני העלאת התוכן</th>
+                    <th>סטטוס</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {stubRows.map((row) => (
+                    <tr key={row.route} className="staff-row--stub">
+                      <td>
+                        <PageLink page={pathToTitle.get(row.route) || row.title} route={row.route} />
+                      </td>
+                      <td>{numberFormat.format(row.views)}</td>
+                      <td>
+                        {row.contentAddedOn ? `התוכן עלה ב-${formatIso(row.contentAddedOn)}` : 'טרם עלה'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </section>
+
+          <section className="staff-card">
             <h2>לחיצות</h2>
-            <p className="staff-muted">לא כולל מעבר לדפים מתוך דף הקדמה.</p>
-            {report.topClicks.length === 0 ? (
+            <p className="staff-muted">
+              לא כולל מעבר לדפים מתוך דף הקדמה, מהתפריט או מסרגל הניווט העליון.
+            </p>
+            {clickRows.length === 0 ? (
               <p>אין נתונים</p>
             ) : (
               <table className="staff-table">
@@ -397,7 +465,7 @@ export default function AnalyticsPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {report.topClicks.map((row) => (
+                  {clickRows.map((row) => (
                     <tr key={`${row.label}-${row.elementId || ''}-${row.page || ''}`}>
                       <td>
                         {row.page ? <PageLink page={row.page} route={titleToPath.get(row.page)} /> : '—'}

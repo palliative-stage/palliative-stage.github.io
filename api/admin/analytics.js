@@ -114,6 +114,31 @@ module.exports = async function handler(req, res) {
       params
     );
 
+    const stubResult = await pool
+      .query(
+        `SELECT p.route,
+                p.title,
+                to_char(p.content_added_on, 'YYYY-MM-DD') AS content_added_on,
+                COUNT(e.event_id)::int AS views
+         FROM page_stubs p
+         LEFT JOIN events e
+           ON e.event_type = 'page_view'
+          AND NULLIF(rtrim(split_part(e.page_route, '#', 1), '/'), '') = p.route
+          AND (
+            p.content_added_on IS NULL
+            OR e.occurred_at < (p.content_added_on::timestamp AT TIME ZONE 'Asia/Jerusalem')
+          )
+          AND ${where}
+         GROUP BY p.route, p.title, p.content_added_on
+         ORDER BY views DESC, p.title ASC`,
+        params
+      )
+      .catch((err) => {
+        // 42P01: page_stubs not created yet (scripts/sql/06.page-stubs.sql).
+        if (err && err.code === '42P01') return { rows: [] };
+        throw err;
+      });
+
     const searchResult = await pool.query(
       `SELECT e.search_query AS query,
               COUNT(*)::int AS searches,
@@ -138,10 +163,11 @@ module.exports = async function handler(req, res) {
        FROM events e
        WHERE e.event_type = 'click'
          AND e.entry_id IS DISTINCT FROM $5
+         AND e.section IS DISTINCT FROM 'navigation'
          AND ${where}
        GROUP BY 1, 2, 3
        ORDER BY clicks DESC, label ASC
-       LIMIT 20`,
+       LIMIT 100`,
       [...params, HOME_PAGE_TITLE]
     );
 
@@ -212,6 +238,12 @@ module.exports = async function handler(req, res) {
         route: row.route,
         views: row.views,
         share: pageViewsTotal ? row.views / pageViewsTotal : 0,
+      })),
+      stubPages: stubResult.rows.map((row) => ({
+        route: row.route,
+        title: row.title,
+        contentAddedOn: row.content_added_on,
+        views: row.views,
       })),
       topSearches: searchResult.rows.map((row) => ({
         query: row.query,

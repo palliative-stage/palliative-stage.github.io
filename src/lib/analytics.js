@@ -8,6 +8,14 @@ const ANALYTICS_CONFIG = {
   endpoint: '/api/analytics',
 };
 
+const NAVIGATION_SELECTOR = [
+  '.navbar',
+  '.navbar-sidebar',
+  '.theme-doc-sidebar-container',
+  '.theme-doc-breadcrumbs',
+  '.pagination-nav',
+].join(', ');
+
 const SESSION_KEY = 'analytics_session_id';
 const USER_KEY = 'analytics_user_pseudo_id';
 
@@ -184,6 +192,10 @@ function initClickTracking() {
         }
         elementType = 'external-link';
         section = undefined;
+      }
+
+      if (linkOrButton.closest(NAVIGATION_SELECTOR)) {
+        section = 'navigation';
       }
 
       const textOverride = linkOrButton.getAttribute('data-analytics-text') || linkOrButton.getAttribute('data-tracking-text');

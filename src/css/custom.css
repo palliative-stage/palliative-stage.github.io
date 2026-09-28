@@ -872,6 +872,22 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
   vertical-align: top;
 }
 
+.staff-row--stub,
+.staff-row--stub a,
+.staff-stub-note {
+  color: #c2410c;
+}
+
+.staff-row--stub td {
+  background: rgba(249, 115, 22, 0.08);
+}
+
+[data-theme='dark'] .staff-row--stub,
+[data-theme='dark'] .staff-row--stub a,
+[data-theme='dark'] .staff-stub-note {
+  color: #fb923c;
+}
+
 .staff-reset {
   display: flex;
   flex-wrap: wrap;
