@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import EyeIcon from '@site/src/components/EyeIcon';
 import StaffShell from '@site/src/components/StaffShell';
 import { staffFetch } from '@site/src/lib/staffApi';
 import { useStaffSession } from '@site/src/lib/useStaffSession';
@@ -31,6 +32,7 @@ export default function UsersPage() {
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('admin');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -97,6 +99,7 @@ export default function UsersPage() {
       }
       setEmail('');
       setPassword('');
+      setShowPassword(false);
       setRole('admin');
       setNotice('User added. They must change this password when they sign in.');
       await reload();
@@ -166,15 +169,26 @@ export default function UsersPage() {
         </label>
         <label>
           Initial password
-          <input
-            type="password"
-            name="password"
-            autoComplete="new-password"
-            minLength={10}
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
+          <span className="staff-password">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              autoComplete="new-password"
+              minLength={10}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+            />
+            <button
+              type="button"
+              className="staff-password__toggle"
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+              aria-pressed={showPassword}
+              onClick={() => setShowPassword((shown) => !shown)}
+            >
+              <EyeIcon off={showPassword} />
+            </button>
+          </span>
         </label>
         <p className="staff-muted">At least 10 characters.</p>
         {error && (

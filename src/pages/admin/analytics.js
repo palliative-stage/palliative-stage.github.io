@@ -428,7 +428,6 @@ export default function AnalyticsPage() {
                   <tr>
                     <th>דף</th>
                     <th>צפיות לפני העלאת התוכן</th>
-                    <th>סטטוס</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -438,9 +437,6 @@ export default function AnalyticsPage() {
                         <PageLink page={pathToTitle.get(row.route) || row.title} route={row.route} />
                       </td>
                       <td>{numberFormat.format(row.views)}</td>
-                      <td>
-                        {row.contentAddedOn ? `התוכן עלה ב-${formatIso(row.contentAddedOn)}` : 'טרם עלה'}
-                      </td>
                     </tr>
                   ))}
                 </tbody>
