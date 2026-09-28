@@ -465,14 +465,28 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
 }
 
 @media (max-width: 996px) {
+  .hebrew-search-bar.navbar__search {
+    margin-right: 0;
+  }
+
   .hebrew-search-bar__shell {
-    width: 9rem;
+    width: 7.25rem;
+  }
+
+  /* Ctrl/⌘K is a desktop shortcut — keep the magnifier, drop the keys */
+  .hebrew-search-bar__keys {
+    display: none;
+  }
+
+  .hebrew-search-bar__input.navbar__search-input,
+  html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
+    padding: 0 0.75rem 0 2.25rem !important;
   }
 }
 
 @media (max-width: 576px) {
   .hebrew-search-bar__shell {
-    width: 9rem;
+    width: 7.25rem;
   }
 
   /* Don't use the plugin's 2rem collapsed width — it breaks the Hebrew layout */
@@ -494,35 +508,53 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
 .staff-nav-slot {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
 }
 
 .staff-nav {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  margin-inline-start: 0.75rem;
+  margin-inline-start: 0.5rem;
 }
 
-/* On a narrow RTL navbar the search box is pinned to the physical left.
-   Staff links sit in a bar under the navbar so they stay clickable. */
+/* Keep search + login on one row. The search wrapper is position:absolute
+   on the physical left in RTL, so the login must live in that same cluster. */
 /* rtl:begin:ignore */
+.navbar__items > div:has(> .navbar__search) {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 @media (max-width: 996px) {
-  .staff-nav-slot {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    direction: rtl;
-    justify-content: flex-start;
-    padding: 0.2rem 0.85rem 0.45rem;
-    background: var(--ifm-navbar-background-color);
-    border-bottom: 1px solid var(--ifm-toc-border-color);
-    box-shadow: var(--ifm-navbar-shadow);
+  .navbar__inner .navbar__title {
+    display: none;
   }
 
-  .navbar:has(.staff-nav) ~ .main-wrapper {
-    padding-top: 2.4rem;
+  .navbar__items > div:has(> .navbar__search) {
+    direction: ltr;
+  }
+
+  .staff-nav {
+    margin-inline-start: 0;
+  }
+
+  .staff-nav__login {
+    font-size: 0.75rem;
+    padding: 0.28rem 0.6rem;
+  }
+
+  /* Login sits on the physical left next to search; open the menu toward the center. */
+  .staff-nav__menu {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+  }
+
+  /* Drawer covers most of the screen; don't let search/login paint over it. */
+  .navbar-sidebar--show .navbar__items > div:has(> .navbar__search) {
+    visibility: hidden;
+    pointer-events: none;
   }
 }
 /* rtl:end:ignore */

@@ -52,15 +52,27 @@ export default function StaffNav() {
 
   useEffect(() => {
     const find = () => {
+      const search = document.querySelector('.navbar__inner .navbar__search');
       const items = document.querySelector('.navbar__inner > .navbar__items:not(.navbar__items--right)');
-      if (!items) return null;
-      let next = items.querySelector(':scope > .staff-nav-slot');
+      const host = search ? search.parentElement : items;
+      if (!host) return null;
+
+      let next = document.querySelector('.navbar__inner .staff-nav-slot');
       if (!next) {
         next = document.createElement('div');
         next.className = 'staff-nav-slot';
-        const brand = items.querySelector('.navbar__brand');
-        if (brand) brand.insertAdjacentElement('afterend', next);
-        else items.appendChild(next);
+      }
+
+      if (search) {
+        if (next.previousElementSibling !== search) {
+          search.insertAdjacentElement('afterend', next);
+        }
+      } else {
+        const brand = items && items.querySelector('.navbar__brand');
+        if (next.parentElement !== host) {
+          if (brand) brand.insertAdjacentElement('afterend', next);
+          else host.appendChild(next);
+        }
       }
       return next;
     };

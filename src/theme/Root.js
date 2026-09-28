@@ -52,7 +52,8 @@ export default function Root({ children }) {
   }, [location.pathname, location.search, location.hash, history]);
 
   useEffect(() => {
-    const pathname = location?.pathname || (typeof window !== 'undefined' ? window.location.pathname : null);
+    if (typeof window === 'undefined' || typeof document === 'undefined') return undefined;
+    const pathname = location?.pathname || window.location.pathname;
     if (!pathname || pathname === prevPathRef.current) return undefined;
     const isFirstView = prevPathRef.current === null;
     prevPathRef.current = pathname;
