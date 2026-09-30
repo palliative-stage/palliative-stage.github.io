@@ -496,12 +496,25 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
 }
 /* rtl:end:ignore */
 
-/* English bibliographic citations inside RTL pages */
+/* English bibliographic citations and lists inside RTL pages */
 /* rtl:begin:ignore */
 .references-ltr {
   direction: ltr;
   text-align: left;
   unicode-bidi: isolate;
+}
+
+.markdown .references-ltr ul,
+.markdown .references-ltr ol {
+  direction: ltr;
+  text-align: left;
+  padding-left: var(--ifm-list-left-padding);
+  padding-right: 0;
+}
+
+.markdown .references-ltr li {
+  direction: ltr;
+  text-align: left;
 }
 /* rtl:end:ignore */
 
