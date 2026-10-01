@@ -516,6 +516,12 @@ html[dir='rtl'] .hebrew-search-bar__input.navbar__search-input {
   direction: ltr;
   text-align: left;
 }
+
+.markdown .references-ltr [dir='rtl'] {
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: isolate;
+}
 /* rtl:end:ignore */
 
 .staff-nav-slot {
