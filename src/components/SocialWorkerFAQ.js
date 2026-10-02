@@ -112,20 +112,25 @@ export default function SocialWorkerFAQ() {
 
 	const normalizedQuery = normalizeForSearch(query);
 
+	const publishedItems = useMemo(
+		() => items.filter((item) => !item.needsReview),
+		[items],
+	);
+
 	const filteredItems = useMemo(() => {
-		return items
+		return publishedItems
 			.filter((item) => categoryId === ALL_CATEGORY || item.categoryId === categoryId)
 			.filter((item) => itemMatchesQuery(item, normalizedQuery))
 			.sort((a, b) => b.frequency - a.frequency);
-	}, [items, categoryId, normalizedQuery]);
+	}, [publishedItems, categoryId, normalizedQuery]);
 
 	const categoryCounts = useMemo(() => {
-		const counts = { [ALL_CATEGORY]: items.length };
+		const counts = { [ALL_CATEGORY]: publishedItems.length };
 		for (const cat of categories) {
-			counts[cat.id] = items.filter((i) => i.categoryId === cat.id).length;
+			counts[cat.id] = publishedItems.filter((i) => i.categoryId === cat.id).length;
 		}
 		return counts;
-	}, [items, categories]);
+	}, [publishedItems, categories]);
 
 	const categoryLabels = useMemo(() => {
 		return Object.fromEntries(categories.map((cat) => [cat.id, cat.label]));
@@ -196,7 +201,7 @@ export default function SocialWorkerFAQ() {
 			</div>
 
 			<p className="sw-faq__results-count" aria-live="polite" dir="rtl">
-				מציג {filteredItems.length} מתוך {items.length}
+				מציג {filteredItems.length} מתוך {publishedItems.length}
 			</p>
 
 			{filteredItems.length === 0 ? (
