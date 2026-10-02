@@ -10,6 +10,17 @@ function normalizeForSearch(text) {
 	return (text || '').toLowerCase().trim();
 }
 
+function formatConsensusDate(iso) {
+	const date = new Date(iso);
+	if (Number.isNaN(date.getTime())) return '';
+	return new Intl.DateTimeFormat('he-IL', {
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
+		timeZone: 'Asia/Jerusalem',
+	}).format(date);
+}
+
 function itemMatchesQuery(item, query) {
 	if (!query) return true;
 	const haystack = [
@@ -17,6 +28,7 @@ function itemMatchesQuery(item, query) {
 		item.question,
 		item.answer,
 		...item.subQuestions.flatMap((s) => [s.question, s.answer]),
+		...(item.links || []).map((link) => link.label),
 	]
 		.map(normalizeForSearch)
 		.join(' ');
@@ -60,6 +72,20 @@ function FaqAccordionItem({ item, categoryLabel, isOpen, onToggle }) {
 			{isOpen && (
 				<div id={panelId} role="region" aria-labelledby={headerId} className="sw-faq__item-body">
 					<p className="sw-faq__answer">{item.answer}</p>
+					{item.needsReview && (
+						<p className="sw-faq__review">
+							ניסוח זה טעון בדיקה מקצועית (משפטית או רפואית) לפני הסתמכות עליו.
+						</p>
+					)}
+					{(item.links || []).length > 0 && (
+						<ul className="sw-faq__links">
+							{item.links.map((link) => (
+								<li key={link.href}>
+									<a href={link.href}>{link.label}</a>
+								</li>
+							))}
+						</ul>
+					)}
 					{item.subQuestions.length > 0 && (
 						<div className="sw-faq__sub-list">
 							{item.subQuestions.map((sub, idx) => (
@@ -78,6 +104,7 @@ function FaqAccordionItem({ item, categoryLabel, isOpen, onToggle }) {
 
 export default function SocialWorkerFAQ() {
 	const { meta, categories, items } = faqData;
+	const consensusDate = formatConsensusDate(meta.generatedAt);
 	const [query, setQuery] = useState('');
 	const [categoryId, setCategoryId] = useState(ALL_CATEGORY);
 	const [openIds, setOpenIds] = useState(() => new Set());
@@ -125,6 +152,7 @@ export default function SocialWorkerFAQ() {
 
 			<div className="sw-faq__disclaimer" role="note" dir="rtl">
 				<strong>חשוב:</strong> {meta.disclaimer}
+				{consensusDate ? ` הניסוח משקף את ההסכמה נכון ל־${consensusDate}.` : null}
 			</div>
 
 			<div className="sw-faq__search-wrap" dir="rtl">

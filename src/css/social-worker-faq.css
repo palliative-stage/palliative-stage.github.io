@@ -213,6 +213,24 @@
 	text-align: right;
 }
 
+.sw-faq__review {
+	margin: 0.75rem 0 0;
+	padding: 0.65rem 0.8rem;
+	border-radius: var(--ifm-alert-border-radius);
+	border: 1px solid var(--ifm-color-warning-dark);
+	background: var(--ifm-color-warning-contrast-background);
+	line-height: 1.55;
+}
+
+.sw-faq__links {
+	margin: 0.75rem 0 0;
+	padding-right: 1.1rem;
+}
+
+.sw-faq__links a {
+	font-weight: 600;
+}
+
 .sw-faq__sub-list {
 	margin-top: 0.85rem;
 	padding-right: 0.75rem;
