@@ -187,6 +187,13 @@ export default function StaffNav() {
                       </Link>
                     </li>
                   )}
+                  {showAnalytics && (
+                    <li role="none">
+                      <Link role="menuitem" to="/admin/changelog" onClick={() => setMenuOpen(false)}>
+                        יומן שינויים
+                      </Link>
+                    </li>
+                  )}
                   {showUsers && (
                     <li role="none">
                       <Link role="menuitem" to="/admin/users" onClick={() => setMenuOpen(false)}>
