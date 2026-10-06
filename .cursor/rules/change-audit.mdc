@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Website change audit
 
-After a change that alters what visitors or staff see, or how the site behaves, draft one Hebrew row and wait for confirmation before recording it.
+After a change that alters what visitors or staff see, or how the site behaves, draft one Hebrew row in the same reply and wait for confirmation before recording it. Do not end that reply without the draft. If more site edits land before the row is confirmed, fold them into the pending draft and show the updated wording again. The task is not finished while a visible change is still unlogged and unconfirmed.
 
 Each row has:
 
