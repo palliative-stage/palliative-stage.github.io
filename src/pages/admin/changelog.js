@@ -1,19 +1,28 @@
 import React, { useEffect } from 'react';
+import Link from '@docusaurus/Link';
 import StaffShell from '@site/src/components/StaffShell';
 import entries from '@site/src/data/change-log.json';
 import { useStaffSession } from '@site/src/lib/useStaffSession';
 
-const dayFormat = new Intl.DateTimeFormat('he-IL', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
-  timeZone: 'UTC',
-});
-
 function formatIso(iso) {
-  const [year, month, day] = String(iso).split('-').map(Number);
+  const [year, month, day] = String(iso).split('-');
   if (!year || !month || !day) return iso;
-  return dayFormat.format(new Date(Date.UTC(year, month - 1, day)));
+  return `${day.padStart(2, '0')}/${month.padStart(2, '0')}/${year}`;
+}
+
+function AreaLink({ row }) {
+  const label = (
+    <>
+      <span className="changelog-area__page">{row.area}</span>
+      {row.section ? <span className="changelog-area__section">{row.section}</span> : null}
+    </>
+  );
+  if (!row.href) return <span className="changelog-area">{label}</span>;
+  return (
+    <Link className="changelog-area" to={row.href}>
+      {label}
+    </Link>
+  );
 }
 
 const rows = [...entries].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
@@ -58,10 +67,14 @@ export default function ChangelogPage() {
             </thead>
             <tbody>
               {rows.map((row) => (
-                <tr key={`${row.date}-${row.area}-${row.summary}`}>
-                  <td>{formatIso(row.date)}</td>
+                <tr key={`${row.date}-${row.href || row.area}-${row.summary}`}>
+                  <td>
+                    <bdi dir="ltr">{formatIso(row.date)}</bdi>
+                  </td>
                   <td>{row.summary}</td>
-                  <td>{row.area}</td>
+                  <td>
+                    <AreaLink row={row} />
+                  </td>
                 </tr>
               ))}
             </tbody>

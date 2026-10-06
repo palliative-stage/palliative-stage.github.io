@@ -11,15 +11,19 @@ Each row has:
 
 - `date`: `YYYY-MM-DD` in Asia/Jerusalem
 - `summary`: Hebrew, what changed
-- `area`: Hebrew, which part of the site
+- `area`: Hebrew page name
+- `section`: Hebrew heading on that page, when the change sits in a section
+- `href`: site path, with a hash when there is a section, for example `/Useful_links/Social_Work_Resources#wishes`
 
 Show the draft and stop. Prepend it to `src/data/change-log.json` only after an explicit yes or an edited wording. Do not commit the row before that reply. Newest row stays first.
 
 ```json
 {
-  "date": "2026-10-05",
-  "summary": "נוסף יומן שינויים בתפריט הניהול.",
-  "area": "תפריט ניהול"
+  "date": "2026-10-06",
+  "summary": "במשאלות ופרידה נוספו פרטים על אמבולנס המשאלות.",
+  "area": "תמיכה בעובדים סוציאליים",
+  "section": "משאלות ופרידה",
+  "href": "/Useful_links/Social_Work_Resources#wishes"
 }
 ```
 
