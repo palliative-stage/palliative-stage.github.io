@@ -212,8 +212,14 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
     z-index: 0;
   }
 
-  .theme-doc-markdown :is(h1, h2, h3, h4, h5, h6) {
+  .theme-doc-markdown :is(h1, h2, h3, h4, h5, h6),
+  .heading-alias {
     scroll-margin-top: calc(var(--ifm-navbar-height) + 3.5rem);
+  }
+
+  .heading-alias {
+    display: block;
+    height: 0;
   }
 
   .theme-doc-toc-mobile[class*='tocCollapsibleExpanded'] {
