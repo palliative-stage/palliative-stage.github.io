@@ -5,7 +5,11 @@ alwaysApply: true
 
 # Website change audit
 
-After a change that alters what visitors or staff see, or how the site behaves, draft one Hebrew row in the same reply and wait for confirmation before recording it. Do not end that reply without the draft. If more site edits land before the row is confirmed, fold them into the pending draft and show the updated wording again. The task is not finished while a visible change is still unlogged and unconfirmed.
+After a change that alters what visitors or staff see, or how the site behaves, draft the Hebrew rows in the same reply and wait for confirmation before recording them. Do not end that reply without the drafts. The task is not finished while a visible change is still unlogged and unconfirmed.
+
+One row per distinct change. Unrelated changes, and changes that sit in different sections, are separate rows even when they are made together. Do not merge them into one summary. Edits that belong to the same section and describe one change can share a row.
+
+If more site edits land before confirmation, update the matching draft or add another row, then show every pending row again. Do not fold a different section into an existing draft.
 
 Each row has:
 
